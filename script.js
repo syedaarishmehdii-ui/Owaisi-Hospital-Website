@@ -201,13 +201,16 @@
   var vt = $('#vt');
 
   if (vt) {
-    var scenes = [];
 
-    try {
-      scenes = JSON.parse(vt.getAttribute('data-scenes'));
-    } catch (err) {
-      scenes = [];
-    }
+    /* ===== ADD / EDIT YOUR TOUR PHOTOS HERE =====
+       Copy one line to add a photo. Upload the image to assets/tour/ */
+    var scenes = [
+      { title: 'Campus Exterior', text: 'Approach the hospital and see the main building.',  local: 'assets/tour/campus.jpg' },
+      { title: 'Main Entrance',   text: 'The welcoming entrance for patients and visitors.', local: 'assets/tour/entrance.jpg' },
+      { title: 'Emergency Wing',  text: 'Open around the clock for urgent care.',            local: 'assets/tour/emergency.jpg' },
+      { title: 'Reception',       text: 'Registration and guidance from our front desk.',    local: 'assets/tour/reception.jpg' },
+      { title: 'Patient Ward',    text: 'Calm, clean rooms where patients recover.',         local: 'assets/tour/ward.jpg' }
+    ];
 
     var stage = $('#vtStage');
     var pan = $('#vtPan');
@@ -217,9 +220,21 @@
     var vText = $('#vtText');
     var vCount = $('#vtCount');
     var bar = $('#vtBar');
-    var thumbs = $$('.thumb', vt);
     var playBtn = $('#vtPlay');
     var fsBtn = $('#vtFs');
+
+    /* build thumbnails automatically from the scenes list */
+    var thumbWrap = $('#vtThumbs');
+    thumbWrap.innerHTML = '';
+    scenes.forEach(function (s, n) {
+      var b = document.createElement('button');
+      b.className = 'thumb';
+      b.innerHTML = '<span class="thumb-img"></span><b>' +
+        String(n + 1).padStart(2, '0') + '</b><em></em>';
+      $('em', b).textContent = s.title;
+      thumbWrap.appendChild(b);
+    });
+    var thumbs = $$('.thumb', vt);
 
     var cur = 0, x = 0, minX = 0;
     var playing = false, dragging = false, needCenter = true;
@@ -232,8 +247,10 @@
 
     var bounds = function () {
       var sw = stage.clientWidth;
+      if (!sw) return;
+      img.style.minWidth = sw + 'px';   /* photo always fills the frame */
       var iw = img.clientWidth;
-      if (!sw || !iw) return;
+      if (!iw) return;
 
       minX = Math.min(0, sw - iw);
       if (needCenter) {
@@ -256,7 +273,7 @@
 
       img.onerror = function () {
         img.onerror = null;
-        img.src = s.fallback;
+        if (s.fallback) img.src = s.fallback;
       };
 
       img.onload = function () {
@@ -283,16 +300,10 @@
       bar.style.width = '0%';
     };
 
-    /* thumbnails */
+    /* thumbnail images + clicks */
     thumbs.forEach(function (t, n) {
-      var s = scenes[n];
       var ti = $('.thumb-img', t);
-
-      if (s && ti) {
-        ti.style.backgroundImage =
-          'url("' + s.local + '"),url("' + s.fallback.replace('w=2400', 'w=500') + '")';
-      }
-
+      if (scenes[n] && ti) ti.style.backgroundImage = 'url("' + scenes[n].local + '")';
       t.addEventListener('click', function () { go(n); });
     });
 
@@ -356,6 +367,7 @@
     });
 
     document.addEventListener('fullscreenchange', function () {
+      needCenter = true;
       $('span', fsBtn).textContent = document.fullscreenElement ? 'Exit full screen' : 'Full screen';
       setTimeout(bounds, 80);
     });
