@@ -203,13 +203,14 @@
   if (vt) {
 
     /* ===== ADD / EDIT YOUR TOUR PHOTOS HERE =====
-       Copy one line to add a photo. Upload the image to assets/tour/ */
+       One line per photo. Upload images to assets/tour/
+       "fallback" is optional (shown only if your photo is missing). */
     var scenes = [
-      { title: 'Campus Exterior', text: 'Approach the hospital and see the main building.',  local: 'assets/tour/campus.jpg' },
-      { title: 'Main Entrance',   text: 'The welcoming entrance for patients and visitors.', local: 'assets/tour/entrance.jpg' },
-      { title: 'Emergency Wing',  text: 'Open around the clock for urgent care.',            local: 'assets/tour/emergency.jpg' },
-      { title: 'Reception',       text: 'Registration and guidance from our front desk.',    local: 'assets/tour/reception.jpg' },
-      { title: 'Patient Ward',    text: 'Calm, clean rooms where patients recover.',         local: 'assets/tour/ward.jpg' }
+      { title: 'Campus Exterior', text: 'Approach the hospital and see the main building.',  local: 'assets/tour/campus.jpg',    fallback: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=2400&q=80' },
+      { title: 'Main Entrance',   text: 'The welcoming entrance for patients and visitors.', local: 'assets/tour/entrance.jpg',  fallback: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=2400&q=80' },
+      { title: 'Emergency Wing',  text: 'Open around the clock for urgent care.',            local: 'assets/tour/emergency.jpg', fallback: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=2400&q=80' },
+      { title: 'Reception',       text: 'Registration and guidance from our front desk.',    local: 'assets/tour/reception.jpg', fallback: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2400&q=80' },
+      { title: 'Patient Ward',    text: 'Calm, clean rooms where patients recover.',         local: 'assets/tour/ward.jpg',      fallback: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=2400&q=80' }
     ];
 
     var stage = $('#vtStage');
@@ -303,7 +304,12 @@
     /* thumbnail images + clicks */
     thumbs.forEach(function (t, n) {
       var ti = $('.thumb-img', t);
-      if (scenes[n] && ti) ti.style.backgroundImage = 'url("' + scenes[n].local + '")';
+      var s = scenes[n];
+      if (s && ti) {
+        var bg = 'url("' + s.local + '")';
+        if (s.fallback) bg += ',url("' + s.fallback.replace('w=2400', 'w=500') + '")';
+        ti.style.backgroundImage = bg;
+      }
       t.addEventListener('click', function () { go(n); });
     });
 
@@ -397,26 +403,324 @@
     requestAnimationFrame(loop);
   }
 
+  /* =====================================================
+     DEPARTMENTS DATA
+     To add a doctor: add the name to "doctors".
+     To add a service: add a line to "services".
+     Keep a comma between items.
+     ===================================================== */
+  var DEPTS = {
+    emergency: {
+      icon: "🚑", name: "Accident & Emergency",
+      intro: "The first point of contact for medical and surgical emergencies, a 24/7 service.",
+      about: [
+        "The emergency department is the first point of contact in cases of any medical and surgical emergencies, and has been a 24/7 service for over 26 years. It is a well equipped division with highly competent emergency physicians and nurses who deal with all kinds of emergency cases including poisoning, polytraumas, paediatric and obstetric conditions with state of the art facilities.",
+        "The emergency doctors along with the surgical team are available round the clock to attend to any surgical procedure, along with urgent blood or radiological investigations done on bedside, saving time and life. It is an advantage having 24 hours CT scan and MRI facilities. Care starts from the place of the accident or an emergency with highly trained, experienced and compassionate para medical staff, emergency technicians and ambulance. Depending on the condition, intensive care is provided with incessant availability of expert staff.",
+        "The department is equipped with a 30 bedded setup in accordance with recent guidelines, with dedicated triage areas, operation theatres, labour room and emergency ICU. It is equipped with all important point-of-contact tests like arterial blood gas, complete blood count, cardiac troponin, X-ray and ultrasound, so that most work-up is done within minutes in the department itself, enabling us to start critical and life saving treatment immediately."
+      ],
+      services: ["Medical & Surgical emergencies", "Cardiac emergencies", "Polytrauma", "Burns", "Dressing room", "Dialysis", "Bedside Lab & Radiological investigations", "24X7 availability of General Physician & Surgeon", "Round the clock Cardiologist", "Labour rooms"],
+      doctors: ["Dr. Susheel Kumar", "Dr. Mohd. Saleem", "Dr. Sushma", "Dr. Karreh Ashwini"]
+    },
+    cardiology: {
+      icon: "❤️", name: "Cardiology",
+      intro: "Advanced diagnostic and interventional care for heart conditions.",
+      about: [
+        "The department of Cardiology has been functioning for more than 12 years. It has the latest equipment for diagnostic and interventional services like 2D Echo, 4D Echo, TEE, TMT, Holter, Catheterisation lab and electrophysiological studies. Three full time experienced cardiologists (DM) provide round the clock emergency and routine cardiac services including intensive care, cardiac imaging, percutaneous coronary interventions, peripheral interventions, balloon valvuloplasty (mitral and pulmonary) and pacemaker implantation. The hospital is a part of Deccan College of Medical Sciences and has been offering DM cardiology courses for more than 6 years.",
+        "The department has been providing trusted care with state of the art equipment and competent, experienced cardiologists. Open heart surgery, coronary angiogram, coronary angioplasty, 4 vessel intervention, bypass surgery, valve replacement surgery, minimally invasive cardiac surgeries, coronary angiography, heart valve surgery and surgeries for paediatric and adult cardiac conditions are performed. The institute is well known for both research work and regular academics.",
+        "The surgeries are undertaken with the latest technology, on par with eminent institutes, at affordable prices."
+      ],
+      services: ["All cardiac emergencies", "Cardiologist available round the clock", "Cath lab", "Emergency PTCA", "Bypass facilities", "State of the art operation room for Bypass and other cardiac procedures", "Cardiac ICUs", "Advanced investigative procedures"],
+      doctors: ["Dr. Rajashekar Reddy G", "Dr. Parvaiz Kadloor", "Dr. Mohammed Hidayathulla"]
+    },
+    neurology: {
+      icon: "🧠", name: "Neurology",
+      intro: "Round-the-clock care for disorders of the brain, spine and nerves.",
+      about: [
+        "The department of neurology has highly competent neurologists available round the clock who contribute their services to the patients with global standard equipment and technology. The department provides clinical care and research activities in various sub-specialties like stroke, epilepsy and epilepsy surgery, movement disorders, Alzheimer's disease, ataxia, headache, multiple sclerosis, neurobehavioral and neuromuscular disorders, stroke and pain management. The department has a state of the art neurocritical care unit catering to the management of acute neurological care and emergencies.",
+        "The department has state of art facilities and advanced equipment. Services are provided round the clock, which includes neurological emergencies, critical care and interventional procedures. We have a team of highly competent, qualified and experienced neurologists, neurocritical care staff and rehabilitative services."
+      ],
+      services: ["Round the clock services", "State of art neurocritical care unit", "Epilepsy surgery, Alzheimer's disease, ataxia, headache, multiple sclerosis, neurobehavioral and neuromuscular disorders, stroke", "Pain management", "Rehabilitative services"],
+      doctors: ["Dr. Mohammed Zoheb"]
+    },
+    nephrology: {
+      icon: "💧", name: "Nephrology",
+      intro: "24/7 dialysis and complete care for kidney-related ailments.",
+      about: [
+        "Any patient with kidney related ailments is followed up in the Nephrology Department. State of the art equipment with a wide range of services makes the Nephrology Department one of the best among the twin cities. A team of highly qualified and committed experts specialising in management of renal failure, hypertension, electrolyte disturbance and kidney damage works alongside a highly experienced and dedicated technical staff. The department has a 24/7 dialysis service, ensuring a multi disciplinary approach towards the patient in the process of treatment."
+      ],
+      services: ["24X7 dialysis facility", "State of the art equipment", "Emergency dialysis in ER", "Day care", "Renal failure management", "All kidney related ailments"],
+      doctors: ["Dr. Nazma", "Dr. Syed Mohd Azhar Hassan"]
+    },
+    gastro: {
+      icon: "🩺", name: "Gastroenterology",
+      intro: "Gastroenterology and hepatology with advanced endoscopic procedures.",
+      about: [
+        "The Department of Gastroenterology & Hepatology at Deccan College of Medical Sciences, Owaisi Hospital & Research Centre is a flourishing department that caters to patients with therapeutic endoscopy, colonoscopy, enteroscopy, ERCP, endoscopic ultrasound and advanced liver therapy. Areas of clinical expertise include diagnostic and therapeutic upper GI and lower GI procedures.",
+        "Services include endoscopic sclerotherapy, variceal banding, fundal variceal glue injection, achalasia pneumatic dilatation, oesophageal stricture dilatation, endoscopic cystogastrostomy, foreign body removal, diagnostic and therapeutic ERCP procedures (CBD and pancreatic stenting, stone extraction), EUS guided pancreatic pseudo cyst drainage, EUS guided lymph node biopsies and biopsies from pancreatic SOL, EUS guided coeliac plexus block, double balloon enteroscopy to evaluate the small bowel in patients with obscure GI bleed and small bowel evaluation in Crohn's disease, percutaneous endoscopic liver biopsies, and motility studies (manometry, oesophageal, ano-rectal)."
+      ],
+      services: ["Diagnostic and therapeutic upper GI and lower GI procedures", "Endoscopic sclerotherapy, variceal banding, fundal variceal glue injection, achalasia pneumatic dilatation", "Oesophageal stricture dilatation, endoscopic cystogastrostomy, foreign body removal", "Diagnostic and therapeutic ERCP procedures: CBD and pancreatic stenting, stone extraction, EUS guided pancreatic pseudo cyst drainage", "Double balloon enteroscopy for obscure GI bleed and Crohn's disease", "Percutaneous endoscopic liver biopsies, motility studies, ano-rectal studies", "High-definition laparoscopy, harmonic scalpel, ligature, CUSA excel, image intensifiers", "Intraoperative ultrasound for high-precision procedures like endoscopy, colonoscopy and endoscopic variceal sclerotherapy (EVS)"],
+      doctors: ["Dr. Mohammed Aejaz Habeeb"]
+    },
+    pulmonology: {
+      icon: "🫁", name: "Pulmonology",
+      intro: "Respiratory medicine for asthma, COPD, TB, sleep disorders and more.",
+      about: [
+        "The Department of Respiratory Medicine (Pulmonary Medicine) at Deccan College of Medical Sciences is a flourishing department that caters to patients with a wide variety of respiratory ailments including asthma, COPD (smoker's lung), interstitial fibrosis, tuberculosis, pleural effusions (fluid in the chest), pneumothorax (air leaking from the lungs), sleep disorders (pathological snoring), respiratory failure, pneumonias and all kinds of respiratory infections. All the faculty are updated with the latest developments in the field, and have major publications to their names. The department has played a lead role in the Continuing Medical Education scene of the twin cities by conducting workshops on mechanical ventilation, advanced lung function testing and COPD, in association with the Public Health Foundation of India.",
+        "The department plays a major role in the TB eradication programmes in the country by working closely with organizations such as TB-ALERT India, Joint Effort towards Elimination of Tuberculosis (JEET) and Tuberculosis Health Action Learning Initiative (THALI). It has also collaborated with the Chest Research Foundation (CRF) at Pune in two major clinical projects, EMBARC and TOPO. It has also done significant social work in active TB surveillance in old-age homes and orphanages."
+      ],
+      services: ["Thoracoscopy", "Bronchoscopy", "CT guided lung biopsy", "Ultrasound guided lung biopsy", "ICT", "Pleural tap", "Thoracocentesis", "Pleurodesis", "Smoking cessation clinic", "Sleep clinic", "PFT", "DLCO"],
+      doctors: ["Dr. Ashfaq Hasan", "Dr. Fahad Abdullah"]
+    },
+    urology: {
+      icon: "🩸", name: "Urology",
+      intro: "Care for urinary disorders and conditions of the male genital tract.",
+      about: [
+        "The Urology department provides services for urinary disorders of the male and female urinary tracts, as well as conditions of the male genital tract or reproductive system. Our department is known for the vast number of surgeries done in paediatric urology (in children) like hypospadias surgeries and surgeries for reflux and undescended testes.",
+        "Our results in urolithiasis (urinary stone surgeries) are commendable, with excellent clearance rates in PCNL for staghorn stones and large stones in the urinary tract. We work with patients to develop individualized treatment plans that include both medical and surgical approaches to a wide range of urological problems. We provide holistic care to patients for the best possible results and satisfaction. The department is well equipped to perform endoscopic as well as open surgeries: cystoscopies, nephrectomies, ileal conduit procedures and more. We perform both endourological, laparoscopic and open urological cancer procedures on a regular basis."
+      ],
+      services: ["Endourological procedures", "Laparoscopic and open urological cancer procedures", "PCNL for staghorn stones and large stones in the urinary tract", "Urinary disorders of the male and female urinary tracts", "Conditions of the male genital tract or reproductive system", "Paediatric urology (hypospadias surgeries, surgeries for reflux, undescended testes)", "Endoscopic and open surgeries", "Cystoscopies, nephrectomies, ileal conduit procedures"],
+      doctors: ["Dr. Mohammed Abdul Majid Adil", "Dr. B. Sourabh Chandra Reddy"]
+    },
+    general: {
+      icon: "🩺", name: "General Medicine",
+      intro: "Non-surgical treatment of diseases, from children to geriatrics.",
+      about: [
+        "The Department of General Medicine is one of the crucial centers of the hospital. It deals with non surgical treatment for diseases starting with prevention and diagnosis. All general issues and ailments from children to geriatrics are served in the department. We also deal with emergencies and serve critically ill patients collaboratively with many other departments.",
+        "The department has expert, qualified, dedicated doctors and support staff handling cases which have more in patient flow, comparatively that too at very economic prices. There is a diversified team of doctors dedicated towards holistic care of the patients, with dedicated and hardworking support staff. The general medicine department is formed by 2 units, each with a formidable set of doctors."
+      ],
+      services: ["Complicated medical cases", "Medical intensive care unit", "Bedside procedures, radiology", "Multi disciplinary team", "Round the clock services", "Specialized care", "Dedicated nursing staff"],
+      doctors: ["Dr. Suhail Bin Ahmed", "Dr. Anjum Sultana Khatoon", "Dr. Pramod Kumar KR"]
+    },
+    paediatrics: {
+      icon: "👶", name: "Paediatrics",
+      intro: "Overall health and well-being of children from birth to 18 years.",
+      about: [
+        "Paediatrics is the specialty that focuses on the overall health and well-being of children from birth through their adolescence (18 years of age). Children, right from birth till 5 years, are more vulnerable to several infections and diseases. We take utmost care of our patients right from immunization to treatment of simple to complex ailments. We have skilled and experienced experts in the department along with the technical staff. The ambience is also child friendly and spacious, with child friendly staff. As they develop immunity in this age and cope with diseases, treatment is provided with utmost care. Emergency services, NICU and PICU are available to provide critical and intensive care for the children."
+      ],
+      services: ["Immunization", "Treatment of simple to complex ailments", "Child friendly and spacious ambience", "Emergency services", "NICU", "PICU"],
+      doctors: ["Dr. Habib Pathan", "Dr. Ahmedullah", "Dr. M. Pavan Reddy", "Dr. Syed Mohammed Nusrath Qurram", "Dr. Shreya Tanneru"]
+    },
+    gynecology: {
+      icon: "🤰", name: "Gynecology",
+      intro: "Maternity and women's health care, including high-risk pregnancies.",
+      about: [
+        "The Department of Obstetrics and Gynecology is one of the topmost maternity segments in Hyderabad and Telangana, providing antenatal, intranatal and postnatal care round the clock. The hospital specializes in handling high risk and critical cases round the clock. We provide care for women of all ages, addressing their concerns in areas of adolescence, pre-marital counseling, menstrual disturbances, early pregnancy, sexual health care, breast care and gynecological surgeries including common gynecological problems. With the available specialist services in neurology, nephrology, endocrinology etc., specialist care in interrelated conditions is provided."
+      ],
+      services: ["Antenatal, intranatal and postnatal care", "High risk and critical cases round the clock", "Care for women of all ages", "Pre-marital counseling, menstrual disturbances", "Early pregnancy, sexual health care, breast care", "Specialist care in interrelated conditions (neurology, nephrology, endocrinology etc.)"],
+      doctors: ["Dr. Pabberaju Padmaja", "Dr. Zareena Sultana", "Dr. Surayya Tahseen", "Dr. Thajammul Samrin", "Dr. K. Archana", "Dr. Amtul Suroor", "Dr. Sadula Shravya"]
+    },
+    dermatology: {
+      icon: "🧴", name: "Dermatology, Venereology & Leprosy",
+      intro: "Advanced care for all types of skin, hair and nail disorders.",
+      about: [
+        "The Department of Dermatology, Venereology & Leprosy (DVL) is one of the important clinical specialty departments offering patient care. It is headed by Professor Dr. Nayeem Sadath Haneef. The department has highly qualified, experienced and renowned faculty members providing clinical services in the form of outpatient care, inpatient care and procedural services for all types of skin, hair and nail diseases. The DVL unit has earned a special reputation in the state as a competent intensive and critical care set up for treating patients with life threatening skin diseases, drawing referrals from senior practitioners, corporate hospitals and various other medical college hospitals.",
+        "The department offers advanced biologic treatments such as Rituximab and Secukinumab for threatening diseases like Pemphigus and Psoriasis, and is equipped with cosmetic and dermato-surgical equipment. It provides all types of diagnostic and therapeutic procedures including skin biopsy, patch testing, Wood's lamp, laser hair reduction, QS-ND YAG laser pigment and tattoo removal, CO2 laser, radiofrequency, electrocautery, cryosurgery, whole body / hand-foot phototherapy (both NBUVB & PUVA), microdermabrasion, dermaroller, chemical peels, pigmentation treatment, comedone extraction, acne surgery, vitiligo surgery, nail surgery, mole removal, wart removal, keloid treatment, hair growth treatment with PRP (platelet rich plasma), intralesional therapies, iontophoresis and chemical cautery. The department also offers undergraduate education for students and postgraduate MD degree course in DVL."
+      ],
+      services: ["Advanced biologic treatments like Rituximab and Secukinumab for Pemphigus and Psoriasis, cosmetic and dermato-surgical equipment", "Diagnostic and therapeutic procedures, including skin biopsy, patch testing, Wood's lamp, laser hair reduction, QS-ND YAG laser pigment", "Tattoo removal, CO2 laser, radiofrequency, electrocautery, cryosurgery, whole body / hand-foot phototherapy (both NBUVB & PUVA)", "Microdermabrasion, dermaroller, chemical peels, pigmentation treatment, comedone extraction", "Acne surgery, vitiligo surgery, nail surgery, mole removal, wart removal, keloid treatment, hair growth treatment with PRP (platelet rich plasma)", "Intralesional therapies, iontophoresis, chemical cautery"],
+      doctors: ["Dr. Nayeem Sadath Hane", "Dr. Fatima Razvi", "Dr. P. Arun Raghav", "Dr. Ruhi Haqqani", "Dr. Fatima Ummul Hasnaat"]
+    },
+    dentistry: {
+      icon: "🦷", name: "Dentistry",
+      intro: "Complete dental care with modern equipment and strict infection control.",
+      about: [
+        "The Dental Care Department includes a devoted team of dentists, experienced assistants and efficient laboratory personnel who ensure that patients receive thorough care and the finest treatment possible. We can treat a wide range of oral, dental and jaw-related issues, from basic tooth decay to major mouth deformities that might need surgery. We also treat trauma-related disorders, congenital abnormalities and cosmetic makeovers. The department is highly equipped with advanced technology machines and has a very pleasant ambience. Cosmetic dentistry treatments are also provided. The department adheres to world class cleanliness and infection control by maintaining hygiene."
+      ],
+      services: ["A team of well experienced doctors with 20 years of clinical experience", "A modern clinical set up with the latest equipment and dental laboratory", "Single sitting root canal", "Treatment and crowns with modern material like Zirconia", "Surgical removal of wisdom teeth and minor surgical procedures", "Gum surgery for swollen gums (flap surgery performed)", "Full mouth teeth replacement", "Dental implants", "Dental OPG, full mouth X-ray, RVG digital X-ray available", "Orthodontic treatment for alignment of teeth", "Removal of dentures", "Facial trauma and dental trauma management"],
+      doctors: ["Dr. K. Padma Rayalu", "Dr. Juwaria Jabeen", "Dr. Lakshmi Radhika"]
+    },
+    ent: {
+      icon: "👂", name: "E.N.T",
+      intro: "Super-specialty ear, nose and throat care with audiology and vertigo clinic.",
+      about: [
+        "Deccan College of Medical Sciences is a super-specialty hospital and teaching institute with a Department of ENT providing service to the people for more than 30 years. The department has grown exceptionally with the intention of providing the best and highest standard of care. It is a well equipped department with sub-specialties like audiology, allergy clinic and vertigo clinic. We have a well equipped operation theatre with all the new advanced surgical equipment and instruments.",
+        "We also have a minor OT where all the minor surgeries are done on a daily basis, equipped with instruments and endoscopes for performing Video Laryngoscopy (VLS), Diagnostic Nasal Endoscopy (DNE) and all other minor surgeries. In the main theatre we do surgeries like microsurgeries, Micro Laryngeal Surgery (MLS), mastoid surgeries, Functional Endoscopic Sinus Surgery (FESS), surgeries of thyroid, parotid and routine surgeries like septoplasty, tonsillectomy, adenoidectomy, nasal bone fracture reduction, etc. In the audiology department we have all services like Pure Tone Audiometry (PTA), Impedance Audiometry (IA), Oto-Acoustic Emissions (OAE) and Brainstem Evoked Response Audiometry (BERA) with hearing aid facilities. We have a temporal bone dissection lab for postgraduates training."
+      ],
+      services: ["Audiology, Allergy Clinic, Vertigo clinic", "Video Laryngoscopy (VLS), Diagnostic Nasal Endoscopy (DNE)", "Micro Laryngeal Surgery (MLS)", "Mastoid surgeries", "Functional Endoscopic Sinus Surgery (FESS)", "Thyroid surgeries", "Dacryocystorhinostomy", "Pure Tone Audiometry (PTA), Impedance Audiometry (IA)", "Oto-Acoustic Emissions (OAE)", "Brainstem Evoked Response Audiometry (BERA) with hearing aid facilities"],
+      doctors: ["Dr. Nabil Abdul Samad Mulla", "Dr. Waseem Ahmed", "Dr. Zahida Begum"]
+    },
+    ophthalmology: {
+      icon: "👁️", name: "Ophthalmology",
+      intro: "Outstanding eye care through expert ophthalmologists and advanced technology.",
+      about: [
+        "Eye Care at Owaisi Hospital Center provides outstanding ophthalmic care through expert, qualified ophthalmologists. The department has advanced technological equipment to serve our patients for screening, surgery, treatment etc. World class services, both examinations and procedures, are provided to patients of all ages in a smooth manner. Cataracts, glaucoma, all types of retinal diseases like diabetic retinopathy, macular degenerations, uveitis, Retinopathy of Prematurity (ROP), cornea and eye surface disorders, and neurological eye diseases are a few services offered at the department. It is also complemented with an in-house optometry center for developing eye glasses and corrections."
+      ],
+      services: ["Retinal diseases", "Retinopathy of Prematurity (ROP)", "Cornea and eye surface disorders", "Screening", "Complex surgeries", "Emergency services", "Highly experienced faculty"],
+      doctors: ["Dr. Siddharth Karan", "Dr. Arshia Mohd"]
+    },
+    orthopedics: {
+      icon: "🦴", name: "Orthopedics",
+      intro: "Comprehensive care of bones, joints, ligaments, tendons and muscles.",
+      about: [
+        "Orthopedics is a discipline of surgery related to all the injuries of the musculoskeletal system. It deals with the treatment of bones, joints, ligaments, tendons, muscles, nerves, etc. using surgical as well as non-surgical practices. The department provides comprehensive care in all areas of orthopedics ranging from sports injuries, hand, foot, spine procedures, hip, knee, arthroscopy, trauma and joint replacement. Our surgeons combine surgical expertise with pioneering clinical and basic research in areas such as stimulation of bone and tissue repair and total joint reconstruction, hip, shoulder and knee management, fracture and pain management. Complicated surgeries are performed from paediatrics to geriatrics. The department has witnessed complicated joint replacement surgeries for the old aged patients that have been successful with 99% ambulation within a few months.",
+        "The department is a tertiary referral center for primary revision orthopedic surgeries, focused on preventive orthopedics and regenerative orthopedics. It provides physiotherapy, occupational therapy, orthotics and prosthetics, with the aim to get the patient back to injury free level of activities. The motto of the department is 'Do it right the first time'."
+      ],
+      services: ["Polytrauma cases", "Spine surgeries", "Joint replacement surgeries", "Corrective procedures", "Total joint reconstruction", "Active research", "International publications", "Pain management"],
+      doctors: ["Dr. Shaik Vazeeruddin", "Dr. T. Venu Gopal"]
+    },
+    plastic: {
+      icon: "✨", name: "Plastic Surgery",
+      intro: "Reconstructive, craniofacial, microvascular and cosmetic surgeries.",
+      about: [
+        "The department of Plastic Surgery has dynamic, dedicated, highly skilled and experienced doctors who have taught in eminent medical institutes and government hospitals. Specialized services in craniofacial, cleft lip and palate, reconstructive, microvascular, cosmetic surgeries and burns are provided. The department also has PGs who are getting trained in the speciality as part of the post graduation. Complicated surgeries as a result of congenital deformities, burns and accidents are performed and give the best results. Cosmetic and reconstructive surgeries are also performed, like maxillofacial, craniofacial, brow lift, cleft and palate repairs, post traumatic defects, fat removal and contouring.",
+        "Special features: facio-maxillary injuries, rhinoplasty, post burn construction, skin malignancies, liposuction, vascular trauma / aneurysm, tendon & nerve injuries, body contouring (abdominoplasty, thigh, reduction surgery)."
+      ],
+      services: ["Rhinoplasty", "Post burn construction", "Skin malignancies", "Liposuction", "Vascular trauma / Aneurysm", "Tendon & nerve injuries", "Body contouring: abdominoplasty, thigh, reduction surgery"],
+      doctors: ["Dr. N. Sudershan Rao", "Dr. M. Prabhakar"]
+    },
+    psychiatry: {
+      icon: "🧘", name: "Psychiatry",
+      intro: "Compassionate care for mental illness and behavioral disorders.",
+      about: [
+        "The Department undertakes all available modalities for mental illnesses, emotional disturbances and abnormal behaviors. A highly skilled, compassionate team treats patients for a wide range of psychiatric disorders like schizophrenia, personality disorders, sleep disorders, depression, anxiety, stress, PTSD, substance abuse, behavioral issues, mood disorders, ADHD, autism and childhood and adolescents' mental health issues. We also take care of behavioral issues in the elderly, delirium, dementia, depression and psychosis."
+      ],
+      services: ["Schizophrenia", "Personality disorders", "Sleep disorders", "Depression", "Anxiety", "Stress", "Behavioral issues", "Mood disorders"],
+      doctors: ["Dr. Minhajzafar Nasirabadi", "Dr. Arifuddin Ahmed", "Dr. Mazhar Ali"]
+    },
+    physiotherapy: {
+      icon: "🏃", name: "Physiotherapy",
+      intro: "Specialized rehabilitation for musculoskeletal and neurological conditions.",
+      about: [
+        "The Physiotherapy department is a vast field associated with a teaching institute, with highly qualified staff providing highly specialized care and advanced treatment for musculoskeletal conditions, orthopaedic conditions, neurological conditions, post operative conditions, stroke, brain injuries, spinal cord injuries, amputations and cardio thoracic conditions.",
+        "Services are provided to patients of all ages and gender. We have patients visiting from the outskirts and out stations along with local ones. Muscular cramps, joint pain, cartilage injury, patellar dislocation, peri-arthritis and spondylosis are a few conditions frequently treated through physiotherapy. We have trained and qualified staff along with the latest technology equipment."
+      ],
+      services: ["Musculoskeletal conditions", "Orthopaedic conditions", "Neurological conditions", "Post operative conditions", "Stroke", "Brain injuries", "Spinal cord injuries", "Amputations", "Cardio thoracic conditions"],
+      doctors: ["Dr. Imaduddin Ahmed", "Dr. Harris Abid", "Dr. Venugopal Pawar"]
+    },
+    pathology: {
+      icon: "🔬", name: "Pathology",
+      intro: "Optimal laboratory services supporting diagnosis across the hospital.",
+      about: [
+        "The department of pathology is strategically situated between the pre clinical basic medical sciences and the clinical medical departments to cater to the needs of medical students as well as to offer optimal laboratory services to the patients attending the Owaisi group of hospitals. The department has eminent and dedicated faculty members contributing to the knowledge building in the medical fraternity at international medical standards.",
+        "Every year the department chalks out a comprehensive undergraduate medical curriculum encompassing theory lectures, self directed learning, topic seminars, short group discussions and practical demonstration, along with attitude, ethics and communication modules. Automated cell counters for hematology, cytospin with conventional centrifuges, automated urine analyzers and cryostat for frozen sections and reporting are available in the department. Side labs are attached to all the clinical departments. The service labs of pathology respond to the different clinical requisitions of hematology, clinical pathology, cytopathology diagnosis and histopathology reporting and interpretation."
+      ],
+      services: ["Automated cell counters for hematology", "Cytospin with conventional centrifuges", "Automated urine analyzers and cryostat for frozen sections and reporting", "Hematology", "Clinical pathology", "Cytopathology diagnosis and histopathology reporting and interpretation"],
+      doctors: ["Dr. Atiya Begum", "Dr. T.S. Shamshuddin"]
+    },
+    microbiology: {
+      icon: "🧫", name: "Microbiology",
+      intro: "State of the art clinical microbiology for accurate and timely diagnosis.",
+      about: [
+        "State of the art clinical microbiology with the latest technology equipment and qualified manpower to meet the clinicians' needs for accurate and timely confirmation of presumptive clinical diagnosis. The department was established in the year 1984-1985. The journey has subsequently strived to balance an efficient output with advancing technology. The collective efforts of the department's faculties are imparting the best knowledge to the students. We are the first among all the private medical colleges in Andhra Pradesh / Telangana.",
+        "The department is equipped with automated machines BACTEC for blood culture and MGIT for tuberculosis. In the year 2020 a NABL accredited molecular lab was established to tackle the pandemic of COVID 19. The lab is equipped with fully automated nucleic acid extraction machines and RTPCR apart from COVID 19 tests; it can also detect hepatitis viruses, herpes virus and papilloma viruses which cause dreaded diseases such as liver cancer and genital cancers. The microbiology department lab also runs services under national programs like DOTS, HIV and molecular diagnosis of TB by CBNAAT."
+      ],
+      services: ["Automated machines BACTEC for blood culture", "MGIT for tuberculosis", "Fully automated nucleic acid extraction machines and RTPCR", "Detection of hepatitis viruses, herpes virus and papilloma viruses", "Molecular diagnosis of TB by CBNAAT"],
+      doctors: ["Dr. Maimoona Mustafa"]
+    }
+  };
+
+  /* ---------- helpers ---------- */
+  var EXT = ['jpg', 'jpeg', 'webp', 'png'];
+
+  /* tries base.jpg, base.jpeg, base.webp, base.png, then calls onFail */
+  function loadImg(im, basePath, onFail) {
+    var i = 0;
+    im.onerror = function () {
+      i++;
+      if (i < EXT.length) {
+        im.src = basePath + '.' + EXT[i];
+      } else {
+        im.onerror = null;
+        if (onFail) onFail(im);
+      }
+    };
+    im.src = basePath + '.' + EXT[0];
+  }
+
+  function slug(name) {
+    return name.replace(/^dr\.?\s*/i, '').toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function initials(name) {
+    return name.replace(/^Dr\.?\s*/i, '').split(/\s+/)
+      .map(function (w) { return w.charAt(0); }).slice(0, 2).join('').toUpperCase() || 'DR';
+  }
+
+  /* ---------- Facilities grid (built from DEPTS) ---------- */
+  var deptGrid = $('#deptGrid');
+  if (deptGrid) {
+    deptGrid.innerHTML = Object.keys(DEPTS).map(function (k) {
+      var d = DEPTS[k];
+      return '<article class="card svc">' +
+        '<div class="iconbox"><span aria-hidden="true" style="font-size:28px">' + d.icon + '</span></div>' +
+        '<h3>' + d.name + '</h3><p>' + d.intro + '</p>' +
+        '<a class="textlink" href="#dept-' + k + '">View details &amp; doctors ' +
+        '<svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a></article>';
+    }).join('');
+  }
+
+  /* ---------- Department page ---------- */
+  function renderDept(key) {
+    var d = DEPTS[key];
+    $('#dBread').textContent = d.name;
+    $('#dName').textContent = d.name;
+    $('#dIntro').textContent = d.intro;
+
+    var about = d.about.map(function (p) { return '<p class="dept-about">' + p + '</p>'; }).join('');
+    var services = d.services.map(function (s) { return '<li>' + s + '</li>'; }).join('');
+    var docs = d.doctors.map(function (n) {
+      return '<article class="doc-card"><div class="doc-img"><span class="mono">' + initials(n) + '</span>' +
+        '<img alt="' + n + '" data-base="assets/doctors/' + slug(n) + '"></div>' +
+        '<div class="doc-name">' + n + '</div></article>';
+    }).join('');
+
+    var body = $('#dBody');
+    body.innerHTML =
+      '<div class="dept-top" id="dTop"><div><div class="eyebrow dk">About the department</div>' +
+      '<h2>' + d.name + '</h2>' + about + '</div>' +
+      '<div class="dept-photo"><img alt="' + d.name + '" data-base="assets/departments/' + key + '"></div></div>' +
+      '<div class="dept-block"><div class="eyebrow dk">What we offer</div><h2>Our Best Services Included</h2>' +
+      '<ul class="dept-services">' + services + '</ul></div>' +
+      '<div class="dept-block"><div class="eyebrow dk">Our doctors</div><h2>Meet the Doctors</h2>' +
+      '<div class="doc-grid">' + docs + '</div>' +
+      '<p class="dept-note">Doctor availability and timings can change. Please call reception to confirm before visiting.</p></div>';
+
+    /* department photo: hide the box if there is none */
+    var dp = $('.dept-photo img', body);
+    loadImg(dp, dp.getAttribute('data-base'), function (im) {
+      im.parentNode.classList.add('empty');
+      $('#dTop').classList.add('no-photo');
+    });
+
+    /* doctor photos: initials stay if there is no photo */
+    $$('.doc-img img', body).forEach(function (im) {
+      loadImg(im, im.getAttribute('data-base'), function (x) { x.remove(); });
+    });
+  }
+
   /* ---------- Single-page router ---------- */
   var pages = $$('.page');
   var links = $$('#navlinks a[href^="#"]');
-  var base = 'Owaisi Hospital & Research Centre';
+  var siteName = 'Owaisi Hospital & Research Centre';
 
   function showPage() {
     var id = location.hash.slice(1);
     if (id === 'main' || id === 'top') return;
+
+    var title = '';
+    if (id.indexOf('dept-') === 0) {
+      var key = id.slice(5);
+      if (DEPTS[key]) {
+        renderDept(key);
+        title = DEPTS[key].name;
+        id = 'department';
+      } else {
+        id = 'facilities';
+      }
+    }
     if (!pages.some(function (p) { return p.id === id; })) id = 'home';
 
     pages.forEach(function (p) { p.hidden = (p.id !== id); });
 
+    var navId = (id === 'department') ? 'facilities' : id;
     links.forEach(function (a) {
-      var on = a.getAttribute('href') === '#' + id;
+      var on = a.getAttribute('href') === '#' + navId;
       a.classList.toggle('active', on);
       if (on) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
 
-    document.title = document.getElementById(id).dataset.title + ' | ' + base;
+    document.title = (title || document.getElementById(id).dataset.title) + ' | ' + siteName;
 
     var t = $('.menu-toggle');
     if (t && t.getAttribute('aria-expanded') === 'true') t.click();
