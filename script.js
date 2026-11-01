@@ -1,13 +1,8 @@
-#javascript file
 (function () {
   'use strict';
 
-  var $ = function (s, c) {
-    return (c || document).querySelector(s);
-  };
-  var $$ = function (s, c) {
-    return Array.prototype.slice.call((c || document).querySelectorAll(s));
-  };
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
   /* ---------- Footer year ---------- */
   var yr = $('#year');
@@ -28,9 +23,7 @@
       glow.style.top = e.clientY + 'px';
       glow.style.opacity = '1';
     });
-    document.addEventListener('mouseleave', function () {
-      glow.style.opacity = '0';
-    });
+    document.addEventListener('mouseleave', function () { glow.style.opacity = '0'; });
   }
 
   /* ---------- Header, progress, back-to-top ---------- */
@@ -83,13 +76,9 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-    revealEls.forEach(function (el) {
-      io.observe(el);
-    });
+    revealEls.forEach(function (el) { io.observe(el); });
   } else {
-    revealEls.forEach(function (el) {
-      el.classList.add('in');
-    });
+    revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
   /* ---------- Number counters ---------- */
@@ -124,13 +113,10 @@
       });
     }, { threshold: 0.4 });
 
-    counters.forEach(function (c) {
-      cio.observe(c);
-    });
+    counters.forEach(function (c) { cio.observe(c); });
   } else {
     counters.forEach(function (c) {
-      var t = c.getAttribute('data-count');
-      c.textContent = t + (c.getAttribute('data-suffix') || '');
+      c.textContent = c.getAttribute('data-count') + (c.getAttribute('data-suffix') || '');
     });
   }
 
@@ -154,19 +140,13 @@
 
     var showSlide = function (i) {
       hi = (i + slides.length) % slides.length;
-      slides.forEach(function (s, n) {
-        s.classList.toggle('active', n === hi);
-      });
-      dots.forEach(function (d, n) {
-        d.classList.toggle('active', n === hi);
-      });
+      slides.forEach(function (s, n) { s.classList.toggle('active', n === hi); });
+      dots.forEach(function (d, n) { d.classList.toggle('active', n === hi); });
     };
 
     var startHero = function () {
       clearInterval(htimer);
-      htimer = setInterval(function () {
-        showSlide(hi + 1);
-      }, 6000);
+      htimer = setInterval(function () { showSlide(hi + 1); }, 6000);
     };
 
     dots.forEach(function (d, n) {
@@ -196,12 +176,10 @@
         note.textContent = 'Please fill in your name, phone number and message.';
         return;
       }
-
       if ((phone.match(/\d/g) || []).length < 7) {
         note.textContent = 'Please enter a valid phone number.';
         return;
       }
-
       if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
         note.textContent = 'Please enter a valid email address or leave it blank.';
         return;
@@ -243,17 +221,9 @@
     var playBtn = $('#vtPlay');
     var fsBtn = $('#vtFs');
 
-    var cur = 0;
-    var x = 0;
-    var minX = 0;
-    var playing = false;
-    var dragging = false;
-    var needCenter = true;
-    var startX = 0;
-    var startOff = 0;
-    var t0 = 0;
-    var dir = -1;
-    var token = 0;
+    var cur = 0, x = 0, minX = 0;
+    var playing = false, dragging = false, needCenter = true;
+    var startX = 0, startOff = 0, t0 = 0, dir = -1, token = 0;
     var DUR = 7000;
 
     var apply = function () {
@@ -293,9 +263,7 @@
         if (my !== token) return;
         needCenter = true;
         bounds();
-        requestAnimationFrame(function () {
-          img.classList.add('in');
-        });
+        requestAnimationFrame(function () { img.classList.add('in'); });
       };
 
       img.src = s.local;
@@ -309,9 +277,7 @@
       void cap.offsetWidth;
       cap.classList.add('swap');
 
-      thumbs.forEach(function (t, n) {
-        t.classList.toggle('active', n === cur);
-      });
+      thumbs.forEach(function (t, n) { t.classList.toggle('active', n === cur); });
 
       t0 = performance.now();
       bar.style.width = '0%';
@@ -327,18 +293,11 @@
           'url("' + s.local + '"),url("' + s.fallback.replace('w=2400', 'w=500') + '")';
       }
 
-      t.addEventListener('click', function () {
-        go(n);
-      });
+      t.addEventListener('click', function () { go(n); });
     });
 
-    $('#vtPrev').addEventListener('click', function () {
-      go(cur - 1);
-    });
-
-    $('#vtNext').addEventListener('click', function () {
-      go(cur + 1);
-    });
+    $('#vtPrev').addEventListener('click', function () { go(cur - 1); });
+    $('#vtNext').addEventListener('click', function () { go(cur + 1); });
 
     /* drag to look around */
     stage.addEventListener('pointerdown', function (e) {
@@ -413,14 +372,8 @@
           go(cur + 1);
         } else if (minX < 0) {
           x += dir * 0.3;
-          if (x <= minX) {
-            x = minX;
-            dir = 1;
-          }
-          if (x >= 0) {
-            x = 0;
-            dir = -1;
-          }
+          if (x <= minX) { x = minX; dir = 1; }
+          if (x >= 0) { x = 0; dir = -1; }
           apply();
         }
       }
@@ -431,4 +384,35 @@
     go(0);
     requestAnimationFrame(loop);
   }
+
+  /* ---------- Single-page router ---------- */
+  var pages = $$('.page');
+  var links = $$('#navlinks a[href^="#"]');
+  var base = 'Owaisi Hospital & Research Centre';
+
+  function showPage() {
+    var id = location.hash.slice(1);
+    if (id === 'main' || id === 'top') return;
+    if (!pages.some(function (p) { return p.id === id; })) id = 'home';
+
+    pages.forEach(function (p) { p.hidden = (p.id !== id); });
+
+    links.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + id;
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+
+    document.title = document.getElementById(id).dataset.title + ' | ' + base;
+
+    var t = $('.menu-toggle');
+    if (t && t.getAttribute('aria-expanded') === 'true') t.click();
+
+    window.scrollTo(0, 0);
+    setTimeout(function () { window.dispatchEvent(new Event('resize')); }, 60);
+  }
+
+  window.addEventListener('hashchange', showPage);
+  showPage();
 })();
