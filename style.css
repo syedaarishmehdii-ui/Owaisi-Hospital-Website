@@ -1013,7 +1013,7 @@ header.scrolled .nav {
 }
 
 .page-hero p {
-  max-width: 680px;
+  max-width: 100px;
   color: #d3e3da;
   line-height: 1.8;
   font-size: 1.05rem;
