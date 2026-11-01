@@ -1097,6 +1097,7 @@ header.scrolled .nav {
 
 .spot-badge {
   position: absolute;
+  z-index: 5;
   left: -22px;
   bottom: 34px;
   background: rgba(4, 20, 15, .85);
