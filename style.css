@@ -1052,6 +1052,7 @@ header.scrolled .nav {
 
 .spot-photo {
   position: relative;
+  width: 100%;
   max-width: 440px;
   justify-self: center;
 }
