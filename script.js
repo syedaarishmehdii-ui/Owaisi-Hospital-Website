@@ -1,3 +1,4 @@
+#javascript file
 (function () {
   'use strict';
 
