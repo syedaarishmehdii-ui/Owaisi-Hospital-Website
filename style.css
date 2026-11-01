@@ -87,7 +87,7 @@ header.scrolled .nav { min-height: 58px; }
 .brand { display: flex; align-items: center; gap: 12px; flex: none; }
 
 .brand-logo {
-  height: 54px;
+  height: 62px;
   width: auto;
   max-width: none;
   display: block;
@@ -95,11 +95,15 @@ header.scrolled .nav { min-height: 58px; }
   padding: 0;
   border: 0;
   border-radius: 0;
-  filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 6px rgba(255, 255, 255, .55));
+  filter:
+    brightness(1.12) contrast(1.25) saturate(1.3)
+    drop-shadow(0 0 1px #fff)
+    drop-shadow(0 0 2px #fff)
+    drop-shadow(0 0 8px rgba(255, 255, 255, .6));
   transition: height .3s, transform .3s var(--ease);
 }
-.brand:hover .brand-logo { transform: scale(1.04); }
-header.scrolled .brand-logo { height: 46px; 
+.brand:hover .brand-logo { transform: scale(1.03); }
+header.scrolled .brand-logo { height: 52px; 
 }
 
 .navlinks { display: flex; align-items: center; gap: 4px; font-size: .88rem; }
@@ -784,7 +788,7 @@ header.scrolled .brand-logo { height: 46px;
 
 @media (max-width: 520px) {
   .topline .tl-r a:first-child { font-size: .72rem; }
-  .brand-logo { height: 40px; padding: 3px 8px; }
+  .brand-logo { height: 44px; padding: 3px 8px; }
   .hero h1 { font-size: 2.2rem; }
   .grid.cols-4 { grid-template-columns: 1fr 1fr; }
   .stat-card strong { font-size: 2.2rem; }
