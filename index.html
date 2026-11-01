@@ -1,4 +1,3 @@
-#html file
 <!doctype html>
 <html lang="en">
 
@@ -8,1447 +7,12 @@
   <meta name="theme-color" content="#062f27">
   <meta name="description" content="Owaisi Hospital & Research Centre, Hyderabad. Emergency care, specialist departments, diagnostics and compassionate patient service since 1996.">
   <title>Home | Owaisi Hospital & Research Centre</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23062f27'/%3E%3Cpath d='M27 14h10v13h13v10H37v13H27V37H14V27h13z' fill='%23e0c274'/%3E%3C/svg%3E">
+  <link rel="icon" href="./assets/owaisi-logo2.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap">
-
-  <style>
-    /* Owaisi Hospital — emerald & gold design system */
-    :root {
-      --bg: #04140f;
-      --bg2: #062219;
-      --green: #062f27;
-      --green2: #0b493b;
-      --green3: #12806a;
-      --gold: #e0c274;
-      --gold2: #f3dd9c;
-      --cyan: #5eead4;
-      --cream: #f4f7f3;
-      --ink: #0d2a23;
-      --muted: #5c6f68;
-      --line: rgba(224, 194, 116, .28);
-      --glass: rgba(255, 255, 255, .06);
-      --r: 16px;
-      --ease: cubic-bezier(.22, .8, .24, 1);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
-      color: var(--ink);
-      background: var(--cream);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    img { max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    button, input, textarea { font: inherit; }
-
-    .page[hidden] { display: none !important; }
-
-    .ic {
-      width: 1.15em;
-      height: 1.15em;
-      flex: none;
-      vertical-align: -.2em;
-    }
-
-    .wrap { width: min(1200px, 92%); margin: auto; }
-
-    .skip {
-      position: absolute;
-      left: -999px;
-      top: 8px;
-      background: var(--gold);
-      padding: 10px 14px;
-      border-radius: 8px;
-      z-index: 100;
-    }
-    .skip:focus { left: 8px; }
-
-    .progress {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 3px;
-      width: 0;
-      background: linear-gradient(90deg, var(--cyan), var(--gold));
-      z-index: 200;
-      box-shadow: 0 0 12px var(--cyan);
-    }
-
-    .cursor-glow {
-      position: fixed;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-      background: radial-gradient(circle, rgba(94, 234, 212, .10), transparent 65%);
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity .4s;
-    }
-
-    /* top line + header */
-    .topline {
-      background: #020d09;
-      color: #c9dad2;
-      font-size: .78rem;
-      padding: 9px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, .06);
-    }
-    .topline .wrap {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .topline span,
-    .topline a {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .tl-r { gap: 22px; }
-    .topline a:hover { color: var(--gold); }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(4, 20, 15, .72);
-      backdrop-filter: blur(18px) saturate(150%);
-      border-bottom: 1px solid var(--line);
-      color: #fff;
-      transition: background .3s, box-shadow .3s;
-    }
-    header.scrolled {
-      background: rgba(4, 20, 15, .94);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, .35);
-    }
-
-    .nav {
-      min-height: 84px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 22px;
-      transition: min-height .3s;
-    }
-    header.scrolled .nav { min-height: 68px; }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 220px;
-    }
-    .logo {
-      width: 52px;
-      height: 52px;
-      filter: drop-shadow(0 0 14px rgba(224, 194, 116, .35));
-      transition: transform .6s var(--ease);
-    }
-    .brand:hover .logo { transform: rotate(360deg); }
-    .brand strong {
-      font: 600 1.28rem 'Playfair Display', serif;
-      letter-spacing: .03em;
-      display: block;
-    }
-    .brand small {
-      display: block;
-      font-size: .62rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-top: 3px;
-    }
-
-    .navlinks {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: .88rem;
-    }
-    .navlinks a {
-      position: relative;
-      padding: 10px 13px;
-      color: #e8f0eb;
-      border-radius: 8px;
-      transition: color .25s;
-    }
-    .navlinks a:not(.emergency):after {
-      content: '';
-      position: absolute;
-      left: 13px;
-      right: 13px;
-      bottom: 4px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--cyan), var(--gold));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .35s var(--ease);
-    }
-    .navlinks a:hover,
-    .navlinks a.active { color: var(--gold2); }
-    .navlinks a:hover:after,
-    .navlinks a.active:after { transform: scaleX(1); }
-
-    .btn,
-    .emergency {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 14px 22px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--gold2), var(--gold) 55%, #c8a24a);
-      color: #102d26;
-      font-weight: 700;
-      font-size: .92rem;
-      border: 0;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: transform .3s var(--ease), box-shadow .3s;
-    }
-    .btn:before,
-    .emergency:before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .55) 50%, transparent 70%);
-      transform: translateX(-120%);
-      transition: transform .7s;
-    }
-    .btn:hover,
-    .emergency:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(224, 194, 116, .35);
-    }
-    .btn:hover:before,
-    .emergency:hover:before { transform: translateX(120%); }
-
-    .emergency {
-      padding: 11px 17px;
-      font-size: .82rem;
-      white-space: nowrap;
-    }
-
-    .btn.outline {
-      background: rgba(255, 255, 255, .06);
-      color: #fff;
-      border: 1px solid var(--gold);
-      backdrop-filter: blur(6px);
-    }
-    .btn.outline:hover { background: rgba(224, 194, 116, .14); }
-    .btn.dark {
-      background: linear-gradient(135deg, var(--green3), var(--green));
-      color: #fff;
-    }
-    .btn.dark:hover { box-shadow: 0 12px 30px rgba(18, 128, 106, .4); }
-    .btn.small { padding: 10px 15px; font-size: .82rem; }
-    .btn.big { padding: 18px 30px; font-size: 1.15rem; }
-    .btn.full { width: 100%; }
-
-    .menu-toggle {
-      display: none;
-      background: rgba(255, 255, 255, .06);
-      border: 1px solid var(--line);
-      color: #fff;
-      border-radius: 10px;
-      padding: 9px 11px;
-      cursor: pointer;
-    }
-    .menu-toggle .ic { width: 22px; height: 22px; }
-    .m-only { display: none; }
-
-    /* hero */
-    .hero {
-      position: relative;
-      min-height: calc(100vh - 120px);
-      min-height: min(760px, calc(100svh - 120px));
-      display: flex;
-      align-items: center;
-      color: #fff;
-      overflow: hidden;
-      background: var(--bg);
-    }
-    .hero-slides,
-    .hs,
-    .ph-bg {
-      position: absolute;
-      inset: 0;
-    }
-    .hs { opacity: 0; transition: opacity 1.6s ease; }
-    .hs.active { opacity: 1; }
-    .hs img,
-    .ph-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .hs.active img { animation: kenburns 14s ease-out forwards; }
-
-    @keyframes kenburns {
-      from { transform: scale(1.02); }
-      to { transform: scale(1.14) translate(-1.5%, -1%); }
-    }
-
-    .hero-fx {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(95deg, rgba(2, 13, 9, .97) 0%, rgba(4, 30, 23, .88) 42%, rgba(4, 30, 23, .35) 100%),
-        radial-gradient(circle at 80% 20%, rgba(94, 234, 212, .18), transparent 45%);
-    }
-    .hero-fx:after,
-    .page-hero:after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(94, 234, 212, .07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(94, 234, 212, .07) 1px, transparent 1px);
-      background-size: 56px 56px;
-      mask-image: radial-gradient(circle at 70% 30%, #000, transparent 70%);
-      -webkit-mask-image: radial-gradient(circle at 70% 30%, #000, transparent 70%);
-      animation: gridmove 20s linear infinite;
-    }
-
-    @keyframes gridmove {
-      to { background-position: 56px 56px; }
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 48px;
-      align-items: center;
-      padding: 70px 0;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: .74rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 700;
-    }
-    .eyebrow.dk { color: #9a7a2c; }
-
-    .pulse {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 0 0 rgba(94, 234, 212, .7);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      70% { box-shadow: 0 0 0 12px rgba(94, 234, 212, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(94, 234, 212, 0); }
-    }
-
-    .hero h1,
-    .page-hero h1 {
-      font: 600 clamp(2.5rem, 5.2vw, 4.9rem)/1.06 'Playfair Display', serif;
-      margin: 18px 0;
-      letter-spacing: -.01em;
-    }
-
-    .grad {
-      background: linear-gradient(100deg, var(--gold2), var(--cyan));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      max-width: 580px;
-      color: #d9e6df;
-      line-height: 1.8;
-      font-size: 1.04rem;
-    }
-
-    .actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 30px 0;
-    }
-
-    .hero-dots { display: flex; gap: 9px; margin-top: 8px; }
-    .hero-dots button {
-      width: 34px;
-      height: 4px;
-      border: 0;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, .28);
-      cursor: pointer;
-      padding: 0;
-      transition: .4s;
-    }
-    .hero-dots button.active { width: 60px; background: var(--gold); }
-
-    .quick {
-      background: var(--glass);
-      border: 1px solid rgba(255, 255, 255, .16);
-      backdrop-filter: blur(22px) saturate(160%);
-      border-radius: 22px;
-      padding: 26px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .15);
-      animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float {
-      50% { transform: translateY(-10px); }
-    }
-
-    .q-head { display: flex; gap: 14px; align-items: center; }
-    .q-head .ic {
-      width: 46px;
-      height: 46px;
-      padding: 11px;
-      border-radius: 14px;
-      background: rgba(224, 194, 116, .16);
-      color: var(--gold);
-    }
-    .q-head strong { display: block; font-size: 1.05rem; }
-    .q-head small { color: #b8cdc3; }
-
-    .q-num {
-      display: block;
-      font: 600 2.1rem 'Playfair Display', serif;
-      color: var(--gold2);
-      margin: 18px 0 14px;
-      letter-spacing: .02em;
-      text-shadow: 0 0 28px rgba(224, 194, 116, .4);
-    }
-
-    .quick ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 20px;
-      display: grid;
-      gap: 11px;
-      font-size: .86rem;
-      color: #d3e2da;
-    }
-    .quick li { display: flex; gap: 10px; line-height: 1.5; }
-    .quick li .ic { color: var(--cyan); margin-top: 2px; }
-
-    .marquee {
-      background: linear-gradient(90deg, var(--bg2), var(--green2), var(--bg2));
-      overflow: hidden;
-      border-block: 1px solid var(--line);
-      padding: 15px 0;
-      color: var(--gold2);
-    }
-    .mq-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 32s linear infinite;
-    }
-    .mq-track span {
-      padding: 0 34px;
-      font: 500 1rem 'Playfair Display', serif;
-      letter-spacing: .08em;
-      white-space: nowrap;
-      position: relative;
-    }
-    .mq-track span:after {
-      content: '✦';
-      position: absolute;
-      right: -6px;
-      color: var(--cyan);
-      font-size: .7rem;
-      top: 5px;
-    }
-    @keyframes marquee {
-      to { transform: translateX(-50%); }
-    }
-
-    .trustbar { background: var(--green); color: #fff; }
-    .trustgrid { display: grid; grid-template-columns: repeat(4, 1fr); }
-    .trustitem {
-      padding: 22px 18px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border-right: 1px solid rgba(255, 255, 255, .1);
-    }
-    .trustitem:last-child { border: 0; }
-    .trustitem .ic { width: 34px; height: 34px; color: var(--cyan); }
-    .trustitem strong { display: block; font-size: .92rem; }
-    .trustitem small { color: #a9c1b6; font-size: .78rem; }
-
-    /* sections */
-    .section { padding: 92px 0; position: relative; overflow: hidden; }
-    .section.tint { background: linear-gradient(180deg, #eaf1ec, #f4f7f3); }
-    .section.dark { background: var(--green); color: #fff; }
-    .section h2 {
-      font: 600 clamp(1.9rem, 3.2vw, 3rem)/1.15 'Playfair Display', serif;
-      margin: 10px 0 14px;
-      letter-spacing: -.01em;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 40px;
-    }
-    .section-head p {
-      color: var(--muted);
-      max-width: 620px;
-      line-height: 1.75;
-      margin: 0;
-    }
-
-    .textlink {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-weight: 700;
-      font-size: .86rem;
-      color: var(--green3);
-    }
-    .textlink .ic { transition: transform .3s; }
-    .textlink:hover .ic { transform: translateX(5px); }
-
-    .grid { display: grid; gap: 22px; }
-    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
-
-    .card {
-      position: relative;
-      background: #fff;
-      border: 1px solid #e3ebe5;
-      border-radius: var(--r);
-      padding: 28px;
-      overflow: hidden;
-      box-shadow: 0 14px 40px rgba(6, 47, 39, .06);
-      transition: transform .45s var(--ease), box-shadow .45s, border-color .45s;
-      transform-style: preserve-3d;
-    }
-    .card:before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(94, 234, 212, .18), transparent 55%);
-      opacity: 0;
-      transition: opacity .4s;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 28px 60px rgba(6, 47, 39, .16);
-      border-color: var(--gold);
-    }
-    .card:hover:before { opacity: 1; }
-    .card h3 {
-      font: 600 1.28rem 'Playfair Display', serif;
-      margin: 0 0 10px;
-      position: relative;
-    }
-    .card p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: .92rem;
-      margin: 0 0 18px;
-      position: relative;
-    }
-    .card .textlink { position: relative; }
-
-    .iconbox {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #e1f3ec, #f3ecd0);
-      color: var(--green3);
-      margin-bottom: 20px;
-      position: relative;
-      transition: .5s var(--ease);
-    }
-    .iconbox .ic { width: 26px; height: 26px; }
-    .card:hover .iconbox {
-      background: linear-gradient(135deg, var(--green3), var(--green));
-      color: var(--gold2);
-      transform: rotate(-8deg) scale(1.08);
-    }
-
-    .stats { background: var(--bg); padding: 60px 0; }
-    .stat-card {
-      text-align: center;
-      padding: 26px 10px;
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      background: var(--glass);
-      backdrop-filter: blur(8px);
-    }
-    .stat-card strong {
-      display: block;
-      font: 600 3rem 'Playfair Display', serif;
-      background: linear-gradient(120deg, var(--gold2), var(--cyan));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .stat-card span { color: #b8cdc3; font-size: .86rem; }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-    }
-    .split p { line-height: 1.85; color: var(--muted); }
-
-    .ph {
-      position: relative;
-      border-radius: 22px;
-      overflow: hidden;
-      background: linear-gradient(135deg, var(--green2), var(--bg));
-      min-height: 320px;
-      box-shadow: 0 30px 70px rgba(6, 47, 39, .25);
-    }
-    .ph img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 1.2s var(--ease);
-    }
-    .ph:hover img { transform: scale(1.07); }
-    .ph.tall { min-height: 480px; }
-
-    .photo-stack { position: relative; }
-    .photo-stack:before {
-      content: '';
-      position: absolute;
-      inset: -14px 14px 14px -14px;
-      border: 2px solid var(--gold);
-      border-radius: 24px;
-      opacity: .55;
-      z-index: 0;
-    }
-    .photo-stack .ph { z-index: 1; }
-
-    .badge {
-      position: absolute;
-      right: -18px;
-      bottom: 30px;
-      z-index: 2;
-      background: linear-gradient(135deg, var(--green3), var(--green));
-      color: #fff;
-      border-radius: 18px;
-      padding: 18px 24px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
-      border: 1px solid var(--gold);
-      animation: float 5s ease-in-out infinite;
-    }
-    .badge strong {
-      display: block;
-      font: 600 2rem 'Playfair Display', serif;
-      color: var(--gold2);
-    }
-    .badge span {
-      font-size: .78rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .listcheck { list-style: none; padding: 0; margin: 24px 0; }
-    .listcheck li {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      padding: 11px 0;
-      border-bottom: 1px solid #dfe8e1;
-      color: var(--ink);
-    }
-    .listcheck .ic {
-      color: #fff;
-      background: var(--green3);
-      border-radius: 50%;
-      padding: 3px;
-      width: 22px;
-      height: 22px;
-    }
-
-    .tour-band { padding: 130px 0; text-align: center; }
-    .tour-band .ph-bg:after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(2, 13, 9, .82), rgba(4, 47, 39, .72));
-    }
-    .tour-copy { position: relative; z-index: 2; max-width: 720px; }
-    .tour-copy .actions { justify-content: center; }
-    .tour-copy p { color: #d5e4dc; line-height: 1.8; }
-
-    .cta {
-      background: linear-gradient(120deg, var(--bg), var(--green2));
-      color: #fff;
-      padding: 60px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta:before {
-      content: '';
-      position: absolute;
-      right: -80px;
-      top: -80px;
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(94, 234, 212, .22), transparent 65%);
-    }
-    .cta-in {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 28px;
-      flex-wrap: wrap;
-      position: relative;
-    }
-    .cta h2 {
-      font: 600 clamp(1.6rem, 2.6vw, 2.4rem) 'Playfair Display', serif;
-      margin: 0 0 8px;
-    }
-    .cta p { margin: 0; color: #c3d6cc; }
-
-    /* page hero */
-    .page-hero {
-      position: relative;
-      padding: 96px 0 84px;
-      color: #fff;
-      overflow: hidden;
-      background: var(--bg);
-    }
-    .page-hero .ph-bg img { opacity: .55; }
-    .page-hero .ph-bg:after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(100deg, rgba(2, 13, 9, .95), rgba(4, 47, 39, .7));
-    }
-    .page-hero .wrap { position: relative; z-index: 2; }
-    .page-hero h1 { font-size: clamp(2.4rem, 4.6vw, 4.2rem); }
-    .page-hero p {
-      max-width: 680px;
-      color: #d3e3da;
-      line-height: 1.8;
-      font-size: 1.05rem;
-    }
-
-    .breadcrumbs {
-      display: flex;
-      gap: 10px;
-      font-size: .8rem;
-      color: var(--gold);
-      margin-bottom: 18px;
-    }
-    .breadcrumbs a { color: #fff; }
-    .breadcrumbs span { opacity: .5; }
-
-    /* founder spotlight */
-    .spotlight {
-      background:
-        radial-gradient(circle at 15% 20%, rgba(94, 234, 212, .12), transparent 40%),
-        linear-gradient(135deg, var(--bg), var(--green2));
-      color: #fff;
-    }
-    .spot-grid {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .spot-photo { position: relative; width: 100%; max-width: 440px; justify-self: center; }
-    .frame {
-      position: relative;
-      aspect-ratio: 4/5;
-      border-radius: 26px;
-      overflow: hidden;
-      border: 2px solid var(--gold);
-      background: linear-gradient(160deg, #0f6a54, #04261f);
-      box-shadow:
-        0 0 0 12px rgba(224, 194, 116, .08),
-        0 40px 90px rgba(0, 0, 0, .55),
-        0 0 80px rgba(94, 234, 212, .15);
-    }
-    .frame img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .frame:after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 60%, rgba(2, 13, 9, .55));
-      pointer-events: none;
-    }
-    .mono {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      font: 600 4rem 'Playfair Display', serif;
-      color: var(--gold);
-      opacity: .85;
-    }
-    .spot-badge {
-      position: absolute;
-      left: -22px;
-      bottom: 34px;
-      background: rgba(4, 20, 15, .85);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--gold);
-      border-radius: 16px;
-      padding: 14px 20px;
-      animation: float 5s ease-in-out infinite;
-    }
-    .spot-badge strong {
-      display: block;
-      color: var(--gold2);
-      font: 600 1.2rem 'Playfair Display', serif;
-    }
-    .spot-badge span {
-      font-size: .78rem;
-      color: #c3d6cc;
-      letter-spacing: .1em;
-    }
-    .spot-copy h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); }
-    .spot-copy p {
-      color: #cfe0d7;
-      line-height: 1.85;
-      font-size: 1.04rem;
-      max-width: 560px;
-    }
-    .spot-copy em { color: var(--gold2); }
-    .spot-copy .btn { margin-top: 14px; }
-
-    .values-head { text-align: center; margin-bottom: 38px; }
-
-    .portrait-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .portrait {
-      background: #fff;
-      border: 1px solid #e3ebe5;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 14px 40px rgba(6, 47, 39, .07);
-      transition: transform .45s var(--ease), box-shadow .45s;
-    }
-    .portrait:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 60px rgba(6, 47, 39, .2);
-    }
-    .p-img {
-      position: relative;
-      aspect-ratio: 4/4.2;
-      background: linear-gradient(160deg, #0f6a54, #04261f);
-      overflow: hidden;
-    }
-    .p-img img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .9s var(--ease);
-    }
-    .portrait:hover .p-img img { transform: scale(1.08); }
-    .p-img .mono { font-size: 3rem; }
-    .p-body {
-      padding: 20px;
-      text-align: center;
-      border-top: 3px solid var(--gold);
-    }
-    .p-body h3 {
-      font: 600 1.15rem 'Playfair Display', serif;
-      margin: 0 0 5px;
-    }
-    .p-body p { margin: 0; color: var(--muted); font-size: .85rem; }
-
-    .tag {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 30px;
-      background: #e2f1ea;
-      color: var(--green3);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .04em;
-    }
-    .tag.gold {
-      background: rgba(224, 194, 116, .2);
-      color: var(--gold2);
-      border: 1px solid var(--line);
-    }
-
-    .person { text-align: left; }
-    .avatar {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--green3), var(--green));
-      color: var(--gold2);
-      font: 600 1.3rem 'Playfair Display', serif;
-      margin-bottom: 18px;
-      border: 2px solid var(--gold);
-      box-shadow: 0 0 0 6px rgba(224, 194, 116, .12);
-    }
-    .avatar .ic { width: 28px; height: 28px; }
-    .person h3 { margin-top: 14px; }
-
-    .price-card {
-      background: #fff;
-      border: 1px solid #e3ebe5;
-      border-radius: var(--r);
-      padding: 28px;
-      box-shadow: 0 14px 40px rgba(6, 47, 39, .06);
-      transition: transform .45s var(--ease), border-color .3s, box-shadow .45s;
-    }
-    .price-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--gold);
-      box-shadow: 0 28px 60px rgba(6, 47, 39, .14);
-    }
-    .price-card h3 {
-      font: 600 1.25rem 'Playfair Display', serif;
-      margin: 16px 0 8px;
-    }
-    .price-card .price {
-      font: 600 1.45rem 'Playfair Display', serif;
-      color: var(--green3);
-      margin-bottom: 6px;
-    }
-    .price-card small {
-      display: block;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-
-    /* contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 26px;
-    }
-    .contact-box {
-      background: linear-gradient(160deg, var(--green2), var(--bg));
-      color: #fff;
-      border-radius: 22px;
-      padding: 36px;
-      border: 1px solid var(--line);
-    }
-    .contact-box h2 { font-size: 2.1rem; }
-    .contact-box p { color: #cfe0d7; line-height: 1.7; margin: 4px 0 0; }
-    .contact-line { display: flex; gap: 16px; margin: 24px 0; }
-    .ci {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: rgba(224, 194, 116, .14);
-      color: var(--gold);
-      flex: none;
-    }
-    .contact-line a:hover { color: var(--gold2); }
-
-    .formbox {
-      background: #fff;
-      border: 1px solid #e3ebe5;
-      border-radius: 22px;
-      padding: 36px;
-      box-shadow: 0 20px 50px rgba(6, 47, 39, .07);
-    }
-    .formbox h2 { font-size: 2.1rem; }
-    .muted { color: var(--muted); line-height: 1.7; }
-
-    .formgrid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 20px;
-    }
-    .field { display: flex; flex-direction: column; gap: 7px; }
-    .field.full { grid-column: 1/-1; }
-    .field label { font-size: .82rem; font-weight: 700; }
-    .field label span { font-weight: 400; color: var(--muted); }
-    .field input,
-    .field textarea {
-      width: 100%;
-      border: 1.5px solid #d7e1da;
-      border-radius: 12px;
-      padding: 14px;
-      background: #fafcfa;
-      outline: 0;
-      transition: border-color .25s, box-shadow .25s;
-    }
-    .field input:focus,
-    .field textarea:focus {
-      border-color: var(--green3);
-      box-shadow: 0 0 0 4px rgba(18, 128, 106, .15);
-      background: #fff;
-    }
-    .field textarea { min-height: 130px; resize: vertical; }
-    .form-note {
-      font-size: .83rem;
-      color: var(--green3);
-      margin: 10px 0 0;
-      line-height: 1.6;
-    }
-
-    .mapwrap {
-      border-radius: 22px;
-      overflow: hidden;
-      border: 2px solid var(--gold);
-      box-shadow: 0 30px 70px rgba(6, 47, 39, .2);
-    }
-    .mapframe { display: block; width: 100%; height: 420px; border: 0; }
-
-    /* virtual tour */
-    .tour-sec {
-      background: linear-gradient(180deg, var(--bg), var(--green));
-      padding-top: 56px;
-    }
-    .vt-stage {
-      position: relative;
-      height: clamp(380px, 68vh, 640px);
-      border-radius: 24px;
-      overflow: hidden;
-      background: #000;
-      border: 1px solid var(--gold);
-      box-shadow:
-        0 0 0 8px rgba(224, 194, 116, .07),
-        0 40px 90px rgba(0, 0, 0, .55),
-        0 0 90px rgba(94, 234, 212, .12);
-      cursor: grab;
-      touch-action: pan-y;
-      user-select: none;
-      outline: 0;
-    }
-    .vt-stage.drag { cursor: grabbing; }
-    .vt-stage:focus-visible { box-shadow: 0 0 0 3px var(--cyan); }
-
-    .vt-pan {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      will-change: transform;
-    }
-    .vt-pan img {
-      height: 100%;
-      width: auto;
-      min-width: 100%;
-      max-width: none;
-      display: block;
-      pointer-events: none;
-      opacity: 0;
-      transform: scale(1.04);
-      transition: opacity .9s ease, transform 1.4s var(--ease);
-    }
-    .vt-pan img.in { opacity: 1; transform: scale(1); }
-
-    .vt-scan {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(180deg, transparent 0, rgba(94, 234, 212, .12) 50%, transparent 100%);
-      height: 30%;
-      animation: scan 5s linear infinite;
-      mix-blend-mode: screen;
-    }
-    @keyframes scan {
-      from { transform: translateY(-100%); }
-      to { transform: translateY(420%); }
-    }
-
-    .vt-vignette {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at center, transparent 45%, rgba(2, 13, 9, .65)),
-        linear-gradient(0deg, rgba(2, 13, 9, .85), transparent 45%);
-    }
-
-    .vt-hud {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      right: 18px;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      color: #fff;
-      font-size: .8rem;
-    }
-    .vt-hud span {
-      background: rgba(4, 20, 15, .65);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 8px 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .vt-count {
-      font-family: 'Playfair Display', serif;
-      letter-spacing: .1em;
-      color: var(--gold2);
-    }
-
-    .vt-cap {
-      position: absolute;
-      left: 28px;
-      bottom: 58px;
-      max-width: 520px;
-      color: #fff;
-      pointer-events: none;
-    }
-    .vt-cap h2 {
-      font: 600 clamp(1.8rem, 3.4vw, 2.8rem) 'Playfair Display', serif;
-      margin: 12px 0 8px;
-    }
-    .vt-cap p { margin: 0; color: #d3e3da; line-height: 1.7; }
-    .vt-cap.swap > * { animation: capin .8s var(--ease) both; }
-    .vt-cap.swap > *:nth-child(2) { animation-delay: .1s; }
-    .vt-cap.swap > *:nth-child(3) { animation-delay: .2s; }
-
-    @keyframes capin {
-      from { opacity: 0; transform: translateX(-40px); }
-      to { opacity: 1; transform: none; }
-    }
-
-    .vt-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      border: 1px solid var(--gold);
-      background: rgba(4, 20, 15, .6);
-      backdrop-filter: blur(10px);
-      color: var(--gold2);
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      transition: .3s;
-    }
-    .vt-nav:hover {
-      background: var(--gold);
-      color: var(--bg);
-      box-shadow: 0 0 30px rgba(224, 194, 116, .5);
-    }
-    .vt-nav.prev { left: 16px; }
-    .vt-nav.prev .ic { transform: rotate(180deg); }
-    .vt-nav.next { right: 16px; }
-
-    .vt-tools {
-      position: absolute;
-      right: 18px;
-      bottom: 30px;
-      display: flex;
-      gap: 10px;
-    }
-    .vt-tools button {
-      background: rgba(4, 20, 15, .7);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--line);
-      color: #fff;
-      border-radius: 30px;
-      padding: 9px 15px;
-      cursor: pointer;
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      font-size: .8rem;
-      transition: .3s;
-    }
-    .vt-tools button:hover,
-    .vt-tools button[aria-pressed=true] {
-      background: var(--gold);
-      color: var(--bg);
-    }
-
-    .vt-progress {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 4px;
-      background: rgba(255, 255, 255, .12);
-    }
-    .vt-progress i {
-      display: block;
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, var(--cyan), var(--gold));
-      box-shadow: 0 0 14px var(--cyan);
-    }
-
-    .vt-thumbs {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: 12px;
-      margin-top: 18px;
-    }
-    .thumb {
-      position: relative;
-      aspect-ratio: 16/11;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1.5px solid rgba(255, 255, 255, .14);
-      background: var(--green2);
-      cursor: pointer;
-      padding: 0;
-      color: #fff;
-      text-align: left;
-      transition: .4s var(--ease);
-    }
-    .thumb:hover { transform: translateY(-5px); border-color: var(--gold); }
-    .thumb.active {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(224, 194, 116, .25), 0 0 30px rgba(94, 234, 212, .25);
-    }
-    .thumb-img {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-    }
-    .thumb:after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, rgba(2, 13, 9, .9), rgba(2, 13, 9, .1) 70%);
-    }
-    .thumb b {
-      position: absolute;
-      top: 7px;
-      left: 9px;
-      z-index: 2;
-      font: 600 .75rem 'Playfair Display', serif;
-      color: var(--gold2);
-    }
-    .thumb em {
-      position: absolute;
-      left: 9px;
-      right: 6px;
-      bottom: 7px;
-      z-index: 2;
-      font-style: normal;
-      font-size: .7rem;
-      line-height: 1.2;
-      font-weight: 600;
-    }
-
-    /* footer */
-    .footer {
-      background: #020d09;
-      color: #fff;
-      padding: 64px 0 22px;
-      border-top: 1px solid var(--line);
-    }
-    .footergrid {
-      display: grid;
-      grid-template-columns: 1.3fr .8fr 1.2fr 1.1fr;
-      gap: 36px;
-    }
-    .footer h4 {
-      font: 600 1.1rem 'Playfair Display', serif;
-      color: var(--gold);
-      margin: 0 0 18px;
-    }
-    .footer p,
-    .footer a {
-      color: #b9cdc3;
-      font-size: .86rem;
-      line-height: 1.85;
-    }
-    .footer a:hover { color: var(--gold2); }
-    .footerlinks { display: grid; gap: 5px; }
-    .footer .brand { margin-bottom: 16px; }
-    .footer .btn { color: #102d26; }
-    .footerbottom {
-      border-top: 1px solid rgba(255, 255, 255, .1);
-      margin-top: 40px;
-      padding-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      color: #8fa79b;
-      font-size: .76rem;
-    }
-
-    .to-top {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 60;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 1px solid var(--gold);
-      background: rgba(4, 20, 15, .85);
-      color: var(--gold2);
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(20px);
-      transition: .4s var(--ease);
-      backdrop-filter: blur(8px);
-    }
-    .to-top .ic { transform: rotate(-90deg); }
-    .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
-    .to-top:hover { background: var(--gold); color: var(--bg); }
-
-    /* slide animations */
-    .js .slide-l,
-    .js .slide-r,
-    .js .slide-up,
-    .js .reveal {
-      opacity: 0;
-      transition: opacity .9s ease, transform 1s var(--ease);
-      transition-delay: var(--d, 0s);
-      will-change: transform, opacity;
-    }
-    .js .slide-l { transform: translateX(-80px); }
-    .js .slide-r { transform: translateX(80px); }
-    .js .slide-up,
-    .js .reveal { transform: translateY(50px); }
-    .js .in { opacity: 1 !important; transform: none !important; }
-    .js .hero .slide-l,
-    .js .hero .slide-r { animation: none; }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
-      .js .slide-l,
-      .js .slide-r,
-      .js .slide-up,
-      .js .reveal {
-        opacity: 1;
-        transform: none;
-      }
-      .mq-track { animation: none; }
-    }
-
-    /* responsive */
-    @media (max-width: 1100px) {
-      .d-only { display: none; }
-      .m-only { display: inline-flex; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .quick { max-width: 440px; }
-      .vt-thumbs { grid-template-columns: repeat(4, 1fr); }
-      .footergrid { grid-template-columns: 1fr 1fr; }
-      .grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 900px) {
-      .menu-toggle { display: block; }
-      .navlinks {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        padding: 16px 4% 22px;
-        background: rgba(4, 20, 15, .98);
-        flex-direction: column;
-        align-items: stretch;
-        border-bottom: 1px solid var(--line);
-        gap: 0;
-      }
-      .navlinks.open { display: flex; animation: capin .4s var(--ease); }
-      .navlinks a {
-        padding: 14px 6px;
-        border-bottom: 1px solid rgba(255, 255, 255, .06);
-      }
-      .navlinks a:after { display: none; }
-      .nav { min-height: 70px; }
-      .brand { min-width: 0; }
-      .hide-sm { display: none; }
-    }
-
-    @media (max-width: 820px) {
-      .grid.cols-3,
-      .split,
-      .contact-grid,
-      .spot-grid,
-      .portrait-grid { grid-template-columns: 1fr; }
-      .section { padding: 66px 0; }
-      .section-head { display: block; }
-      .trustgrid { grid-template-columns: repeat(2, 1fr); }
-      .trustitem:nth-child(2) { border-right: 0; }
-      .formgrid { grid-template-columns: 1fr; }
-      .photo-stack:before { display: none; }
-      .badge { right: 10px; }
-      .spot-badge { left: 10px; }
-      .vt-cap { left: 18px; right: 18px; bottom: 64px; }
-      .vt-tools { left: 18px; right: auto; bottom: 14px; }
-      .vt-tools span { display: none; }
-      .vt-nav { width: 44px; height: 44px; }
-      .vt-thumbs { grid-template-columns: repeat(2, 1fr); }
-      .js .slide-l { transform: translateX(-40px); }
-      .js .slide-r { transform: translateX(40px); }
-      .footergrid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 520px) {
-      .topline .tl-r a:first-child { font-size: .72rem; }
-      .brand strong { font-size: 1.05rem; }
-      .brand small { font-size: .54rem; }
-      .logo { width: 44px; height: 44px; }
-      .hero h1 { font-size: 2.5rem; }
-      .grid.cols-4 { grid-template-columns: 1fr 1fr; }
-      .stat-card strong { font-size: 2.2rem; }
-      .btn { padding: 13px 16px; }
-      .contact-box,
-      .formbox { padding: 24px; }
-    }
-  </style>
-
-  <script>
-    document.documentElement.classList.add('js')
-  </script>
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 
 <body>
@@ -1456,91 +20,28 @@
   <!-- ICON SPRITE -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
-      <symbol id="logo" viewBox="0 0 64 64">
-        <circle cx="32" cy="32" r="29" fill="#0b493b" stroke="#e0c274" stroke-width="3" />
-        <path d="M27 15h10v12h12v10H37v12H27V37H15V27h12z" fill="#e0c274" />
-      </symbol>
-      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z" />
-        <circle cx="12" cy="9.5" r="2.5" />
-      </symbol>
-      <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
-      </symbol>
-      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="5" width="18" height="14" rx="2" />
-        <path d="m3 7 9 6 9-6" />
-      </symbol>
-      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 7h16M4 12h16M4 17h16" />
-      </symbol>
-      <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="9" />
-        <path d="m10 8.5 5.5 3.5-5.5 3.5z" />
-      </symbol>
-      <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z" />
-      </symbol>
-      <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M7 17 17 7M8 7h9v9" />
-      </symbol>
-      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14M13 6l6 6-6 6" />
-      </symbol>
-      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m5 12.5 4.5 4.5L19 7.5" />
-      </symbol>
-      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M12 7v5l3 2" />
-      </symbol>
-      <symbol id="i-steth" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 3v6a4 4 0 0 0 8 0V3M10 13v2a5 5 0 0 0 10 0v-1" />
-        <circle cx="20" cy="12" r="2" />
-      </symbol>
-      <symbol id="i-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2" />
-        <circle cx="12" cy="12" r="3.5" />
-      </symbol>
-      <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z" />
-      </symbol>
-      <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9.5 3A3.5 3.5 0 0 0 6 6.5a3 3 0 0 0-2 2.8A3 3 0 0 0 5 12a3.2 3.2 0 0 0 .5 5A3.5 3.5 0 0 0 9 20.5a2.5 2.5 0 0 0 3-2.4V5.4A2.4 2.4 0 0 0 9.5 3zM14.5 3A3.5 3.5 0 0 1 18 6.5a3 3 0 0 1 2 2.8A3 3 0 0 1 19 12a3.2 3.2 0 0 1-.5 5 3.5 3.5 0 0 1-3.5 3.5 2.5 2.5 0 0 1-3-2.4" />
-      </symbol>
-      <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z" />
-      </symbol>
-      <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3M7.5 15h9" />
-      </symbol>
-      <symbol id="i-rupee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 4h12M6 9h12M6 4c6 0 8 2 8 5s-2 5-8 5l7 7" />
-      </symbol>
-      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="9" cy="8" r="3.5" />
-        <path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20c0-2.8-1.7-4.8-4-5.6" />
-      </symbol>
-      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3 4 6v6c0 4.5 3.2 8 8 9 4.8-1 8-4.5 8-9V6z" />
-        <path d="m9 12 2 2 4-4" />
-      </symbol>
-      <symbol id="i-person" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="7" r="3.5" />
-        <path d="M5 21c0-4 3-7 7-7s7 3 7 7" />
-      </symbol>
-      <symbol id="i-flower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="2.5" />
-        <path d="M12 9.5C12 6 12 4 12 3M12 14.5c0 3.5 0 5.5 0 6.5M9.5 12C6 12 4 12 3 12M14.5 12c3.5 0 5.5 0 6.5 0" />
-      </symbol>
-      <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="5" y="3" width="14" height="18" rx="1" />
-        <path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4" />
-      </symbol>
-      <symbol id="i-bed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 18V6M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5" />
-        <circle cx="7" cy="11" r="1.5" />
-      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" /></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16" /></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="m10 8.5 5.5 3.5-5.5 3.5z" /></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z" /></symbol>
+      <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9" /></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5" /></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></symbol>
+      <symbol id="i-steth" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 0 0 8 0V3M10 13v2a5 5 0 0 0 10 0v-1" /><circle cx="20" cy="12" r="2" /></symbol>
+      <symbol id="i-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2" /><circle cx="12" cy="12" r="3.5" /></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z" /></symbol>
+      <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3A3.5 3.5 0 0 0 6 6.5a3 3 0 0 0-2 2.8A3 3 0 0 0 5 12a3.2 3.2 0 0 0 .5 5A3.5 3.5 0 0 0 9 20.5a2.5 2.5 0 0 0 3-2.4V5.4A2.4 2.4 0 0 0 9.5 3zM14.5 3A3.5 3.5 0 0 1 18 6.5a3 3 0 0 1 2 2.8A3 3 0 0 1 19 12a3.2 3.2 0 0 1-.5 5 3.5 3.5 0 0 1-3.5 3.5 2.5 2.5 0 0 1-3-2.4" /></symbol>
+      <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z" /></symbol>
+      <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3M7.5 15h9" /></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5" /><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20c0-2.8-1.7-4.8-4-5.6" /></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.2 8 8 9 4.8-1 8-4.5 8-9V6z" /><path d="m9 12 2 2 4-4" /></symbol>
+      <symbol id="i-person" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3.5" /><path d="M5 21c0-4 3-7 7-7s7 3 7 7" /></symbol>
+      <symbol id="i-flower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5" /><path d="M12 9.5C12 6 12 4 12 3M12 14.5c0 3.5 0 5.5 0 6.5M9.5 12C6 12 4 12 3 12M14.5 12c3.5 0 5.5 0 6.5 0" /></symbol>
+      <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1" /><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4" /></symbol>
+      <symbol id="i-bed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V6M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5" /><circle cx="7" cy="11" r="1.5" /></symbol>
     </defs>
   </svg>
 
@@ -1549,19 +50,10 @@
   <!-- TOP LINE -->
   <div class="topline">
     <div class="wrap">
-      <span>
-        <svg class="ic" aria-hidden="true"><use href="#i-pin" /></svg>
-        Kanchan Bagh, Hyderabad
-      </span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-pin" /></svg> Kanchan Bagh, Hyderabad</span>
       <span class="tl-r">
-        <a href="tel:+914024349999">
-          <svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg>
-          Emergency: 040 2434 9999
-        </a>
-        <a href="mailto:info@owaisihospital.com" class="hide-sm">
-          <svg class="ic" aria-hidden="true"><use href="#i-mail" /></svg>
-          info@owaisihospital.com
-        </a>
+        <a href="tel:+914024349999"><svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg> Emergency: 040 2434 9999</a>
+        <a href="mailto:info@owaisihospital.com" class="hide-sm"><svg class="ic" aria-hidden="true"><use href="#i-mail" /></svg> info@owaisihospital.com</a>
       </span>
     </div>
   </div>
@@ -1570,8 +62,8 @@
   <header id="top">
     <div class="wrap nav">
       <a class="brand" href="#home" aria-label="Owaisi Hospital home">
-  <img class="brand-logo" src="./assets/owaisi-logo.webp" alt="Owaisi Hospital & Research Center">
-</a>
+        <img class="brand-logo" src="./assets/owaisi-logo.webp" alt="Owaisi Hospital & Research Center">
+      </a>
 
       <nav class="navlinks" id="navlinks" aria-label="Main navigation">
         <a href="#home" class="active" aria-current="page">Home</a>
@@ -1580,16 +72,10 @@
         <a href="#virtual-tour">Virtual Tour</a>
         <a href="#management">Management</a>
         <a href="#contact">Contact</a>
-        <a class="emergency m-only" href="tel:+914024349999">
-          <svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg>
-          Emergency 040 2434 9999
-        </a>
+        <a class="emergency m-only" href="tel:+914024349999"><svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg> Emergency 040 2434 9999</a>
       </nav>
 
-      <a class="emergency d-only" href="tel:+914024349999">
-        <svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg>
-        Emergency
-      </a>
+      <a class="emergency d-only" href="tel:+914024349999"><svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg> Emergency</a>
 
       <button class="menu-toggle" aria-expanded="false" aria-controls="navlinks" aria-label="Open navigation menu">
         <svg class="ic" aria-hidden="true"><use href="#i-menu" /></svg>
@@ -1604,37 +90,25 @@
 
       <section class="hero">
         <div class="hero-slides" aria-hidden="true">
-          <div class="hs active">
-            <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=2000&q=80" alt="" fetchpriority="high" onerror="this.remove()">
-          </div>
-          <div class="hs">
-            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2000&q=80" alt="" onerror="this.remove()">
-          </div>
-          <div class="hs">
-            <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=2000&q=80" alt="" onerror="this.remove()">
-          </div>
+          <div class="hs active"><img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=2000&q=80" alt="" fetchpriority="high" onerror="this.remove()"></div>
+          <div class="hs"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2000&q=80" alt="" onerror="this.remove()"></div>
+          <div class="hs"><img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=2000&q=80" alt="" onerror="this.remove()"></div>
         </div>
         <div class="hero-fx"></div>
 
         <div class="wrap hero-grid">
           <div class="hero-inner">
-            <div class="eyebrow slide-l" style="--d:.1s"><i class="pulse"></i> Hyderabad · Since 1996</div>
+            <div class="eyebrow slide-l" style="--d:.1s"><i class="pulse"></i> Kanchan Bagh, Hyderabad · Since 1996</div>
             <h1 class="slide-l" style="--d:.25s">
-              Compassionate care,<br>
-              <span class="grad">powered by trust.</span>
+              Quality healthcare,<br>
+              <span class="grad">within everyone's reach.</span>
             </h1>
             <p class="slide-l" style="--d:.4s">
-              Owaisi Hospital &amp; Research Centre offers emergency care, specialist consultation, inpatient treatment and diagnostic services, with dignity and respect for every patient.
+              For over 30 years, Owaisi Hospital has given the people of Hyderabad dependable emergency care, specialist treatment and diagnostics at pocket-friendly costs.
             </p>
             <div class="actions slide-l" style="--d:.55s">
-              <a class="btn" href="#contact">
-                <svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg>
-                Contact the Hospital
-              </a>
-              <a class="btn outline" href="#virtual-tour">
-                <svg class="ic" aria-hidden="true"><use href="#i-play" /></svg>
-                Enter Virtual Tour
-              </a>
+              <a class="btn" href="#contact"><svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg> Contact the Hospital</a>
+              <a class="btn outline" href="#virtual-tour"><svg class="ic" aria-hidden="true"><use href="#i-play" /></svg> Enter Virtual Tour</a>
             </div>
             <div class="hero-dots" role="tablist" aria-label="Hero slides">
               <button class="active" aria-label="Slide 1"></button>
@@ -1646,29 +120,16 @@
           <aside class="quick slide-r" style="--d:.5s" aria-label="Quick contact">
             <div class="q-head">
               <svg class="ic" aria-hidden="true"><use href="#i-plus" /></svg>
-              <div>
-                <strong>Need urgent help?</strong>
-                <small>Emergency line · 24 hours</small>
-              </div>
+              <div><strong>Need urgent help?</strong><small>Emergency line · 24 hours</small></div>
             </div>
             <a class="q-num" href="tel:+914024349999">040 2434 9999</a>
             <ul>
-              <li>
-                <svg class="ic" aria-hidden="true"><use href="#i-pin" /></svg>
-                <span>DMRL Cross Roads, Kanchan Bagh, Hyderabad 500058</span>
-              </li>
-              <li>
-                <svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg>
-                <span>Reception: 040 2434 2754</span>
-              </li>
-              <li>
-                <svg class="ic" aria-hidden="true"><use href="#i-mail" /></svg>
-                <span>info@owaisihospital.com</span>
-              </li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-pin" /></svg><span>DMRL Cross Roads, Kanchan Bagh, Hyderabad 500058</span></li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg><span>Reception: 040 2434 2754</span></li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-mail" /></svg><span>info@owaisihospital.com</span></li>
             </ul>
             <a class="btn full" href="https://www.google.com/maps/search/?api=1&query=Owaisi+Hospital+DMRL+Cross+Roads+Hyderabad" target="_blank" rel="noopener">
-              Get directions
-              <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg>
+              Get directions <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg>
             </a>
           </aside>
         </div>
@@ -1676,43 +137,17 @@
 
       <div class="marquee" aria-hidden="true">
         <div class="mq-track">
-          <span>Emergency Care</span>
-          <span>Cardiology</span>
-          <span>Neurology</span>
-          <span>Radiology</span>
-          <span>Dialysis</span>
-          <span>Paediatrics</span>
-          <span>Gynaecology</span>
-          <span>Laboratory</span>
-          <span>Emergency Care</span>
-          <span>Cardiology</span>
-          <span>Neurology</span>
-          <span>Radiology</span>
-          <span>Dialysis</span>
-          <span>Paediatrics</span>
-          <span>Gynaecology</span>
-          <span>Laboratory</span>
+          <span>Emergency Care</span><span>Cardiology</span><span>Neurology</span><span>Radiology</span><span>Dialysis</span><span>Paediatrics</span><span>Gynaecology</span><span>Laboratory</span>
+          <span>Emergency Care</span><span>Cardiology</span><span>Neurology</span><span>Radiology</span><span>Dialysis</span><span>Paediatrics</span><span>Gynaecology</span><span>Laboratory</span>
         </div>
       </div>
 
       <div class="trustbar">
         <div class="wrap trustgrid">
-          <div class="trustitem">
-            <svg class="ic" aria-hidden="true"><use href="#i-clock" /></svg>
-            <div><strong>24/7 Emergency</strong><small>Always ready to respond</small></div>
-          </div>
-          <div class="trustitem">
-            <svg class="ic" aria-hidden="true"><use href="#i-steth" /></svg>
-            <div><strong>Specialist Care</strong><small>Multiple departments</small></div>
-          </div>
-          <div class="trustitem">
-            <svg class="ic" aria-hidden="true"><use href="#i-scan" /></svg>
-            <div><strong>Diagnostics</strong><small>Laboratory &amp; imaging</small></div>
-          </div>
-          <div class="trustitem">
-            <svg class="ic" aria-hidden="true"><use href="#i-heart" /></svg>
-            <div><strong>Patient-First</strong><small>Care with respect</small></div>
-          </div>
+          <div class="trustitem"><svg class="ic" aria-hidden="true"><use href="#i-clock" /></svg><div><strong>24/7 Emergency</strong><small>Always ready to respond</small></div></div>
+          <div class="trustitem"><svg class="ic" aria-hidden="true"><use href="#i-steth" /></svg><div><strong>Specialist Care</strong><small>Multiple departments</small></div></div>
+          <div class="trustitem"><svg class="ic" aria-hidden="true"><use href="#i-scan" /></svg><div><strong>Diagnostics</strong><small>Laboratory &amp; imaging</small></div></div>
+          <div class="trustitem"><svg class="ic" aria-hidden="true"><use href="#i-heart" /></svg><div><strong>Patient-First</strong><small>Care with respect</small></div></div>
         </div>
       </div>
 
@@ -1727,21 +162,14 @@
           <div class="slide-r">
             <div class="eyebrow dk">Our story</div>
             <h2>A hospital built on service to the community.</h2>
-            <p>
-              Founded in 1996 and named after Janab Sultan Salahuddin Owaisi, Owaisi Hospital &amp; Research Centre was created to bring dependable healthcare within reach of the people of Hyderabad.
-            </p>
-            <p>
-              Today the hospital provides outpatient and inpatient care, diagnostic and radiology services, and round-the-clock emergency support, all guided by a simple belief: every patient deserves attentive, respectful treatment.
-            </p>
+            <p>Founded in 1996 and named after Janab Sultan Salahuddin Owaisi, Owaisi Hospital &amp; Research Centre was created to bring dependable healthcare within reach of the people of Hyderabad.</p>
+            <p>Today the hospital provides outpatient and inpatient care, diagnostic and radiology services, and round-the-clock emergency support, all guided by a simple belief: every patient deserves attentive, respectful treatment.</p>
             <ul class="listcheck">
               <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg>Accessible, patient-focused healthcare</li>
               <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg>Outpatient, inpatient and emergency services</li>
               <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg>Diagnostic and radiology support under one roof</li>
             </ul>
-            <a class="btn dark" href="#about">
-              Read our story
-              <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg>
-            </a>
+            <a class="btn dark" href="#about">Read our story <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
           </div>
         </div>
       </section>
@@ -1763,10 +191,7 @@
               <h2>Comprehensive care, close to home.</h2>
               <p>From emergencies to ongoing treatment, explore the main areas of care available at the hospital.</p>
             </div>
-            <a class="textlink" href="#facilities">
-              View all facilities
-              <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg>
-            </a>
+            <a class="textlink" href="#facilities">View all facilities <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
           </div>
           <div class="grid cols-3">
             <article class="card svc slide-up">
@@ -1818,10 +243,7 @@
           <h2>See the hospital before you arrive.</h2>
           <p>Browse reception, patient areas, diagnostics and the campus from wherever you are, so your first visit feels familiar and stress-free.</p>
           <div class="actions">
-            <a class="btn" href="#virtual-tour">
-              <svg class="ic" aria-hidden="true"><use href="#i-play" /></svg>
-              Start the tour
-            </a>
+            <a class="btn" href="#virtual-tour"><svg class="ic" aria-hidden="true"><use href="#i-play" /></svg> Start the tour</a>
           </div>
         </div>
       </section>
@@ -1830,31 +252,26 @@
         <div class="wrap">
           <div class="section-head reveal">
             <div>
-              <div class="eyebrow dk">GET TO KNOW OWAISI HOSPITAL</div>
+              <div class="eyebrow dk">Get to know Owaisi Hospital</div>
               <h2>Our legacy, our leadership, your connection.</h2>
               <p>Discover our hospital's history, meet the management team, and find the information you need to connect with us.</p>
             </div>
           </div>
           <div class="grid cols-3">
             <article class="card info slide-up">
-<div class="iconbox">
-    <span aria-hidden="true" style="font-size:32px;">🏛️</span>
-</div>              <h3>Our History&amp; Legacy</h3>
+              <div class="iconbox"><span aria-hidden="true" style="font-size:32px">🏛️</span></div>
+              <h3>Our History &amp; Legacy</h3>
               <p>Discover the history, heritage and milestones of Owaisi Hospital.</p>
               <a class="textlink" href="#about">Discover our history <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
             </article>
             <article class="card info slide-up">
-              <div class="iconbox">
-                <span aria-hidden="true" style="font-size:32px;">🖼️</span>
-              </div>
-              <h3>Hospital Management &amp; Facilities</h3>
-              <p>Explore our hospital gallery and discover its people and facilities.</p>
-              <a class="textlink" href="#virtual-tour">Meet the team <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+              <div class="iconbox"><span aria-hidden="true" style="font-size:32px">👥</span></div>
+              <h3>Hospital Management</h3>
+              <p>Meet the administrative and medical team behind the hospital.</p>
+              <a class="textlink" href="#management">Meet the team <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
             </article>
             <article class="card info slide-up">
-              <div class="iconbox">
-                <span aria-hidden="true" style="font-size:32px;">📍</span>
-              </div>
+              <div class="iconbox"><span aria-hidden="true" style="font-size:32px">📍</span></div>
               <h3>Location &amp; Contact</h3>
               <p>Find our location and get in touch with our team.</p>
               <a class="textlink" href="#contact">Contact us <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
@@ -1869,10 +286,7 @@
             <h2>In a medical emergency, call immediately.</h2>
             <p>Our emergency line is staffed around the clock.</p>
           </div>
-          <a class="btn big" href="tel:+914024349999">
-            <svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg>
-            040 2434 9999
-          </a>
+          <a class="btn big" href="tel:+914024349999"><svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg> 040 2434 9999</a>
         </div>
       </section>
     </div>
@@ -1888,38 +302,30 @@
           <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="#home">Home</a><span>/</span>About</nav>
           <div class="eyebrow">Our story &amp; heritage</div>
           <h1>About Owaisi Hospital</h1>
-          <p>Established in 1996, Owaisi Hospital and Research Center stands as a beacon of hope and healing in the heart of Hyderabad, India. Named after its founder, Janab Sultan Salahuddin Owaisi Sahab, a prominent Indian politician and philanthropist, this institution has made significant contributions to the field of healthcare and medical research over the years. It is one-stop for pocket friendly medical services which includes out-patient and in-patient treatment, in-house diagnostic and radiological services. Our team is dedicated not just provide treatment but care too.
-</p>
-          <strong>Beyond medicine lies humanity. Beyond treatment lies compassion. Every life deserves care, dignity and hope.</strong>
+          <p>Established in 1996, Owaisi Hospital and Research Center stands as a beacon of hope and healing in the heart of Hyderabad, India. Named after its founder, Janab Sultan Salahuddin Owaisi Sahab, a prominent Indian politician and philanthropist, this institution has made significant contributions to the field of healthcare and medical research over the years. It is a one-stop for pocket-friendly medical services, which include out-patient and in-patient treatment, in-house diagnostic and radiological services. Our team is dedicated not just to providing treatment but care too.</p>
+          <strong class="hero-quote">Beyond medicine lies humanity. Beyond treatment lies compassion. Every life deserves care, dignity and hope.</strong>
         </div>
       </section>
 
-     <section class="section spotlight">
+      <section class="section spotlight">
         <div class="wrap spot-grid">
           <div class="spot-photo slide-l">
             <div class="frame">
               <span class="mono">SSO</span>
-              <img src="./assets/salar-owaisi.jpeg"
-                  alt="Sultan Salahuddin Owaisi"
-                  style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; z-index:10;">
+              <img src="./assets/salar-owaisi.jpeg" alt="Sultan Salahuddin Owaisi">
             </div>
             <div class="spot-badge"><strong>Founder</strong><span>Salar-e-Millat</span></div>
           </div>
           <div class="spot-copy slide-r">
             <div class="eyebrow">Founder spotlight</div>
             <h2>Sultan Salahuddin Owaisi</h2>
-            <p>
-              Popularly known as <em>Salar-e-Millat</em>, Janab Sultan Salahuddin Owaisi gave his name to this hospital, established in 1996 with a vision of accessible healthcare for the community.
-            </p>
+            <p>Popularly known as <em>Salar-e-Millat</em>, Janab Sultan Salahuddin Owaisi gave his name to this hospital, established in 1996 with a vision of accessible healthcare for the community.</p>
             <p>His legacy lives on in every department, every ward and every patient served within these walls.</p>
-            <a class="btn" href="https://owaisihospital.com/about/" target="_blank" rel="noopener">
-              Official hospital history
-              <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg>
-            </a>
+            <a class="btn" href="https://owaisihospital.com/about/" target="_blank" rel="noopener">Official hospital history <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg></a>
           </div>
         </div>
       </section>
-      
+
       <section class="section">
         <div class="wrap">
           <div class="section-head reveal">
@@ -1935,46 +341,33 @@
                 <span class="mono">AO</span>
                 <img src="./assets/asaduddin-owaisi.jpeg" alt="Portrait of Asaduddin Owaisi" onerror="this.remove()">
               </div>
-              <div class="p-body">
-                <h3>ASADUDDIN OWAISI</h3>
-                <p>CHAIRMAN DCMS & AI</p>
-              </div>
+              <div class="p-body"><h3>ASADUDDIN OWAISI</h3><p>CHAIRMAN DCMS &amp; AI</p></div>
             </article>
             <article class="portrait reveal">
               <div class="p-img">
                 <span class="mono">AK</span>
                 <img src="./assets/akbaruddin-owaisi.webp" alt="Portrait of Akbaruddin Owaisi" onerror="this.remove()">
               </div>
-              <div class="p-body">
-                <h3>AKBARUDDIN OWAISI</h3>
-                <p>MANAGING DIRECTOR DCMS & AI</p>
-              </div>
+              <div class="p-body"><h3>AKBARUDDIN OWAISI</h3><p>MANAGING DIRECTOR DCMS &amp; AI</p></div>
             </article>
           </div>
         </div>
       </section>
 
-            <section class="section">
+      <section class="section">
         <div class="wrap split">
           <div class="slide-r">
             <div class="eyebrow dk">Established 1996</div>
             <h2>A legacy of healthcare and service.</h2>
-            <p>
-              Owaisi Hospital &amp; Research Centre in Hyderabad was established in 1996 and named in honour of its founder, Janab Sultan Salahuddin Owaisi. From the beginning, its purpose has been to provide accessible, affordable outpatient, inpatient, diagnostic and radiology services.
-            </p>
-            <p>
-              Over the years the hospital has grown into a trusted name in the Kanchan Bagh area, serving families who rely on it for everyday care as well as emergencies.
-            </p>
+            <p>Owaisi Hospital &amp; Research Centre in Hyderabad was established in 1996 and named in honour of its founder, Janab Sultan Salahuddin Owaisi. From the beginning, its purpose has been to provide accessible, affordable outpatient, inpatient, diagnostic and radiology services.</p>
+            <p>Over the years the hospital has grown into a trusted name in the Kanchan Bagh area, serving families who rely on it for everyday care as well as emergencies.</p>
             <ul class="listcheck">
               <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg>Patient-focused care and support</li>
               <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg>Outpatient and inpatient services</li>
               <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg>Diagnostic and radiological services</li>
               <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg>A lasting commitment to community healthcare</li>
             </ul>
-            <a class="btn dark" href="https://owaisihospital.com/about/" target="_blank" rel="noopener">
-              Official hospital history
-              <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg>
-            </a>
+            <a class="btn dark" href="https://owaisihospital.com/about/" target="_blank" rel="noopener">Official hospital history <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg></a>
           </div>
           <div class="slide-l">
             <div class="ph tall">
@@ -1984,17 +377,17 @@
         </div>
       </section>
 
-       <section class="section tint">
+      <section class="section tint">
         <div class="wrap">
           <div class="values-head reveal">
-            <div class="eyebrow dk">OUR PURPOSE</div>
+            <div class="eyebrow dk">Our purpose</div>
             <h2>Vision · Community · Research</h2>
           </div>
           <div class="grid cols-3">
             <article class="card info slide-up">
               <div class="iconbox"><svg class="ic" aria-hidden="true"><use href="#i-heart" /></svg></div>
               <h3>Our Vision</h3>
-              <p>HEALTH FOR ALL and RIGHT TO LIFE, by providing high end medical care by experts especially Owaisi Hospital was founded with the noble vision of providing accessible and affordable healthcare to all, Janab Sultan Salahuddin Owaisi Sahab, who was deeply committed to serving the underserved communities, wanted to create a world-class medical facility that would cater to the needs of the marginalized and disadvantaged sections of society.</p>
+              <p>HEALTH FOR ALL and RIGHT TO LIFE, by providing high-end medical care by experts. Owaisi Hospital was founded with the noble vision of providing accessible and affordable healthcare to all. Janab Sultan Salahuddin Owaisi Sahab, who was deeply committed to serving underserved communities, wanted to create a world-class medical facility that would cater to the needs of the marginalized and disadvantaged sections of society.</p>
             </article>
             <article class="card info slide-up">
               <div class="iconbox"><svg class="ic" aria-hidden="true"><use href="#i-users" /></svg></div>
@@ -2110,10 +503,7 @@
               <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg>Radiology and imaging services</li>
               <li><svg class="ic" aria-hidden="true"><use href="#i-check" /></svg>Guidance on preparation before tests</li>
             </ul>
-            <a class="btn dark" href="#contact">
-              Ask about a test
-              <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg>
-            </a>
+            <a class="btn dark" href="#contact">Ask about a test <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
           </div>
         </div>
       </section>
@@ -2124,10 +514,7 @@
             <h2>Not sure which department you need?</h2>
             <p>Call our reception and we will guide you to the right specialist.</p>
           </div>
-          <a class="btn big" href="tel:+914024342754">
-            <svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg>
-            040 2434 2754
-          </a>
+          <a class="btn big" href="tel:+914024342754"><svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg> 040 2434 2754</a>
         </div>
       </section>
     </div>
@@ -2149,21 +536,16 @@
 
       <section class="section tour-sec">
         <div class="wrap">
-          <div class="vt" id="vt" data-scenes='[{"id": "campus", "title": "Campus Exterior", "text": "Approach the hospital and see the main building and surroundings.", "local": "assets/tour/campus.jpg", "fallback": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=2400&q=80"}, {"id": "entrance", "title": "Main Entrance", "text": "The welcoming entrance, with easy access for patients and visitors.", "local": "assets/tour/entrance.jpg", "fallback": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=2400&q=80"}, {"id": "emergency", "title": "Emergency Wing", "text": "Open around the clock for urgent medical and trauma care.", "local": "assets/tour/emergency.jpg", "fallback": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=2400&q=80"}, {"id": "reception", "title": "Reception", "text": "Registration, enquiries and guidance from our front-desk team.", "local": "assets/tour/reception.jpg", "fallback": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2400&q=80"}, {"id": "corridor", "title": "Hospital Corridor", "text": "Clear, well-lit corridors connecting departments inside the building.", "local": "assets/tour/corridor.jpg", "fallback": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2400&q=80"}, {"id": "ward", "title": "Patient Ward", "text": "Calm, clean rooms where patients rest and recover.", "local": "assets/tour/ward.jpg", "fallback": "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=2400&q=80"}, {"id": "diagnostics", "title": "Radiology & Imaging", "text": "Diagnostic imaging that supports accurate treatment decisions.", "local": "assets/tour/diagnostics.jpg", "fallback": "https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=2400&q=80"}, {"id": "lab", "title": "Laboratory", "text": "Pathology and testing, on site for faster results.", "local": "assets/tour/lab.jpg", "fallback": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=2400&q=80"}]'>
+          <div class="vt" id="vt" data-scenes='[{"id":"campus","title":"Campus Exterior","text":"Approach the hospital and see the main building and surroundings.","local":"assets/tour/campus.jpg","fallback":"https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=2400&q=80"},{"id":"entrance","title":"Main Entrance","text":"The welcoming entrance, with easy access for patients and visitors.","local":"assets/tour/entrance.jpg","fallback":"https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=2400&q=80"},{"id":"emergency","title":"Emergency Wing","text":"Open around the clock for urgent medical and trauma care.","local":"assets/tour/emergency.jpg","fallback":"https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=2400&q=80"},{"id":"reception","title":"Reception","text":"Registration, enquiries and guidance from our front-desk team.","local":"assets/tour/reception.jpg","fallback":"https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2400&q=80"},{"id":"corridor","title":"Hospital Corridor","text":"Clear, well-lit corridors connecting departments inside the building.","local":"assets/tour/corridor.jpg","fallback":"https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2400&q=80"},{"id":"ward","title":"Patient Ward","text":"Calm, clean rooms where patients rest and recover.","local":"assets/tour/ward.jpg","fallback":"https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=2400&q=80"},{"id":"diagnostics","title":"Radiology & Imaging","text":"Diagnostic imaging that supports accurate treatment decisions.","local":"assets/tour/diagnostics.jpg","fallback":"https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=2400&q=80"},{"id":"lab","title":"Laboratory","text":"Pathology and testing, on site for faster results.","local":"assets/tour/lab.jpg","fallback":"https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=2400&q=80"}]'>
 
             <div class="vt-stage" id="vtStage" tabindex="0" aria-label="Interactive virtual tour. Drag or use arrow keys to look around.">
-              <div class="vt-pan" id="vtPan">
-                <img id="vtImg" alt="" draggable="false">
-              </div>
+              <div class="vt-pan" id="vtPan"><img id="vtImg" alt="" draggable="false"></div>
               <div class="vt-scan"></div>
               <div class="vt-vignette"></div>
 
               <div class="vt-hud">
                 <span class="vt-count" id="vtCount">01 / 08</span>
-                <span class="vt-hint">
-                  <svg class="ic" aria-hidden="true"><use href="#i-play" /></svg>
-                  Drag to look around
-                </span>
+                <span class="vt-hint"><svg class="ic" aria-hidden="true"><use href="#i-play" /></svg> Drag to look around</span>
               </div>
 
               <div class="vt-cap">
@@ -2172,22 +554,12 @@
                 <p id="vtText"></p>
               </div>
 
-              <button class="vt-nav prev" id="vtPrev" aria-label="Previous area">
-                <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg>
-              </button>
-              <button class="vt-nav next" id="vtNext" aria-label="Next area">
-                <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg>
-              </button>
+              <button class="vt-nav prev" id="vtPrev" aria-label="Previous area"><svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+              <button class="vt-nav next" id="vtNext" aria-label="Next area"><svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></button>
 
               <div class="vt-tools">
-                <button id="vtPlay" aria-pressed="false">
-                  <svg class="ic" aria-hidden="true"><use href="#i-play" /></svg>
-                  <span>Auto tour</span>
-                </button>
-                <button id="vtFs">
-                  <svg class="ic" aria-hidden="true"><use href="#i-scan" /></svg>
-                  <span>Full screen</span>
-                </button>
+                <button id="vtPlay" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-play" /></svg><span>Auto tour</span></button>
+                <button id="vtFs"><svg class="ic" aria-hidden="true"><use href="#i-scan" /></svg><span>Full screen</span></button>
               </div>
 
               <div class="vt-progress"><i id="vtBar"></i></div>
@@ -2241,10 +613,7 @@
             <h2>Ready to visit?</h2>
             <p>Get directions or speak to our team.</p>
           </div>
-          <a class="btn big" href="#contact">
-            Contact &amp; directions
-            <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg>
-          </a>
+          <a class="btn big" href="#contact">Contact &amp; directions <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
         </div>
       </section>
     </div>
@@ -2305,19 +674,17 @@
               <p>A team of resident doctors who provide round-the-clock clinical cover across shifts.</p>
             </article>
             <article class="card person slide-up">
-              <div class="avatar alt"><svg class="ic" aria-hidden="true"><use href="#i-building" /></svg></div>
+              <div class="avatar"><svg class="ic" aria-hidden="true"><use href="#i-building" /></svg></div>
               <span class="tag">Official listing</span>
               <h3>Current leadership</h3>
               <p>For the latest staff listings and roles, visit the official hospital website.</p>
-              <a class="textlink" href="https://owaisihospital.com/" target="_blank" rel="noopener">
-                Official website
-                <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg>
-              </a>
+              <a class="textlink" href="https://owaisihospital.com/" target="_blank" rel="noopener">Official website <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg></a>
             </article>
           </div>
         </div>
       </section>
     </div>
+
     <!-- ====================== CONTACT ====================== -->
     <div class="page" id="contact" data-title="Contact" hidden>
 
@@ -2342,36 +709,23 @@
 
             <div class="contact-line">
               <span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-pin" /></svg></span>
-              <div>
-                <strong>Address</strong>
-                <p>DMRL Cross Roads, Kanchan Bagh,<br>Near Santosh Nagar, Hyderabad,<br>Telangana 500058, India</p>
-              </div>
+              <div><strong>Address</strong><p>DMRL Cross Roads, Kanchan Bagh,<br>Near Santosh Nagar, Hyderabad,<br>Telangana 500058, India</p></div>
             </div>
             <div class="contact-line">
               <span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg></span>
-              <div>
-                <strong>Emergency (24 hours)</strong>
-                <p><a href="tel:+914024349999">040 2434 9999</a></p>
-              </div>
+              <div><strong>Emergency (24 hours)</strong><p><a href="tel:+914024349999">040 2434 9999</a></p></div>
             </div>
             <div class="contact-line">
               <span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg></span>
-              <div>
-                <strong>Reception</strong>
-                <p><a href="tel:+914024342754">040 2434 2754</a></p>
-              </div>
+              <div><strong>Reception</strong><p><a href="tel:+914024342754">040 2434 2754</a></p></div>
             </div>
             <div class="contact-line">
               <span class="ci"><svg class="ic" aria-hidden="true"><use href="#i-mail" /></svg></span>
-              <div>
-                <strong>Email</strong>
-                <p><a href="mailto:info@owaisihospital.com">info@owaisihospital.com</a></p>
-              </div>
+              <div><strong>Email</strong><p><a href="mailto:info@owaisihospital.com">info@owaisihospital.com</a></p></div>
             </div>
 
             <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Owaisi+Hospital+DMRL+Cross+Roads+Hyderabad" target="_blank" rel="noopener">
-              Get directions
-              <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg>
+              Get directions <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg>
             </a>
           </div>
 
@@ -2399,10 +753,7 @@
                   <textarea id="message" name="message" required placeholder="Tell us what you need"></textarea>
                 </div>
                 <div class="field full">
-                  <button class="btn dark" type="submit">
-                    Send enquiry
-                    <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg>
-                  </button>
+                  <button class="btn dark" type="submit">Send enquiry <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></button>
                   <p id="form-note" class="form-note" aria-live="polite"></p>
                 </div>
               </div>
@@ -2430,517 +781,42 @@
   </main>
 
   <!-- FOOTER -->
-<footer class="footer">
-  <div class="wrap">
+  <footer class="footer">
+    <div class="wrap">
 
-    <a class="footer-logo" href="#home" aria-label="Owaisi Hospital home">
-      <img src="./assets/owaisi-logo2.webp" alt="Owaisi Group of Hospitals logo">
-    </a>
+      <a class="footer-logo" href="#home" aria-label="Owaisi Hospital home">
+        <img src="./assets/owaisi-logo2.webp" alt="Owaisi Group of Hospitals logo">
+      </a>
 
-    <div class="footergrid">
-      <div class="footer-contact">
-        <h4>Contact</h4>
-        <p>DMRL Cross Roads, Kanchan Bagh, Near Santosh Nagar,<br>Hyderabad, Telangana 500058</p>
-        <p>
-          <a href="tel:+914024349999">Emergency: 040 2434 9999</a> ·
-          <a href="tel:+914024342754">Reception: 040 2434 2754</a><br>
-          <a href="mailto:info@owaisihospital.com">info@owaisihospital.com</a>
-        </p>
-      </div>
+      <div class="footergrid">
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>DMRL Cross Roads, Kanchan Bagh, Hyderabad 500058</p>
+          <p>
+            <a href="tel:+914024349999">Emergency: 040 2434 9999</a> ·
+            <a href="tel:+914024342754">Reception: 040 2434 2754</a><br>
+            <a href="mailto:info@owaisihospital.com">info@owaisihospital.com</a>
+          </p>
+        </div>
 
-      <div class="footer-visit">
-        <h4>Visit us</h4>
-        <a class="btn small" href="https://www.google.com/maps/search/?api=1&query=Owaisi+Hospital+DMRL+Cross+Roads+Hyderabad" target="_blank" rel="noopener">
-          Get directions
-          <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg>
-        </a>
-        <p style="margin-top:8px">
-          <a href="https://owaisihospital.com/" target="_blank" rel="noopener">
-            Official hospital website
-            <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg>
+        <div class="footer-visit">
+          <h4>Visit us</h4>
+          <a class="btn small" href="https://www.google.com/maps/search/?api=1&query=Owaisi+Hospital+DMRL+Cross+Roads+Hyderabad" target="_blank" rel="noopener">
+            Get directions <svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg>
           </a>
-        </p>
+        </div>
       </div>
+
+      <div class="footerbottom">© <span id="year">2026</span> Owaisi Hospital &amp; Research Centre. All rights reserved.</div>
+
     </div>
+  </footer>
 
-    <div class="footerbottom">
-      © <span id="year">2026</span> Owaisi Hospital &amp; Research Centre. All rights reserved.
-    </div>
+  <button class="to-top" aria-label="Back to top">
+    <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg>
+  </button>
 
-  </div>
-</footer>
-
-  <!-- MAIN SCRIPT -->
-  <script>
-    (function () {
-      'use strict';
-
-      var $ = function (s, c) {
-        return (c || document).querySelector(s);
-      };
-      var $$ = function (s, c) {
-        return Array.prototype.slice.call((c || document).querySelectorAll(s));
-      };
-
-      /* ---------- Footer year ---------- */
-      var yr = $('#year');
-      if (yr) yr.textContent = new Date().getFullYear();
-
-      /* ---------- Scroll progress bar + cursor glow ---------- */
-      var progress = document.createElement('div');
-      progress.className = 'progress';
-      document.body.appendChild(progress);
-
-      var glow = document.createElement('div');
-      glow.className = 'cursor-glow';
-      document.body.appendChild(glow);
-
-      if (window.matchMedia && window.matchMedia('(pointer:fine)').matches) {
-        document.addEventListener('mousemove', function (e) {
-          glow.style.left = e.clientX + 'px';
-          glow.style.top = e.clientY + 'px';
-          glow.style.opacity = '1';
-        });
-        document.addEventListener('mouseleave', function () {
-          glow.style.opacity = '0';
-        });
-      }
-
-      /* ---------- Header, progress, back-to-top ---------- */
-      var header = $('header');
-      var toTop = $('.to-top');
-
-      function onScroll() {
-        var y = window.pageYOffset || document.documentElement.scrollTop;
-        var h = document.documentElement.scrollHeight - window.innerHeight;
-        if (header) header.classList.toggle('scrolled', y > 30);
-        progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
-        if (toTop) toTop.classList.toggle('show', y > 500);
-      }
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-
-      if (toTop) {
-        toTop.addEventListener('click', function () {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
-
-      /* ---------- Mobile menu ---------- */
-      var toggle = $('.menu-toggle');
-      var nav = $('#navlinks');
-
-      if (toggle && nav) {
-        toggle.addEventListener('click', function () {
-          var open = nav.classList.toggle('open');
-          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-          toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
-        });
-
-        nav.addEventListener('click', function (e) {
-          if (e.target.closest('a') && nav.classList.contains('open')) toggle.click();
-        });
-      }
-
-      /* ---------- Scroll reveal animations ---------- */
-      var revealEls = $$('.slide-l,.slide-r,.slide-up,.reveal');
-
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) {
-            if (en.isIntersecting) {
-              en.target.classList.add('in');
-              io.unobserve(en.target);
-            }
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-        revealEls.forEach(function (el) {
-          io.observe(el);
-        });
-      } else {
-        revealEls.forEach(function (el) {
-          el.classList.add('in');
-        });
-      }
-
-      /* ---------- Number counters ---------- */
-      var counters = $$('[data-count]');
-
-      function runCounter(el) {
-        var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-        var suffix = el.getAttribute('data-suffix') || '';
-        var plain = el.getAttribute('data-plain') === '1';
-        var dur = 1400;
-        var start = null;
-
-        function step(ts) {
-          if (!start) start = ts;
-          var p = Math.min((ts - start) / dur, 1);
-          var eased = 1 - Math.pow(1 - p, 3);
-          var val = Math.round(target * eased);
-          el.textContent = (plain ? String(val) : val.toLocaleString('en-IN')) + suffix;
-          if (p < 1) requestAnimationFrame(step);
-        }
-
-        requestAnimationFrame(step);
-      }
-
-      if ('IntersectionObserver' in window) {
-        var cio = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) {
-            if (en.isIntersecting) {
-              runCounter(en.target);
-              cio.unobserve(en.target);
-            }
-          });
-        }, { threshold: 0.4 });
-
-        counters.forEach(function (c) {
-          cio.observe(c);
-        });
-      } else {
-        counters.forEach(function (c) {
-          var t = c.getAttribute('data-count');
-          c.textContent = t + (c.getAttribute('data-suffix') || '');
-        });
-      }
-
-      /* ---------- Card spotlight glow ---------- */
-      document.addEventListener('mousemove', function (e) {
-        var card = e.target.closest && e.target.closest('.card');
-        if (card) {
-          var r = card.getBoundingClientRect();
-          card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-          card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-        }
-      });
-
-      /* ---------- Hero slider ---------- */
-      var slides = $$('.hs');
-      var dots = $$('.hero-dots button');
-
-      if (slides.length > 1) {
-        var hi = 0;
-        var htimer;
-
-        var showSlide = function (i) {
-          hi = (i + slides.length) % slides.length;
-          slides.forEach(function (s, n) {
-            s.classList.toggle('active', n === hi);
-          });
-          dots.forEach(function (d, n) {
-            d.classList.toggle('active', n === hi);
-          });
-        };
-
-        var startHero = function () {
-          clearInterval(htimer);
-          htimer = setInterval(function () {
-            showSlide(hi + 1);
-          }, 6000);
-        };
-
-        dots.forEach(function (d, n) {
-          d.addEventListener('click', function () {
-            showSlide(n);
-            startHero();
-          });
-        });
-
-        startHero();
-      }
-
-      /* ---------- Enquiry form (opens email app) ---------- */
-      var form = $('#enquiry-form');
-      var note = $('#form-note');
-
-      if (form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-
-          var name = form.elements.name.value.trim();
-          var phone = form.elements.phone.value.trim();
-          var email = form.elements.email.value.trim();
-          var msg = form.elements.message.value.trim();
-
-          if (!name || !phone || !msg) {
-            note.textContent = 'Please fill in your name, phone number and message.';
-            return;
-          }
-
-          if ((phone.match(/\d/g) || []).length < 7) {
-            note.textContent = 'Please enter a valid phone number.';
-            return;
-          }
-
-          if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-            note.textContent = 'Please enter a valid email address or leave it blank.';
-            return;
-          }
-
-          var body = 'Name: ' + name + '\nPhone: ' + phone +
-            (email ? '\nEmail: ' + email : '') + '\n\nMessage:\n' + msg;
-
-          var url = 'mailto:info@owaisihospital.com?subject=' +
-            encodeURIComponent('Website enquiry from ' + name) +
-            '&body=' + encodeURIComponent(body);
-
-          note.textContent = 'Opening your email app… If nothing opens, please email info@owaisihospital.com directly.';
-          window.location.href = url;
-        });
-      }
-
-      /* ---------- Virtual tour ---------- */
-      var vt = $('#vt');
-
-      if (vt) {
-        var scenes = [];
-
-        try {
-          scenes = JSON.parse(vt.getAttribute('data-scenes'));
-        } catch (err) {
-          scenes = [];
-        }
-
-        var stage = $('#vtStage');
-        var pan = $('#vtPan');
-        var img = $('#vtImg');
-        var cap = $('.vt-cap', vt);
-        var vTitle = $('#vtTitle');
-        var vText = $('#vtText');
-        var vCount = $('#vtCount');
-        var bar = $('#vtBar');
-        var thumbs = $$('.thumb', vt);
-        var playBtn = $('#vtPlay');
-        var fsBtn = $('#vtFs');
-
-        var cur = 0;
-        var x = 0;
-        var minX = 0;
-        var playing = false;
-        var dragging = false;
-        var needCenter = true;
-        var startX = 0;
-        var startOff = 0;
-        var t0 = 0;
-        var dir = -1;
-        var token = 0;
-        var DUR = 7000;
-
-        var apply = function () {
-          pan.style.transform = 'translate3d(' + x + 'px,0,0)';
-        };
-
-        var bounds = function () {
-          var sw = stage.clientWidth;
-          var iw = img.clientWidth;
-          if (!sw || !iw) return;
-
-          minX = Math.min(0, sw - iw);
-          if (needCenter) {
-            x = minX / 2;
-            needCenter = false;
-          }
-          x = Math.max(minX, Math.min(0, x));
-          apply();
-        };
-
-        var go = function (i) {
-          if (!scenes.length) return;
-
-          cur = (i + scenes.length) % scenes.length;
-          var s = scenes[cur];
-          var my = ++token;
-
-          img.classList.remove('in');
-          img.alt = s.title;
-
-          img.onerror = function () {
-            img.onerror = null;
-            img.src = s.fallback;
-          };
-
-          img.onload = function () {
-            if (my !== token) return;
-            needCenter = true;
-            bounds();
-            requestAnimationFrame(function () {
-              img.classList.add('in');
-            });
-          };
-
-          img.src = s.local;
-
-          vTitle.textContent = s.title;
-          vText.textContent = s.text;
-          vCount.textContent =
-            String(cur + 1).padStart(2, '0') + ' / ' + String(scenes.length).padStart(2, '0');
-
-          cap.classList.remove('swap');
-          void cap.offsetWidth;
-          cap.classList.add('swap');
-
-          thumbs.forEach(function (t, n) {
-            t.classList.toggle('active', n === cur);
-          });
-
-          t0 = performance.now();
-          bar.style.width = '0%';
-        };
-
-        /* thumbnails */
-        thumbs.forEach(function (t, n) {
-          var s = scenes[n];
-          var ti = $('.thumb-img', t);
-
-          if (s && ti) {
-            ti.style.backgroundImage =
-              'url("' + s.local + '"),url("' + s.fallback.replace('w=2400', 'w=500') + '")';
-          }
-
-          t.addEventListener('click', function () {
-            go(n);
-          });
-        });
-
-        $('#vtPrev').addEventListener('click', function () {
-          go(cur - 1);
-        });
-
-        $('#vtNext').addEventListener('click', function () {
-          go(cur + 1);
-        });
-
-        /* drag to look around */
-        stage.addEventListener('pointerdown', function (e) {
-          if (e.target.closest('button')) return;
-          dragging = true;
-          startX = e.clientX;
-          startOff = x;
-          stage.classList.add('drag');
-          if (stage.setPointerCapture) stage.setPointerCapture(e.pointerId);
-        });
-
-        stage.addEventListener('pointermove', function (e) {
-          if (!dragging) return;
-          x = Math.max(minX, Math.min(0, startOff + (e.clientX - startX)));
-          apply();
-        });
-
-        var endDrag = function () {
-          dragging = false;
-          stage.classList.remove('drag');
-        };
-
-        stage.addEventListener('pointerup', endDrag);
-        stage.addEventListener('pointercancel', endDrag);
-
-        /* keyboard */
-        stage.addEventListener('keydown', function (e) {
-          if (e.key === 'ArrowLeft') {
-            x = Math.min(0, x + 80);
-            apply();
-            e.preventDefault();
-          }
-          if (e.key === 'ArrowRight') {
-            x = Math.max(minX, x - 80);
-            apply();
-            e.preventDefault();
-          }
-        });
-
-        /* auto tour */
-        playBtn.addEventListener('click', function () {
-          playing = !playing;
-          playBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
-          $('span', playBtn).textContent = playing ? 'Pause' : 'Auto tour';
-          t0 = performance.now();
-          if (!playing) bar.style.width = '0%';
-        });
-
-        /* full screen */
-        fsBtn.addEventListener('click', function () {
-          if (document.fullscreenElement) {
-            document.exitFullscreen();
-          } else if (stage.requestFullscreen) {
-            stage.requestFullscreen();
-          }
-        });
-
-        document.addEventListener('fullscreenchange', function () {
-          $('span', fsBtn).textContent = document.fullscreenElement ? 'Exit full screen' : 'Full screen';
-          setTimeout(bounds, 80);
-        });
-
-        /* animation loop */
-        var loop = function (now) {
-          if (!vt.offsetParent) {
-            t0 = now;
-          } else if (playing && !dragging) {
-            var p = (now - t0) / DUR;
-            bar.style.width = Math.min(100, p * 100) + '%';
-
-            if (p >= 1) {
-              go(cur + 1);
-            } else if (minX < 0) {
-              x += dir * 0.3;
-              if (x <= minX) {
-                x = minX;
-                dir = 1;
-              }
-              if (x >= 0) {
-                x = 0;
-                dir = -1;
-              }
-              apply();
-            }
-          }
-          requestAnimationFrame(loop);
-        };
-
-        window.addEventListener('resize', bounds);
-        go(0);
-        requestAnimationFrame(loop);
-      }
-    })();
-  </script>
-
-  <!-- SINGLE-PAGE ROUTER -->
-  <script>
-    (function () {
-      var pages = [].slice.call(document.querySelectorAll('.page'));
-      var links = [].slice.call(document.querySelectorAll('#navlinks a[href^="#"]'));
-      var base = 'Owaisi Hospital & Research Centre';
-
-      function show() {
-        var id = location.hash.slice(1);
-        if (id === 'main' || id === 'top') return;
-        if (!pages.some(function (p) { return p.id === id })) id = 'home';
-
-        pages.forEach(function (p) { p.hidden = (p.id !== id) });
-
-        links.forEach(function (a) {
-          var on = a.getAttribute('href') === '#' + id;
-          a.classList.toggle('active', on);
-          if (on) a.setAttribute('aria-current', 'page');
-          else a.removeAttribute('aria-current');
-        });
-
-        document.title = document.getElementById(id).dataset.title + ' | ' + base;
-
-        var t = document.querySelector('.menu-toggle');
-        if (t && t.getAttribute('aria-expanded') === 'true') t.click();
-
-        window.scrollTo(0, 0);
-        setTimeout(function () { window.dispatchEvent(new Event('resize')) }, 60);
-      }
-
-      window.addEventListener('hashchange', show);
-      show();
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
