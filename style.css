@@ -78,22 +78,29 @@ header {
 header.scrolled { background: rgba(4, 20, 15, .94); box-shadow: 0 10px 40px rgba(0, 0, 0, .35); }
 
 .nav {
-  min-height: 58px;
+  min-height: 68px;
   display: flex; align-items: center; justify-content: space-between;
   gap: 18px; transition: min-height .3s;
 }
-header.scrolled .nav { min-height: 50px; }
+header.scrolled .nav { min-height: 58px; }
 
 .brand { display: flex; align-items: center; gap: 12px; flex: none; }
 
 .brand-logo {
-  height: 40px; width: auto; max-width: none; display: block;
-  background: #fff; padding: 3px 10px;
-  border-radius: 10px; border: 1px solid var(--gold);
+  height: 54px;
+  width: auto;
+  max-width: none;
+  display: block;
+  background: none;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 6px rgba(255, 255, 255, .55));
   transition: height .3s, transform .3s var(--ease);
 }
 .brand:hover .brand-logo { transform: scale(1.04); }
-header.scrolled .brand-logo { height: 34px; }
+header.scrolled .brand-logo { height: 46px; 
+}
 
 .navlinks { display: flex; align-items: center; gap: 4px; font-size: .88rem; }
 .navlinks a {
@@ -771,7 +778,7 @@ header.scrolled .brand-logo { height: 34px; }
 
 @media (max-width: 520px) {
   .topline .tl-r a:first-child { font-size: .72rem; }
-  .brand-logo { height: 32px; padding: 3px 8px; }
+  .brand-logo { height: 40px; padding: 3px 8px; }
   .hero h1 { font-size: 2.2rem; }
   .grid.cols-4 { grid-template-columns: 1fr 1fr; }
   .stat-card strong { font-size: 2.2rem; }
