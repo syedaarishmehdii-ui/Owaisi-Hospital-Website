@@ -87,14 +87,8 @@ header.scrolled .nav { min-height: 64px; }
 .brand { display: flex; align-items: center; gap: 12px; flex: none; }
 
 .brand-logo {
-  height: 62px;
-  width: auto;
-  max-width: none;
-  display: block;
-  background: none;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
+  height: 62px; width: auto; max-width: none; display: block;
+  background: none; padding: 0; border: 0; border-radius: 0;
   filter:
     brightness(1.12) contrast(1.25) saturate(1.3)
     drop-shadow(0 0 1px #fff)
@@ -223,6 +217,8 @@ header.scrolled .brand-logo { height: 52px; }
   background: linear-gradient(100deg, var(--gold2), var(--cyan));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
+/* second hero line: slightly smaller */
+.hero-sub { display: block; font-size: .78em; margin-top: 8px; line-height: 1.2; padding-bottom: .08em; }
 .hero p { max-width: 580px; color: #d9e6df; line-height: 1.8; font-size: 1.04rem; }
 
 .actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 28px 0; }
@@ -515,19 +511,7 @@ header.scrolled .brand-logo { height: 52px; }
 }
 .tag.gold { background: rgba(224, 194, 116, .2); color: var(--gold2); border: 1px solid var(--line); }
 
-.person { text-align: left; }
-.avatar {
-  width: 68px; height: 68px; border-radius: 50%;
-  display: grid; place-items: center;
-  background: linear-gradient(135deg, var(--green3), var(--green));
-  color: var(--gold2); font: 600 1.3rem 'Playfair Display', serif;
-  margin-bottom: 18px; border: 2px solid var(--gold);
-  box-shadow: 0 0 0 6px rgba(224, 194, 116, .12);
-}
-.avatar .ic { width: 28px; height: 28px; }
-.person h3 { margin-top: 14px; }
-
-/* ---------- department page ---------- */
+/* ---------- specialty page ---------- */
 .dept-top { display: grid; grid-template-columns: 1.2fr .8fr; gap: 44px; align-items: start; margin-bottom: 52px; }
 .dept-top.no-photo { grid-template-columns: 1fr; }
 .dept-top h2 { font: 600 clamp(1.8rem, 3vw, 2.6rem) 'Playfair Display', serif; margin: 8px 0 16px; }
@@ -547,10 +531,12 @@ header.scrolled .brand-logo { height: 52px; }
 }
 .dept-services li { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #dfe8e1; line-height: 1.6; font-size: .95rem; }
 .dept-services li:before { content: '»'; color: var(--gold); font-weight: 700; flex: none; }
+.dept-note { font-size: .85rem; color: var(--muted); margin-top: 22px; }
 
-/* doctors: golden frames */
+/* ---------- doctors: golden frames ---------- */
 .doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 28px; }
 .doc-card {
+  display: block; color: inherit;
   background: #fff; border: 2px solid var(--gold); border-radius: 18px;
   padding: 10px 10px 0; text-align: center; overflow: hidden;
   box-shadow: 0 0 0 5px rgba(224, 194, 116, .18), 0 16px 40px rgba(6, 47, 39, .12);
@@ -570,7 +556,44 @@ header.scrolled .brand-logo { height: 52px; }
   margin-top: 10px; padding: 14px 6px 16px; border-top: 3px solid var(--gold);
   font: 600 1.02rem 'Playfair Display', serif; color: var(--ink);
 }
-.dept-note { font-size: .85rem; color: var(--muted); margin-top: 22px; }
+.doc-role { display: block; margin-top: 4px; font: 500 .78rem 'Inter', sans-serif; color: var(--muted); }
+
+.mgmt-dept { margin-bottom: 48px; }
+.mgmt-dept:last-child { margin-bottom: 0; }
+.mgmt-dept h3 {
+  font: 600 1.5rem 'Playfair Display', serif; margin: 0 0 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.mgmt-dept h3:after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
+.mgmt-dept h3 a:hover { color: var(--green3); }
+
+/* ---------- doctor profile ---------- */
+.dr-top { display: grid; grid-template-columns: 320px 1fr; gap: 44px; align-items: start; margin-bottom: 52px; }
+.dr-photo, .dr-photo:hover { max-width: 320px; transform: none; }
+.dr-top h2 { font: 600 clamp(1.8rem, 3vw, 2.6rem) 'Playfair Display', serif; margin: 12px 0 6px; }
+.dr-facts { list-style: none; padding: 0; margin: 18px 0 8px; }
+.dr-facts li { display: flex; gap: 14px; padding: 11px 0; border-bottom: 1px solid #dfe8e1; line-height: 1.6; }
+.dr-facts b { min-width: 130px; color: var(--green3); flex: none; }
+.dr-facts a { color: var(--green3); font-weight: 600; }
+.dr-sec { margin-top: 22px; }
+.dr-sec h3 { font: 600 1.25rem 'Playfair Display', serif; margin: 0 0 8px; color: var(--ink); }
+.dr-sec ul { margin: 0; padding-left: 20px; }
+.dr-sec li { color: var(--muted); line-height: 1.7; font-size: .93rem; margin-bottom: 4px; }
+.dr-sec li::marker { color: var(--gold); }
+.dr-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+
+/* ---------- photo checklist ---------- */
+.photo-sum { font-weight: 700; color: var(--green3); }
+.photo-list { display: grid; gap: 6px; margin-top: 14px; }
+.photo-row {
+  display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center;
+  padding: 10px 14px; border-radius: 10px; background: #fff; border: 1px solid #e3ebe5;
+}
+.photo-row .pr-name { font-weight: 700; min-width: 240px; }
+.photo-row code { color: var(--muted); font-size: .82rem; flex: 1; }
+.photo-row .pr-st { font-weight: 700; font-size: .82rem; color: #b45309; }
+.photo-row.ok { border-color: var(--green3); }
+.photo-row.ok .pr-st { color: var(--green3); }
 
 /* ---------- contact ---------- */
 .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 26px; }
@@ -730,9 +753,7 @@ header.scrolled .brand-logo { height: 52px; }
   background: #020d09; color: #fff;
   padding: 18px 0 8px; border-top: 1px solid var(--line);
 }
-.footer-logo {
-  display: block; width: 64px; height: 64px; margin: 0 auto 12px;
-}
+.footer-logo { display: block; width: 64px; height: 64px; margin: 0 auto 12px; }
 .footer-logo img {
   width: 100%; height: 100%; object-fit: contain; display: block;
   border-radius: 50%; filter: drop-shadow(0 0 14px rgba(224, 194, 116, .35));
@@ -827,7 +848,9 @@ header.scrolled .brand-logo { height: 52px; }
   .js .slide-r { transform: translateX(40px); }
   .footergrid { flex-direction: column; align-items: center; text-align: center; }
   .footer-visit { text-align: center; }
-  .dept-top { grid-template-columns: 1fr; }
+  .dept-top, .dr-top { grid-template-columns: 1fr; }
+  .dr-photo { margin: 0 auto; }
+  .dr-facts li { flex-direction: column; gap: 2px; }
   .dept-services { grid-template-columns: 1fr; }
   .doc-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
 }
