@@ -614,18 +614,18 @@
      If the same name is also in a specialty, it is the SAME profile.
      ===================================================== */
   var MGMT = [
-    { name: "Dr. Col. G.K.N. Prasad", role: "Chief Administrator" },
-    { name: "Dr. Syeda Amtul Yafe", role: "Assistant Administrator" },
-    { name: "Dr. Ashfaq Hassan" },
-    { name: "Dr. M. A. Majid Adil" },
+    { name: "Dr. Col. G.K.N. Prasad", role: "Chief Administrator DCMS & AI" },
+    { name: "Dr. Syeda Amtul Yafe", role: "Assistant Administrator, DCMS & AI, Head Central Store & Purchase, Head HR & Professor MHM" },
+    { name: "Dr. Ashfaq Hassan", role:"Principal, DCMS"},
+    { name: "Dr. M. A. Majid Adil", role:"Vice Principal, DCMS" },
     { name: "Dr. C. Sham Sunder", role: "Medical Superintendent" },
     { name: "Dr. Mohammed Zoheb", role: "Additional Medical Superintendent" },
-    { name: "Dr. Abdul Rafeek" },
-    { name: "Dr. Syad Asrar Hussain" },
-    { name: "Dr. Mohd. Asraruddin" },
-    { name: "Dr. Maheshwar Singh. T" },
-    { name: "Dr. Syad Riyaz Ahmed" },
-    { name: "Dr. MD. Irfan Aziz" }
+    { name: "Dr. Abdul Rafeek", role: "Morning RMO" },
+    { name: "Dr. Syad Asrar Hussain", role: "Evening & Night RMO" },
+    { name: "Dr. Mohd. Asraruddin", role: "Evening & Night RMO" },
+    { name: "Dr. Maheshwar Singh. T" , role: "Evening & Night RMO, Diploma Anaesthesia" },
+    { name: "Dr. Syad Riyaz Ahmed", role: "Evening & Night RMO" },
+    { name: "Dr. MD. Irfan Aziz", role: "Evening & Night RMO" }
   ];
 
   /* =====================================================
@@ -1641,7 +1641,7 @@ function photoBase(name) {
 
     var detail = dList('Education', info.edu) + dList('Skills', info.skills) +
       dList('Awards', info.awards) + dList('Publications', info.pubs);
-    if (!detail) detail = '<p class="dept-about" style="margin-top:20px">Detailed profile coming soon. Please call reception to confirm this doctor\'s timings and availability.</p>';
+    if (!detail) detail = '<p class="dept-about" style="margin-top:20px">Please call reception to confirm this doctor\'s timings and availability.<strong>"Primary Contact / Reception: +91 40 2434 9999".</strong></p>';
 
     var official = info.url
       ? '<a class="btn dark" href="' + info.url + '" target="_blank" rel="noopener">Official profile ' +
