@@ -205,13 +205,170 @@
     /* ===== ADD / EDIT YOUR TOUR PHOTOS HERE =====
        One line per photo. Upload images to assets/tour/
        "fallback" is optional (shown only if your photo is missing). */
-    var scenes = [
-      { title: 'Campus Exterior', text: 'Approach the hospital and see the main building.',  local: 'assets/tour/campus.jpg',    fallback: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=2400&q=80' },
-      { title: 'Main Entrance',   text: 'The welcoming entrance for patients and visitors.', local: 'assets/tour/entrance.jpg',  fallback: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=2400&q=80' },
-      { title: 'Emergency Wing',  text: 'Open around the clock for urgent care.',            local: 'assets/tour/emergency.jpg', fallback: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=2400&q=80' },
-      { title: 'Reception',       text: 'Registration and guidance from our front desk.',    local: 'assets/tour/reception.jpg', fallback: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2400&q=80' },
-      { title: 'Patient Ward',    text: 'Calm, clean rooms where patients recover.',         local: 'assets/tour/ward.jpg',      fallback: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=2400&q=80' }
-    ];
+   var scenes = [
+
+  // 01 — ARRIVAL
+  {
+    title: 'Hospital Campus',
+    text: 'Begin your journey at Owaisi Hospital & Research Centre, a centre dedicated to healthcare and medical service.',
+    local: 'assets/owsbuildingdroneshot.webp'
+  },
+
+  // 02 — CAMPUS OVERVIEW
+  {
+    title: 'Campus Overview',
+    text: 'Discover the hospital campus and its surrounding facilities.',
+    local: 'assets/owsbuldingview.png'
+  },
+
+  // 03 — HOSPITAL EXTERIOR
+  {
+    title: 'Hospital Front View',
+    text: 'Explore the exterior of Owaisi Hospital & Research Centre.',
+    local: 'assets/owsfrontview.png'
+  },
+
+  // 04 — NIGHT VIEW
+  {
+    title: 'Hospital Illuminated',
+    text: 'A view of the hospital building after dark.',
+    local: 'assets/owsbuildinightview.webp'
+  },
+
+  // 05 — PARKING
+  {
+    title: 'Hospital Parking',
+    text: 'Parking facilities for patients and visitors.',
+    local: 'assets/owsparking.webp'
+  },
+
+  // 06 — MAIN ENTRANCE
+  {
+    title: 'Main Entrance',
+    text: 'Enter the hospital through its main entrance.',
+    local: 'assets/owsenterance.webp'
+  },
+
+  // 07 — RECEPTION
+  {
+    title: 'Reception & Registration',
+    text: 'Find assistance, registration and visitor guidance at the reception.',
+    local: 'assets/owsreception.webp'
+  },
+
+  // 08 — HOSPITAL CORRIDOR
+  {
+    title: 'Hospital Corridor',
+    text: 'Explore the corridors connecting hospital departments and patient facilities.',
+    local: 'assets/owscorridor.webp'
+  },
+
+  // 09 — HALLWAY
+  {
+    title: 'Interior Hallway',
+    text: 'A look inside the hospital’s interior passageways.',
+    local: 'assets/owshallway.webp'
+  },
+
+  // 10 — EMERGENCY
+  {
+    title: 'Emergency & Trauma Care',
+    text: 'Explore the emergency care facility for urgent medical attention.',
+    local: 'assets/owsemergencyward.png'
+  },
+
+  // 11 — CT SCAN
+  {
+    title: 'CT Scan & Imaging Unit',
+    text: 'Advanced computed tomography imaging for detailed diagnostic evaluation.',
+    local: 'assets/owsctscanroom.webp'
+  },
+
+  // 12 — MRI
+  {
+    title: 'MRI Imaging Unit',
+    text: 'Explore the MRI facility for detailed medical imaging.',
+    local: 'assets/owsmriscanroom.webp'
+  },
+
+  // 13 — DIAGNOSTIC LABORATORY
+  {
+    title: 'Diagnostic Laboratory',
+    text: 'Laboratory services supporting medical diagnosis and patient care.',
+    local: 'assets/owslab.webp'
+  },
+
+  // 14 — BLOOD TESTING
+  {
+    title: 'Blood Testing Laboratory',
+    text: 'Explore laboratory facilities for blood testing and diagnostic investigations.',
+    local: 'assets/owsbloodtestlab.webp'
+  },
+
+  // 15 — CRITICAL CARE
+  {
+    title: 'Critical Care Unit',
+    text: 'Dedicated facilities for patients requiring intensive monitoring and care.',
+    local: 'assets/owscriticialcareunit.webp'
+  },
+
+  // 16 — OPERATION THEATRE
+  {
+    title: 'Operation Theatre',
+    text: 'A look inside the hospital’s surgical environment.',
+    local: 'assets/owsoperationtheatre.webp'
+  },
+
+  // 17 — ADVANCED SURGICAL FACILITY
+  {
+    title: 'Surgical Care Facility',
+    text: 'Explore another view of the hospital’s operation theatre.',
+    local: 'assets/owsoperationtheatre2.webp'
+  },
+
+  // 18 — PATIENT WARD
+  {
+    title: 'Patient Ward',
+    text: 'Discover patient accommodation and recovery facilities.',
+    local: 'assets/owspatientward.jpeg'
+  },
+
+  // 19 — PATIENT WARD (ADDITIONAL VIEW)
+  {
+    title: 'Inpatient Care',
+    text: 'A closer look at the hospital’s inpatient care environment.',
+    local: 'assets/owspaitientward.webp'
+  },
+
+  // 20 — PHARMACY
+  {
+    title: 'Hospital Pharmacy',
+    text: 'Explore the hospital pharmacy and medication services.',
+    local: 'assets/owspharmacy.webp'
+  },
+
+  // 21 — BILLING
+  {
+    title: 'Billing & Cash Counter',
+    text: 'Patient billing and payment assistance.',
+    local: 'assets/owsbillingcashcounter.webp'
+  },
+
+  // 22 — CANTEEN
+  {
+    title: 'Hospital Canteen',
+    text: 'Discover the hospital’s food and refreshment facilities.',
+    local: 'assets/owscanteenmenu.png'
+  },
+
+  // 23 — CAMPUS MART
+  {
+    title: 'Campus Mart',
+    text: 'Explore the campus convenience store.',
+    local: 'assets/owscampusmart.webp'
+  }
+
+];
 
     var stage = $('#vtStage');
     var pan = $('#vtPan');
