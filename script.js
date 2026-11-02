@@ -404,7 +404,7 @@
   }
 
   /* =====================================================
-     DEPARTMENTS DATA
+     SPECIALTIES DATA
      To add a doctor: add the name to "doctors".
      To add a service: add a line to "services".
      Keep a comma between items.
@@ -469,7 +469,7 @@
         "The department plays a major role in the TB eradication programmes in the country by working closely with organizations such as TB-ALERT India, Joint Effort towards Elimination of Tuberculosis (JEET) and Tuberculosis Health Action Learning Initiative (THALI). It has also collaborated with the Chest Research Foundation (CRF) at Pune in two major clinical projects, EMBARC and TOPO. It has also done significant social work in active TB surveillance in old-age homes and orphanages."
       ],
       services: ["Thoracoscopy", "Bronchoscopy", "CT guided lung biopsy", "Ultrasound guided lung biopsy", "ICT", "Pleural tap", "Thoracocentesis", "Pleurodesis", "Smoking cessation clinic", "Sleep clinic", "PFT", "DLCO"],
-      doctors: ["Dr. Ashfaq Hasan", "Dr. Fahad Abdullah"]
+      doctors: ["Dr. Ashfaq Hassan", "Dr. Fahad Abdullah"]
     },
     urology: {
       icon: "🩸", name: "Urology",
@@ -479,7 +479,7 @@
         "Our results in urolithiasis (urinary stone surgeries) are commendable, with excellent clearance rates in PCNL for staghorn stones and large stones in the urinary tract. We work with patients to develop individualized treatment plans that include both medical and surgical approaches to a wide range of urological problems. We provide holistic care to patients for the best possible results and satisfaction. The department is well equipped to perform endoscopic as well as open surgeries: cystoscopies, nephrectomies, ileal conduit procedures and more. We perform both endourological, laparoscopic and open urological cancer procedures on a regular basis."
       ],
       services: ["Endourological procedures", "Laparoscopic and open urological cancer procedures", "PCNL for staghorn stones and large stones in the urinary tract", "Urinary disorders of the male and female urinary tracts", "Conditions of the male genital tract or reproductive system", "Paediatric urology (hypospadias surgeries, surgeries for reflux, undescended testes)", "Endoscopic and open surgeries", "Cystoscopies, nephrectomies, ileal conduit procedures"],
-      doctors: ["Dr. Mohammed Abdul Majid Adil", "Dr. B. Sourabh Chandra Reddy"]
+      doctors: ["Dr. M. A. Majid Adil", "Dr. B. Sourabh Chandra Reddy"]
     },
     general: {
       icon: "🩺", name: "General Medicine",
@@ -517,7 +517,7 @@
         "The department offers advanced biologic treatments such as Rituximab and Secukinumab for threatening diseases like Pemphigus and Psoriasis, and is equipped with cosmetic and dermato-surgical equipment. It provides all types of diagnostic and therapeutic procedures including skin biopsy, patch testing, Wood's lamp, laser hair reduction, QS-ND YAG laser pigment and tattoo removal, CO2 laser, radiofrequency, electrocautery, cryosurgery, whole body / hand-foot phototherapy (both NBUVB & PUVA), microdermabrasion, dermaroller, chemical peels, pigmentation treatment, comedone extraction, acne surgery, vitiligo surgery, nail surgery, mole removal, wart removal, keloid treatment, hair growth treatment with PRP (platelet rich plasma), intralesional therapies, iontophoresis and chemical cautery. The department also offers undergraduate education for students and postgraduate MD degree course in DVL."
       ],
       services: ["Advanced biologic treatments like Rituximab and Secukinumab for Pemphigus and Psoriasis, cosmetic and dermato-surgical equipment", "Diagnostic and therapeutic procedures, including skin biopsy, patch testing, Wood's lamp, laser hair reduction, QS-ND YAG laser pigment", "Tattoo removal, CO2 laser, radiofrequency, electrocautery, cryosurgery, whole body / hand-foot phototherapy (both NBUVB & PUVA)", "Microdermabrasion, dermaroller, chemical peels, pigmentation treatment, comedone extraction", "Acne surgery, vitiligo surgery, nail surgery, mole removal, wart removal, keloid treatment, hair growth treatment with PRP (platelet rich plasma)", "Intralesional therapies, iontophoresis, chemical cautery"],
-      doctors: ["Dr. Nayeem Sadath Hane", "Dr. Fatima Razvi", "Dr. P. Arun Raghav", "Dr. Ruhi Haqqani", "Dr. Fatima Ummul Hasnaat"]
+      doctors: ["Dr. Nayeem Sadath Haneef", "Dr. Fatima Razvi", "Dr. P. Arun Raghav", "Dr. Ruhi Haqqani", "Dr. Fatima Ummul Hasnaat"]
     },
     dentistry: {
       icon: "🦷", name: "Dentistry",
@@ -608,12 +608,161 @@
     }
   };
 
+  /* =====================================================
+     MANAGEMENT PEOPLE
+     Add/edit here. "role" is optional.
+     If the same name is also in a specialty, it is the SAME profile.
+     ===================================================== */
+  var MGMT = [
+    { name: "Dr. Col. G.K.N. Prasad", role: "Chief Administrator" },
+    { name: "Dr. Syeda Amtul Yafe", role: "Assistant Administrator" },
+    { name: "Dr. Ashfaq Hassan" },
+    { name: "Dr. M. A. Majid Adil" },
+    { name: "Dr. C. Sham Sunder", role: "Medical Superintendent" },
+    { name: "Dr. Mohammed Zoheb", role: "Additional Medical Superintendent" },
+    { name: "Dr. Abdul Rafeek" },
+    { name: "Dr. Syad Asrar Hussain" },
+    { name: "Dr. Mohd. Asraruddin" },
+    { name: "Dr. Maheshwar Singh. T" },
+    { name: "Dr. Syad Riyaz Ahmed" },
+    { name: "Dr. MD. Irfan Aziz" }
+  ];
+
+  /* =====================================================
+     DOCTOR DETAILS (optional, one entry per person)
+     Key = name without "Dr.", lowercase, hyphens
+       e.g. "Dr. Fatima Razvi" -> 'fatima-razvi'
+     Fields (all optional): role, exp, url, photo, edu[], skills[], awards[], pubs[]
+     "photo" = file name (no extension) inside assets/doctors/ if it differs from the key.
+     Copy details only from the hospital's own pages.
+     Open yoursite/#photos to see every expected photo file name.
+     ===================================================== */
+  var DOCTORS = {
+    'susheel-kumar': { role: 'Associate Professor & Incharge, Accident and Emergency', exp: '10 years',
+      edu: ['MBBS - Taishan Medical University', 'DEM - National Board of Examinations', 'IDCCM - Indian Society of Critical Care', 'Diploma in Diabetology - Indian Medical Association'],
+      skills: ['BLS - Basic Life Support', 'ACLS - Advanced Cardiac Life Support'] },
+    'mohd-saleem': { role: 'Associate Professor, Accident and Emergency', exp: '24 years',
+      edu: ['MBBS - Kurnool Medical College (NTR University of Health Sciences, Vijayawada)', 'DEM - Diploma in Emergency Medicine'],
+      skills: ['BLS - Basic Life Support', 'ACLS - Advanced Cardiac Life Support'] },
+    'sushma': { role: 'Assistant Professor, Accident and Emergency', exp: '24 years',
+      edu: ['MBBS - Vydehi Institute of Medical Sciences', 'MEM - Masters in Emergency Medicine'],
+      skills: ['BLS - Basic Life Support', 'ACLS - Advanced Cardiac Life Support'] },
+    'karreh-ashwini': { role: 'Assistant Professor, Accident and Emergency', exp: '10 years',
+      edu: ['MBBS - Kathmandu Medical University', 'DEM - Diploma in Emergency', 'UKMEM - Masters in Emergency Medicine', 'MRCEM - Membership of Royal College of Emergency Medicine, UK'],
+      skills: ['BLS', 'ACLS', 'ATLS - Advanced Trauma Life Support', 'PALS - Pediatric Advanced Life Support', 'BDLS - Basic Disaster Life Support', 'ALSO - Advanced Life Support in Obstetrics'] },
+
+    'habib-pathan': { role: 'HOD, Paediatrics', exp: '24 years',
+      edu: ['MBBS - Indira Gandhi Medical Institute, Nagpur', 'MD Paediatrics - IG, GMI, Nagpur', 'FIPN - Fellowship in Paediatric Neurology'],
+      skills: ['Paediatric epilepsy, autism, ADHD, headache'] },
+    'ahmedullah': { role: 'Associate Professor, Consultant Paediatrician & Neonatologist', exp: '12 years',
+      edu: ['MBBS, MD Paediatrics'], skills: ['Managing paediatric and neonatal sick children'] },
+    'm-pavan-reddy': { role: 'Assistant Professor, Dept. of Paediatrics', exp: '6 years',
+      edu: ['MBBS - Gandhi Medical College', 'DNB - Jaslok Hospital & Research Center'],
+      skills: ['Managing paediatric ICU children'] },
+    'syed-mohammed-nusrath-qurram': { role: 'Assistant Professor, Paediatrics', exp: '1-2 years',
+      edu: ['MBBS - Kamineni Medical College', 'MD - Deccan College of Medical Sciences'],
+      skills: ['Immunization, paediatric and neonatal care', 'Paediatric trauma and emergencies'],
+      pubs: ['MISC in children case series (PEDICON, Hyderabad, 2021) - gold medal poster', 'A rare case of Congenital Rubella Syndrome - case report (OSMECON 2021)'] },
+    'shreya-tanneru': { role: 'Assistant Professor, Paediatrics', exp: '1-2 years',
+      edu: ['MBBS - Manipal University', 'MD Paediatrics - Dr. D.Y. Patil University, Pune', 'Fellowship in Neonatology - Paramitha Hospital, Hyderabad'],
+      skills: ['Management of complex and critically ill neonatal cases, paediatric emergencies and outpatient cases'] },
+
+    'nayeem-sadath-haneef': { role: 'Professor & HOD, DVL', exp: '21 years',
+      url: 'https://owaisihospital.com/dr-nayeem-sadath-haneef/',
+      edu: ['MBBS', 'MD (DVL)'],
+      skills: ['Nationally renowned for biological drug (rituximab) therapy and DCP/DAP pulse therapy of vesiculobullous diseases', 'Critical care in DVL', 'Cosmetic therapy and dermatosurgery: chemical peels, acne scars, vitiligo surgery, nail surgery, mesotherapy, PRP', 'Lasers: hair removal (diode), pigment removal (QS-Nd YAG), excimer, acne scar (CO2/MNRF)', 'PUVA / NBUVB / excimer phototherapy'],
+      awards: ['Contributed chapter on Code of Medical Ethics in a textbook on Medico-legal Aspects of Dermatology & Plastic Surgery (2019)', 'Contributed chapter on Alopecia areata in IADVL Textbook of Dermatology (5th Edition)', 'Invited speaker, moderator and chairperson at international, national and state DVL conferences', 'Member: IADVL, IAL, IMA'],
+      pubs: ['Leprosy masquerading as Melkersson-Rosenthal syndrome (Ind J Lepr 2005)', 'Nail changes and disorders among the elderly (Ind J Dermatol Venereol Leprol 2005)', 'Salivary electrolytes in psoriasis, a preliminary study (Indian J Dermatol 2006)'] },
+    'fatima-razvi': { role: 'Professor, DVL', exp: '29 years',
+      edu: ['MBBS', 'DDVL', 'DNB'],
+      skills: ['DCP/DAP pulse therapy / biological (rituximab) therapy of vesiculobullous diseases', 'Cosmetic therapy and dermatosurgery: chemical peels, acne scars, PRP therapy', 'CO2 LASER', 'PUVA / NBUVB phototherapy'],
+      awards: ['Fellowship - MNAMS', 'Vaidya Ratna Award', 'Member: IADVL, IAL, IMA'],
+      pubs: ['Retrospective study of duration of phase I of dexamethasone-cyclophosphamide pulse therapy in pemphigus patients (J Evolution Med Dent Sci 2017)', 'Report of three rare cases of Dowling Degos disease (J Med Allied Sci 2017)'] },
+    'p-arun-raghav': { role: 'Assistant Professor, DVL', exp: '6 years',
+      edu: ['MBBS', 'MD (DVL)'],
+      skills: ['Cosmetic therapy and dermatosurgery: chemical peels, acne scars', 'Hair removal LASER (diode)', 'PUVA / NBUVB phototherapy'],
+      awards: ['Member: IADVL, IAL'],
+      pubs: ['Etiological prevalence and antifungal sensitivity patterns of dermatophytosis in India, a multicentric study (Indian J Dermatol Venereol Leprol 2021)'] },
+    'ruhi-haqqani': { role: 'Assistant Professor, DVL', exp: '5 years',
+      edu: ['MBBS', 'MD (DVL)', 'DNB'],
+      skills: ['Dermoscopy', 'Cosmetic therapy and dermatosurgery: chemical peels, acne scars, PRP therapy', 'PUVA / NBUVB phototherapy'],
+      awards: ['Maria Duran Award - International Society of Dermatology, 2021 (paper on intralesional BCG immunotherapy in extensive warts)', 'Fellowship - MRCP-SCE', 'Fellowship - MNAMS', 'Member: IADVL, ACSI, IMA, ISD'] },
+    'fatima-ummul-hasnaat': { role: 'Senior Resident, DVL', exp: '10 years',
+      edu: ['MBBS', 'MD (DVL)'],
+      skills: ['Cosmetic therapy and dermatosurgery: chemical peels, acne scars, PRP therapy', 'CO2 LASER', 'PUVA / NBUVB phototherapy'],
+      awards: ['Member: IADVL, ACSI, IMA, Deccan Alumni'],
+      pubs: ['Non-randomised control trial of glycolic acid 12% cream versus azelaic acid 10% cream in melasma (J Evolution Med Dent Sci 2017)'] },
+
+    'k-padma-rayalu': { role: 'Professor & HOD, Dentistry', exp: '24 years',
+      edu: ['BDS - Bapuji Dental College and Hospital, Davangere', 'MDS - SDM Dental College and Hospital, Dharwad', 'AAID - American Academy of Implant Dentistry, USA', 'MDHM - Deccan School of Hospital Management'],
+      skills: ['Oral and maxillofacial surgeon: orthognathic surgery and correction of facial deformities', 'Maxillofacial trauma management with neurosurgery and orthopaedics', 'Dental implantology / full mouth rehabilitation'],
+      awards: ['Awardee of 1st prize for poster on implantology', 'Conducted training programmes for dental implantology'] },
+    'juwaria-jabeen': { role: 'Tutor, Dentistry', exp: '1-2 years',
+      edu: ['BDS - Al-Ameen Dental College and Hospital, Bijapur, Karnataka', 'MDHM - Deccan School of Hospital Management, Hyderabad'],
+      skills: ['Effective pain management', 'Oral surgery: total, orthodontic, geriatric and paediatric extractions', 'Prosthodontics: fixed and partial dentures, full mouth rehabilitation', 'Restorative dentistry and root canal treatment; pulpectomy in paediatric patients', 'Periodontics and periodontal therapies'] },
+    'lakshmi-radhika': { role: 'Assistant Professor, Dentistry', exp: '8 years',
+      edu: ['BDS - Sibar Institute, Guntur (2005-2010)', 'MDS Periodontology - Panineeya Institute of Dental Association, Hyderabad (2011-2014)', 'Fellowship in Endodontics - Indian Dental Association (2014)'],
+      skills: ['Flap surgery', 'Dental jewellery', 'Gingival depigmentation', 'Root canal', 'Laser periodontal therapy', 'Curettage', 'Gummy smile correction', 'Splinting'],
+      awards: ['Recipient, Indian Dental Association (IDA)', 'Essay contest 2011', 'First prize winner, South Zone'],
+      pubs: ['Periodontal disease and diabetes: how causal is the association? (Intl J of Clinical Cases and Investigation, 2011)'] },
+
+    'atiya-begum': { role: 'Professor & HOD, Pathology', exp: '31 years',
+      edu: ['M.D. (1980-1984) - JJM Medical College, Davangere, Mysore University', 'M.B.B.S. (1975-1980) - M.R. Medical College, Gulbarga, Dharwad University'],
+      skills: ['Conducted Zonal CME at Deccan College of Medical Sciences', 'IAPM AP state chapter conference, Khammam (2015)', 'TSIAPM conferences: Osmania Medical College (2016), Mediciti (2017)'],
+      pubs: ['Dowling Degos disease: a clinicopathological study (Indian J Pathology Research and Practice, 2017)', 'Abnormal uterine bleeding: role of sonography and histopathology (2018)'] },
+    't-s-shamshuddin': { role: 'Assistant Professor, Pathology & Blood Bank',
+      edu: ['MBBS', 'MD (Pathology)'], skills: ['Cyto techniques'],
+      pubs: ['A hospital based critical study of prevalence and morphological patterns of anemia in adult and geriatric population'] },
+
+    'rajashekar-reddy-g': { role: 'Professor & HOD, Cardiology', exp: '25 years',
+      edu: ['MBBS - JIPMER, Pondicherry (1992-1997)', 'MD Internal Medicine - PGIMER, Chandigarh (1998-2001)', 'DM Cardiology - NIMS, Hyderabad (2002-2005)'],
+      skills: ['Interventional cardiology (ESC Heart Failure Association)', 'Percutaneous coronary interventions, including complex PCI and primary PCI', 'Pacemakers', 'Balloon valvuloplasty'],
+      awards: ['JIPMER nationwide MBBS entrance 1992 - 6th rank', 'PGIMER nationwide MD/MS entrance 1998 - 4th rank', 'AIIMS Delhi nationwide MD/MS entrance 1998 - 7th rank', 'NIMS Hyderabad DM entrance (Cardiology) 2001 - 1st rank'] },
+    'parvaiz-kadloor': { role: 'Associate Professor, Cardiology', exp: '17 years',
+      edu: ['MBBS - M.R. Medical College, Gulbarga, Karnataka', 'MD Internal Medicine - M.R. Medical College, Gulbarga', 'DM Cardiology - Deccan College of Medical Sciences, Hyderabad'],
+      skills: ['Interventional cardiology (ESC Heart Failure Association)'],
+      pubs: ['Study of acute coronary syndrome in a specific ethnic Muslim population in the old city of Hyderabad', 'Reduced left ventricular ejection fraction in patients with ACS as a risk factor for mortality (IJRMS 2020)'] },
+    'mohammed-hidayathulla': { role: 'Associate Professor, Cardiology', exp: '20 years',
+      edu: ['MBBS - Vijayanagar Institute of Medical Sciences, Bellary', 'MD Paediatrics - Karnataka Institute of Medical Sciences, Hubli', 'DM Cardiology - Sri Jayadeva Institute of Cardiovascular Sciences and Research, Bangalore'],
+      skills: ['Interventional cardiology (ESC Heart Failure Association)'],
+      pubs: ['Efficacy and safety of paclitaxel drug eluting balloons in femoropopliteal artery disease (Int J Res Med Sci 2021)', 'Reduced LVEF in acute coronary syndrome as a risk factor for mortality (IJRMS 2020)'] },
+
+    'nabil-abdul-samad-mulla': { role: 'Assistant Professor, ENT', exp: '8 years',
+      edu: ['MBBS - Kamineni Institute of Medical Sciences', 'MS - Deccan College of Medical Sciences, Hyderabad'],
+      skills: ['Endoscopic nose surgeries', 'Endoscopic and microscopic ear surgeries', 'Micro laryngeal surgeries', 'Skull base, head and neck surgeries'] },
+    'waseem-ahmed': { role: 'Assistant Professor, ENT', exp: '2 years',
+      edu: ['MBBS - KBN Institute of Medical Sciences', 'DLO - Shadan Institute of Medical Sciences, Hyderabad'],
+      skills: ['Septoplasty', 'Functional endoscopic sinus surgeries', 'Tympanoplasty', 'Mastoidectomy', 'Micro laryngeal surgeries'] },
+    'zahida-begum': { role: 'Assistant Professor, ENT', exp: '2 years',
+      edu: ['MBBS - Mediciti Institute of Medical Sciences', 'DLO - Deccan College of Medical Sciences, Hyderabad'],
+      skills: ['Tonsillectomy', 'Septoplasty', 'Turbinoplasty'] },
+
+    'minhajzafar-nasirabadi': { role: 'Professor', exp: '22 years',
+      edu: ['MBBS - Grant Medical College, Mumbai', 'DPM - Mumbai', 'MD - Mumbai University'],
+      skills: ['De-addiction psychiatry', 'Consultation liaison psychiatry', 'General psychiatry'],
+      awards: ['Vice President and President-elect, Indian Psychiatric Society Telangana state branch', 'Recipient, National President Award, IMA 2017-18', 'IMA Telangana state president award 2020-21', 'Peer reviewer for national and international journals'] },
+    'arifuddin-ahmed': { role: 'Associate Professor, Psychiatry', exp: '25 years',
+      edu: ['MBBS - NTR University of Health Sciences, Andhra Pradesh', 'Internship - Princess Esra Hospital, Deccan College of Medical Sciences', 'MD - NTR University of Health Sciences, Andhra Pradesh'],
+      skills: ['Managed stress, adjustment disorder, depression, anxiety, OCD, psychosomatic problems, drug problems, psychosis, schizophrenia, bipolar disorder and delirium', 'Child psychiatry disorders', 'Psychopharmacology and psychotherapy (counselling)', 'Consultation liaison psychiatry'],
+      pubs: ['Psychiatric morbidity in postpartum women in Hyderabad (2017)', 'Mental health conditions: a mini review (2014)'] },
+    'mazhar-ali': { role: 'Associate Professor, Psychiatry', exp: '24 years',
+      edu: ['MBBS - Kakatiya Medical College', 'MD - Deccan College of Medical Sciences', 'Diploma in Diabetes'],
+      skills: ['De-addiction psychiatry', 'Consultation liaison psychiatry', 'General psychiatry'] },
+
+    'mohammed-aejaz-habeeb': { role: 'Professor & HOD, Gastroenterology & Hepatology', exp: '28 years',
+      edu: ['MBBS - Osmania Medical College, Hyderabad', 'MD - AIIMS, New Delhi', 'DM - AIIMS, New Delhi', 'PhD in Biotechnology - JNTU, Hyderabad', 'F.R.C.P. (Glasg.)'],
+      skills: ['Therapeutic endoscopy, ERCP and endoscopic ultrasound', 'Inflammatory bowel diseases, GERD, colon polyps, hepatitis, peptic ulcers, colitis, gallbladder and biliary tract diseases', 'Endoscopic sclerotherapy, variceal banding, fundal variceal glue injection, achalasia pneumatic dilatation', 'Double balloon enteroscopy; percutaneous endoscopic liver biopsies; motility studies', 'Completed 25 clinical trials; undertaking 8 more as principal investigator'],
+      awards: ['Best poster/paper award, INASL 2014', 'Best poster/paper awards, ISGCON 2013 and ISGCON 2014', 'Best poster/paper, Indian Society of Gastroenterology Hyderabad conference 2010'],
+      pubs: ['More than 90 publications in national and international peer reviewed journals'] }
+  };
+
   /* ---------- helpers ---------- */
   var EXT = ['jpg', 'jpeg', 'webp', 'png'];
 
-  /* tries base.jpg, base.jpeg, base.webp, base.png, then calls onFail */
-  function loadImg(im, basePath, onFail) {
+  /* tries base.jpg, base.jpeg, base.webp, base.png; calls onFail if none, onOk if found */
+  function loadImg(im, basePath, onFail, onOk) {
     var i = 0;
+    im.onload = function () { if (onOk) onOk(im); };
     im.onerror = function () {
       i++;
       if (i < EXT.length) {
@@ -636,7 +785,60 @@
       .map(function (w) { return w.charAt(0); }).slice(0, 2).join('').toUpperCase() || 'DR';
   }
 
-  /* ---------- Facilities grid (built from DEPTS) ---------- */
+  /* photo file base for a person (assets/doctors/<slug> or the "photo" override) */
+  function photoBase(name) {
+    var s = slug(name);
+    return 'assets/doctors/' + ((DOCTORS[s] && DOCTORS[s].photo) || s);
+  }
+
+  function loadPhotos(root) {
+    $$('.doc-img img', root).forEach(function (im) {
+      loadImg(im, im.getAttribute('data-base'), function (x) { x.remove(); });
+    });
+  }
+
+  /* one clickable golden doctor card (used everywhere) */
+  function docCard(name, role) {
+    return '<a class="doc-card" href="#doctor-' + slug(name) + '"><div class="doc-img">' +
+      '<span class="mono">' + initials(name) + '</span>' +
+      '<img alt="' + name + '" data-base="' + photoBase(name) + '"></div>' +
+      '<div class="doc-name">' + name + '<span class="doc-role">' + (role || 'View profile') + '</span></div></a>';
+  }
+
+  /* every unique person (management + all specialties) */
+  function allPeople() {
+    var seen = {}, out = [];
+    function add(n) { var s = slug(n); if (!seen[s]) { seen[s] = 1; out.push(n); } }
+    MGMT.forEach(function (m) { add(m.name); });
+    Object.keys(DEPTS).forEach(function (k) { DEPTS[k].doctors.forEach(add); });
+    return out;
+  }
+
+  /* find a person by slug in management and/or specialties */
+  function findPerson(s) {
+    var hit = null;
+    MGMT.forEach(function (m) {
+      if (slug(m.name) === s) hit = { name: m.name, mg: m, key: null };
+    });
+    Object.keys(DEPTS).forEach(function (k) {
+      DEPTS[k].doctors.forEach(function (n) {
+        if (slug(n) === s) {
+          if (!hit) hit = { name: n, mg: null, key: k };
+          else if (!hit.key) hit.key = k;
+        }
+      });
+    });
+    return hit;
+  }
+
+  function dList(title, arr) {
+    return (arr && arr.length)
+      ? '<div class="dr-sec"><h3>' + title + '</h3><ul>' +
+        arr.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>'
+      : '';
+  }
+
+  /* ---------- Specialties grid (built from DEPTS) ---------- */
   var deptGrid = $('#deptGrid');
   if (deptGrid) {
     deptGrid.innerHTML = Object.keys(DEPTS).map(function (k) {
@@ -649,7 +851,7 @@
     }).join('');
   }
 
-  /* ---------- Department page ---------- */
+  /* ---------- Specialty page ---------- */
   function renderDept(key) {
     var d = DEPTS[key];
     $('#dBread').textContent = d.name;
@@ -658,33 +860,131 @@
 
     var about = d.about.map(function (p) { return '<p class="dept-about">' + p + '</p>'; }).join('');
     var services = d.services.map(function (s) { return '<li>' + s + '</li>'; }).join('');
-    var docs = d.doctors.map(function (n) {
-      return '<article class="doc-card"><div class="doc-img"><span class="mono">' + initials(n) + '</span>' +
-        '<img alt="' + n + '" data-base="assets/doctors/' + slug(n) + '"></div>' +
-        '<div class="doc-name">' + n + '</div></article>';
-    }).join('');
+    var docs = d.doctors.map(function (n) { return docCard(n); }).join('');
 
     var body = $('#dBody');
     body.innerHTML =
-      '<div class="dept-top" id="dTop"><div><div class="eyebrow dk">About the department</div>' +
+      '<div class="dept-top" id="dTop"><div><div class="eyebrow dk">About the specialty</div>' +
       '<h2>' + d.name + '</h2>' + about + '</div>' +
       '<div class="dept-photo"><img alt="' + d.name + '" data-base="assets/departments/' + key + '"></div></div>' +
       '<div class="dept-block"><div class="eyebrow dk">What we offer</div><h2>Our Best Services Included</h2>' +
       '<ul class="dept-services">' + services + '</ul></div>' +
       '<div class="dept-block"><div class="eyebrow dk">Our doctors</div><h2>Meet the Doctors</h2>' +
       '<div class="doc-grid">' + docs + '</div>' +
-      '<p class="dept-note">Doctor availability and timings can change. Please call reception to confirm before visiting.</p></div>';
+      '<p class="dept-note">Select a doctor to read the full profile. Availability and timings can change, so please call reception to confirm before visiting.</p></div>';
 
-    /* department photo: hide the box if there is none */
+    /* specialty photo: hide the box if there is none */
     var dp = $('.dept-photo img', body);
     loadImg(dp, dp.getAttribute('data-base'), function (im) {
       im.parentNode.classList.add('empty');
       $('#dTop').classList.add('no-photo');
     });
 
-    /* doctor photos: initials stay if there is no photo */
-    $$('.doc-img img', body).forEach(function (im) {
-      loadImg(im, im.getAttribute('data-base'), function (x) { x.remove(); });
+    loadPhotos(body);
+  }
+
+  /* ---------- Doctor profile page ---------- */
+  function renderDoctor(s) {
+    var hit = findPerson(s);
+    if (!hit) return null;
+
+    var d = hit.key ? DEPTS[hit.key] : null;
+    var info = DOCTORS[s] || {};
+    var role = info.role || (hit.mg && hit.mg.role) || (d ? d.name : 'Owaisi Hospital & Research Centre');
+
+    var crumbs = '<a href="#home">Home</a><span>/</span>';
+    crumbs += d ? '<a href="#specialties">Specialties</a><span>/</span><a href="#dept-' + hit.key + '">' + d.name + '</a>'
+                : '<a href="#management">Management</a>';
+    crumbs += '<span>/</span><b>' + hit.name + '</b>';
+
+    $('#drCrumbs').innerHTML = crumbs;
+    $('#drDept').textContent = d ? d.name : 'Hospital Management';
+    $('#drName').textContent = hit.name;
+    $('#drRole').textContent = role;
+
+    var facts = '<li><b>Role</b><span>' + role + '</span></li>';
+    if (hit.mg && hit.mg.role && hit.mg.role !== role) facts += '<li><b>Management</b><span>' + hit.mg.role + '</span></li>';
+    if (info.exp) facts += '<li><b>Experience</b><span>' + info.exp + '</span></li>';
+    if (d) facts += '<li><b>Specialty</b><a href="#dept-' + hit.key + '">' + d.name + '</a></li>';
+    facts += '<li><b>Hospital</b><span>Owaisi Hospital &amp; Research Centre, Kanchan Bagh</span></li>';
+
+    var detail = dList('Education', info.edu) + dList('Skills', info.skills) +
+      dList('Awards', info.awards) + dList('Publications', info.pubs);
+    if (!detail) detail = '<p class="dept-about" style="margin-top:20px">Detailed profile coming soon. Please call reception to confirm this doctor\'s timings and availability.</p>';
+
+    var official = info.url
+      ? '<a class="btn dark" href="' + info.url + '" target="_blank" rel="noopener">Official profile ' +
+        '<svg class="ic" aria-hidden="true"><use href="#i-ext" /></svg></a>' : '';
+
+    var others, othersTitle;
+    if (d) {
+      others = d.doctors.filter(function (n) { return n !== hit.name; }).map(function (n) { return docCard(n); }).join('');
+      othersTitle = 'Other doctors in this specialty';
+    } else {
+      others = MGMT.filter(function (m) { return m.name !== hit.name; }).map(function (m) { return docCard(m.name, m.role); }).join('');
+      othersTitle = 'Hospital management';
+    }
+
+    var body = $('#drBody');
+    body.innerHTML =
+      '<div class="dr-top">' +
+        '<article class="doc-card dr-photo"><div class="doc-img"><span class="mono">' + initials(hit.name) + '</span>' +
+        '<img alt="' + hit.name + '" data-base="' + photoBase(hit.name) + '"></div>' +
+        '<div class="doc-name">' + hit.name + '</div></article>' +
+        '<div><div class="eyebrow dk">About the doctor</div><h2>' + hit.name + '</h2>' +
+        '<ul class="dr-facts">' + facts + '</ul>' + detail +
+        '<div class="dr-actions"><a class="btn" href="tel:+914024342754">' +
+        '<svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg> Call reception</a>' + official + '</div></div>' +
+      '</div>' +
+      (others ? '<div class="dept-block"><h2>' + othersTitle + '</h2><div class="doc-grid">' + others + '</div></div>' : '');
+
+    loadPhotos(body);
+    return { title: hit.name, nav: d ? 'specialties' : 'management' };
+  }
+
+  /* ---------- Management page (built when first opened) ---------- */
+  var mgmtBuilt = false;
+  function buildMgmt() {
+    if (mgmtBuilt) return;
+    mgmtBuilt = true;
+
+    var grid = $('#mgmtGrid');
+    grid.innerHTML = MGMT.map(function (m) { return docCard(m.name, m.role); }).join('');
+    loadPhotos(grid);
+
+    var wrap = $('#mgmtDocs');
+    wrap.innerHTML = Object.keys(DEPTS).map(function (k) {
+      var d = DEPTS[k];
+      return '<div class="mgmt-dept"><h3><a href="#dept-' + k + '">' + d.name + '</a></h3>' +
+        '<div class="doc-grid">' + d.doctors.map(function (n) { return docCard(n); }).join('') + '</div></div>';
+    }).join('');
+    loadPhotos(wrap);
+  }
+
+  /* ---------- Photo checklist (open site/#photos) ---------- */
+  function renderPhotos() {
+    var list = $('#photoList');
+    var people = allPeople();
+    var found = 0, done = 0;
+    var sum = $('#photoSum');
+    sum.textContent = 'Checking ' + people.length + ' photos…';
+    list.innerHTML = '';
+
+    people.forEach(function (n) {
+      var row = document.createElement('div');
+      row.className = 'photo-row';
+      row.innerHTML = '<span class="pr-name"></span><code></code><span class="pr-st">checking…</span>';
+      $('.pr-name', row).textContent = n;
+      $('code', row).textContent = photoBase(n) + '.jpg  (or .jpeg / .webp / .png)';
+      list.appendChild(row);
+
+      function finish(ok) {
+        done++;
+        if (ok) { found++; row.classList.add('ok'); }
+        $('.pr-st', row).textContent = ok ? 'found' : 'missing';
+        sum.textContent = found + ' of ' + people.length + ' photos uploaded' + (done < people.length ? ' (checking…)' : '');
+      }
+      loadImg(new Image(), photoBase(n), function () { finish(false); }, function () { finish(true); });
     });
   }
 
@@ -694,25 +994,42 @@
   var siteName = 'Owaisi Hospital & Research Centre';
 
   function showPage() {
-    var id = location.hash.slice(1);
+    var id = location.hash.slice(1).toLowerCase();
     if (id === 'main' || id === 'top') return;
 
     var title = '';
+    var navId = '';
+
     if (id.indexOf('dept-') === 0) {
       var key = id.slice(5);
       if (DEPTS[key]) {
         renderDept(key);
         title = DEPTS[key].name;
         id = 'department';
+        navId = 'specialties';
       } else {
-        id = 'facilities';
+        id = 'specialties';
       }
+    } else if (id.indexOf('doctor-') === 0) {
+      var res = renderDoctor(id.slice(7));
+      if (res) {
+        title = res.title;
+        navId = res.nav;
+        id = 'doctor';
+      } else {
+        id = 'specialties';
+      }
+    } else if (id === 'photos') {
+      renderPhotos();
+    } else if (id === 'management') {
+      buildMgmt();
     }
+
     if (!pages.some(function (p) { return p.id === id; })) id = 'home';
+    if (!navId) navId = id;
 
     pages.forEach(function (p) { p.hidden = (p.id !== id); });
 
-    var navId = (id === 'department') ? 'facilities' : id;
     links.forEach(function (a) {
       var on = a.getAttribute('href') === '#' + navId;
       a.classList.toggle('active', on);
