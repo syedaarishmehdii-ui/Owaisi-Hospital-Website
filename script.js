@@ -638,123 +638,794 @@
      Open yoursite/#photos to see every expected photo file name.
      ===================================================== */
   var DOCTORS = {
-    'susheel-kumar': { role: 'Associate Professor & Incharge, Accident and Emergency', exp: '10 years',
-      edu: ['MBBS - Taishan Medical University', 'DEM - National Board of Examinations', 'IDCCM - Indian Society of Critical Care', 'Diploma in Diabetology - Indian Medical Association'],
-      skills: ['BLS - Basic Life Support', 'ACLS - Advanced Cardiac Life Support'] },
-    'mohd-saleem': { role: 'Associate Professor, Accident and Emergency', exp: '24 years',
-      edu: ['MBBS - Kurnool Medical College (NTR University of Health Sciences, Vijayawada)', 'DEM - Diploma in Emergency Medicine'],
-      skills: ['BLS - Basic Life Support', 'ACLS - Advanced Cardiac Life Support'] },
-    'sushma': { role: 'Assistant Professor, Accident and Emergency', exp: '24 years',
-      edu: ['MBBS - Vydehi Institute of Medical Sciences', 'MEM - Masters in Emergency Medicine'],
-      skills: ['BLS - Basic Life Support', 'ACLS - Advanced Cardiac Life Support'] },
-    'karreh-ashwini': { role: 'Assistant Professor, Accident and Emergency', exp: '10 years',
-      edu: ['MBBS - Kathmandu Medical University', 'DEM - Diploma in Emergency', 'UKMEM - Masters in Emergency Medicine', 'MRCEM - Membership of Royal College of Emergency Medicine, UK'],
-      skills: ['BLS', 'ACLS', 'ATLS - Advanced Trauma Life Support', 'PALS - Pediatric Advanced Life Support', 'BDLS - Basic Disaster Life Support', 'ALSO - Advanced Life Support in Obstetrics'] },
-
-    'habib-pathan': { role: 'HOD, Paediatrics', exp: '24 years',
-      edu: ['MBBS - Indira Gandhi Medical Institute, Nagpur', 'MD Paediatrics - IG, GMI, Nagpur', 'FIPN - Fellowship in Paediatric Neurology'],
-      skills: ['Paediatric epilepsy, autism, ADHD, headache'] },
-    'ahmedullah': { role: 'Associate Professor, Consultant Paediatrician & Neonatologist', exp: '12 years',
-      edu: ['MBBS, MD Paediatrics'], skills: ['Managing paediatric and neonatal sick children'] },
-    'm-pavan-reddy': { role: 'Assistant Professor, Dept. of Paediatrics', exp: '6 years',
-      edu: ['MBBS - Gandhi Medical College', 'DNB - Jaslok Hospital & Research Center'],
-      skills: ['Managing paediatric ICU children'] },
-    'syed-mohammed-nusrath-qurram': { role: 'Assistant Professor, Paediatrics', exp: '1-2 years',
-      edu: ['MBBS - Kamineni Medical College', 'MD - Deccan College of Medical Sciences'],
-      skills: ['Immunization, paediatric and neonatal care', 'Paediatric trauma and emergencies'],
-      pubs: ['MISC in children case series (PEDICON, Hyderabad, 2021) - gold medal poster', 'A rare case of Congenital Rubella Syndrome - case report (OSMECON 2021)'] },
-    'shreya-tanneru': { role: 'Assistant Professor, Paediatrics', exp: '1-2 years',
-      edu: ['MBBS - Manipal University', 'MD Paediatrics - Dr. D.Y. Patil University, Pune', 'Fellowship in Neonatology - Paramitha Hospital, Hyderabad'],
-      skills: ['Management of complex and critically ill neonatal cases, paediatric emergencies and outpatient cases'] },
-
-    'nayeem-sadath-haneef': { role: 'Professor & HOD, DVL', exp: '21 years',
-      url: 'https://owaisihospital.com/dr-nayeem-sadath-haneef/',
-      edu: ['MBBS', 'MD (DVL)'],
-      skills: ['Nationally renowned for biological drug (rituximab) therapy and DCP/DAP pulse therapy of vesiculobullous diseases', 'Critical care in DVL', 'Cosmetic therapy and dermatosurgery: chemical peels, acne scars, vitiligo surgery, nail surgery, mesotherapy, PRP', 'Lasers: hair removal (diode), pigment removal (QS-Nd YAG), excimer, acne scar (CO2/MNRF)', 'PUVA / NBUVB / excimer phototherapy'],
-      awards: ['Contributed chapter on Code of Medical Ethics in a textbook on Medico-legal Aspects of Dermatology & Plastic Surgery (2019)', 'Contributed chapter on Alopecia areata in IADVL Textbook of Dermatology (5th Edition)', 'Invited speaker, moderator and chairperson at international, national and state DVL conferences', 'Member: IADVL, IAL, IMA'],
-      pubs: ['Leprosy masquerading as Melkersson-Rosenthal syndrome (Ind J Lepr 2005)', 'Nail changes and disorders among the elderly (Ind J Dermatol Venereol Leprol 2005)', 'Salivary electrolytes in psoriasis, a preliminary study (Indian J Dermatol 2006)'] },
-    'fatima-razvi': { role: 'Professor, DVL', exp: '29 years',
-      edu: ['MBBS', 'DDVL', 'DNB'],
-      skills: ['DCP/DAP pulse therapy / biological (rituximab) therapy of vesiculobullous diseases', 'Cosmetic therapy and dermatosurgery: chemical peels, acne scars, PRP therapy', 'CO2 LASER', 'PUVA / NBUVB phototherapy'],
-      awards: ['Fellowship - MNAMS', 'Vaidya Ratna Award', 'Member: IADVL, IAL, IMA'],
-      pubs: ['Retrospective study of duration of phase I of dexamethasone-cyclophosphamide pulse therapy in pemphigus patients (J Evolution Med Dent Sci 2017)', 'Report of three rare cases of Dowling Degos disease (J Med Allied Sci 2017)'] },
-    'p-arun-raghav': { role: 'Assistant Professor, DVL', exp: '6 years',
-      edu: ['MBBS', 'MD (DVL)'],
-      skills: ['Cosmetic therapy and dermatosurgery: chemical peels, acne scars', 'Hair removal LASER (diode)', 'PUVA / NBUVB phototherapy'],
-      awards: ['Member: IADVL, IAL'],
-      pubs: ['Etiological prevalence and antifungal sensitivity patterns of dermatophytosis in India, a multicentric study (Indian J Dermatol Venereol Leprol 2021)'] },
-    'ruhi-haqqani': { role: 'Assistant Professor, DVL', exp: '5 years',
-      edu: ['MBBS', 'MD (DVL)', 'DNB'],
-      skills: ['Dermoscopy', 'Cosmetic therapy and dermatosurgery: chemical peels, acne scars, PRP therapy', 'PUVA / NBUVB phototherapy'],
-      awards: ['Maria Duran Award - International Society of Dermatology, 2021 (paper on intralesional BCG immunotherapy in extensive warts)', 'Fellowship - MRCP-SCE', 'Fellowship - MNAMS', 'Member: IADVL, ACSI, IMA, ISD'] },
-    'fatima-ummul-hasnaat': { role: 'Senior Resident, DVL', exp: '10 years',
-      edu: ['MBBS', 'MD (DVL)'],
-      skills: ['Cosmetic therapy and dermatosurgery: chemical peels, acne scars, PRP therapy', 'CO2 LASER', 'PUVA / NBUVB phototherapy'],
-      awards: ['Member: IADVL, ACSI, IMA, Deccan Alumni'],
-      pubs: ['Non-randomised control trial of glycolic acid 12% cream versus azelaic acid 10% cream in melasma (J Evolution Med Dent Sci 2017)'] },
-
-    'k-padma-rayalu': { role: 'Professor & HOD, Dentistry', exp: '24 years',
-      edu: ['BDS - Bapuji Dental College and Hospital, Davangere', 'MDS - SDM Dental College and Hospital, Dharwad', 'AAID - American Academy of Implant Dentistry, USA', 'MDHM - Deccan School of Hospital Management'],
-      skills: ['Oral and maxillofacial surgeon: orthognathic surgery and correction of facial deformities', 'Maxillofacial trauma management with neurosurgery and orthopaedics', 'Dental implantology / full mouth rehabilitation'],
-      awards: ['Awardee of 1st prize for poster on implantology', 'Conducted training programmes for dental implantology'] },
-    'juwaria-jabeen': { role: 'Tutor, Dentistry', exp: '1-2 years',
-      edu: ['BDS - Al-Ameen Dental College and Hospital, Bijapur, Karnataka', 'MDHM - Deccan School of Hospital Management, Hyderabad'],
-      skills: ['Effective pain management', 'Oral surgery: total, orthodontic, geriatric and paediatric extractions', 'Prosthodontics: fixed and partial dentures, full mouth rehabilitation', 'Restorative dentistry and root canal treatment; pulpectomy in paediatric patients', 'Periodontics and periodontal therapies'] },
-    'lakshmi-radhika': { role: 'Assistant Professor, Dentistry', exp: '8 years',
-      edu: ['BDS - Sibar Institute, Guntur (2005-2010)', 'MDS Periodontology - Panineeya Institute of Dental Association, Hyderabad (2011-2014)', 'Fellowship in Endodontics - Indian Dental Association (2014)'],
-      skills: ['Flap surgery', 'Dental jewellery', 'Gingival depigmentation', 'Root canal', 'Laser periodontal therapy', 'Curettage', 'Gummy smile correction', 'Splinting'],
-      awards: ['Recipient, Indian Dental Association (IDA)', 'Essay contest 2011', 'First prize winner, South Zone'],
-      pubs: ['Periodontal disease and diabetes: how causal is the association? (Intl J of Clinical Cases and Investigation, 2011)'] },
-
-    'atiya-begum': { role: 'Professor & HOD, Pathology', exp: '31 years',
-      edu: ['M.D. (1980-1984) - JJM Medical College, Davangere, Mysore University', 'M.B.B.S. (1975-1980) - M.R. Medical College, Gulbarga, Dharwad University'],
-      skills: ['Conducted Zonal CME at Deccan College of Medical Sciences', 'IAPM AP state chapter conference, Khammam (2015)', 'TSIAPM conferences: Osmania Medical College (2016), Mediciti (2017)'],
-      pubs: ['Dowling Degos disease: a clinicopathological study (Indian J Pathology Research and Practice, 2017)', 'Abnormal uterine bleeding: role of sonography and histopathology (2018)'] },
-    't-s-shamshuddin': { role: 'Assistant Professor, Pathology & Blood Bank',
-      edu: ['MBBS', 'MD (Pathology)'], skills: ['Cyto techniques'],
-      pubs: ['A hospital based critical study of prevalence and morphological patterns of anemia in adult and geriatric population'] },
-
-    'rajashekar-reddy-g': { role: 'Professor & HOD, Cardiology', exp: '25 years',
-      edu: ['MBBS - JIPMER, Pondicherry (1992-1997)', 'MD Internal Medicine - PGIMER, Chandigarh (1998-2001)', 'DM Cardiology - NIMS, Hyderabad (2002-2005)'],
-      skills: ['Interventional cardiology (ESC Heart Failure Association)', 'Percutaneous coronary interventions, including complex PCI and primary PCI', 'Pacemakers', 'Balloon valvuloplasty'],
-      awards: ['JIPMER nationwide MBBS entrance 1992 - 6th rank', 'PGIMER nationwide MD/MS entrance 1998 - 4th rank', 'AIIMS Delhi nationwide MD/MS entrance 1998 - 7th rank', 'NIMS Hyderabad DM entrance (Cardiology) 2001 - 1st rank'] },
-    'parvaiz-kadloor': { role: 'Associate Professor, Cardiology', exp: '17 years',
-      edu: ['MBBS - M.R. Medical College, Gulbarga, Karnataka', 'MD Internal Medicine - M.R. Medical College, Gulbarga', 'DM Cardiology - Deccan College of Medical Sciences, Hyderabad'],
-      skills: ['Interventional cardiology (ESC Heart Failure Association)'],
-      pubs: ['Study of acute coronary syndrome in a specific ethnic Muslim population in the old city of Hyderabad', 'Reduced left ventricular ejection fraction in patients with ACS as a risk factor for mortality (IJRMS 2020)'] },
-    'mohammed-hidayathulla': { role: 'Associate Professor, Cardiology', exp: '20 years',
-      edu: ['MBBS - Vijayanagar Institute of Medical Sciences, Bellary', 'MD Paediatrics - Karnataka Institute of Medical Sciences, Hubli', 'DM Cardiology - Sri Jayadeva Institute of Cardiovascular Sciences and Research, Bangalore'],
-      skills: ['Interventional cardiology (ESC Heart Failure Association)'],
-      pubs: ['Efficacy and safety of paclitaxel drug eluting balloons in femoropopliteal artery disease (Int J Res Med Sci 2021)', 'Reduced LVEF in acute coronary syndrome as a risk factor for mortality (IJRMS 2020)'] },
-
-    'nabil-abdul-samad-mulla': { role: 'Assistant Professor, ENT', exp: '8 years',
-      edu: ['MBBS - Kamineni Institute of Medical Sciences', 'MS - Deccan College of Medical Sciences, Hyderabad'],
-      skills: ['Endoscopic nose surgeries', 'Endoscopic and microscopic ear surgeries', 'Micro laryngeal surgeries', 'Skull base, head and neck surgeries'] },
-    'waseem-ahmed': { role: 'Assistant Professor, ENT', exp: '2 years',
-      edu: ['MBBS - KBN Institute of Medical Sciences', 'DLO - Shadan Institute of Medical Sciences, Hyderabad'],
-      skills: ['Septoplasty', 'Functional endoscopic sinus surgeries', 'Tympanoplasty', 'Mastoidectomy', 'Micro laryngeal surgeries'] },
-    'zahida-begum': { role: 'Assistant Professor, ENT', exp: '2 years',
-      edu: ['MBBS - Mediciti Institute of Medical Sciences', 'DLO - Deccan College of Medical Sciences, Hyderabad'],
-      skills: ['Tonsillectomy', 'Septoplasty', 'Turbinoplasty'] },
-
-    'minhajzafar-nasirabadi': { role: 'Professor', exp: '22 years',
-      edu: ['MBBS - Grant Medical College, Mumbai', 'DPM - Mumbai', 'MD - Mumbai University'],
-      skills: ['De-addiction psychiatry', 'Consultation liaison psychiatry', 'General psychiatry'],
-      awards: ['Vice President and President-elect, Indian Psychiatric Society Telangana state branch', 'Recipient, National President Award, IMA 2017-18', 'IMA Telangana state president award 2020-21', 'Peer reviewer for national and international journals'] },
-    'arifuddin-ahmed': { role: 'Associate Professor, Psychiatry', exp: '25 years',
-      edu: ['MBBS - NTR University of Health Sciences, Andhra Pradesh', 'Internship - Princess Esra Hospital, Deccan College of Medical Sciences', 'MD - NTR University of Health Sciences, Andhra Pradesh'],
-      skills: ['Managed stress, adjustment disorder, depression, anxiety, OCD, psychosomatic problems, drug problems, psychosis, schizophrenia, bipolar disorder and delirium', 'Child psychiatry disorders', 'Psychopharmacology and psychotherapy (counselling)', 'Consultation liaison psychiatry'],
-      pubs: ['Psychiatric morbidity in postpartum women in Hyderabad (2017)', 'Mental health conditions: a mini review (2014)'] },
-    'mazhar-ali': { role: 'Associate Professor, Psychiatry', exp: '24 years',
-      edu: ['MBBS - Kakatiya Medical College', 'MD - Deccan College of Medical Sciences', 'Diploma in Diabetes'],
-      skills: ['De-addiction psychiatry', 'Consultation liaison psychiatry', 'General psychiatry'] },
-
-    'mohammed-aejaz-habeeb': { role: 'Professor & HOD, Gastroenterology & Hepatology', exp: '28 years',
-      edu: ['MBBS - Osmania Medical College, Hyderabad', 'MD - AIIMS, New Delhi', 'DM - AIIMS, New Delhi', 'PhD in Biotechnology - JNTU, Hyderabad', 'F.R.C.P. (Glasg.)'],
-      skills: ['Therapeutic endoscopy, ERCP and endoscopic ultrasound', 'Inflammatory bowel diseases, GERD, colon polyps, hepatitis, peptic ulcers, colitis, gallbladder and biliary tract diseases', 'Endoscopic sclerotherapy, variceal banding, fundal variceal glue injection, achalasia pneumatic dilatation', 'Double balloon enteroscopy; percutaneous endoscopic liver biopsies; motility studies', 'Completed 25 clinical trials; undertaking 8 more as principal investigator'],
-      awards: ['Best poster/paper award, INASL 2014', 'Best poster/paper awards, ISGCON 2013 and ISGCON 2014', 'Best poster/paper, Indian Society of Gastroenterology Hyderabad conference 2010'],
-      pubs: ['More than 90 publications in national and international peer reviewed journals'] }
-  };
+  'sushma': {
+    role: 'Assistant Professor, Accident and Emergency',
+    exp: '24 years',
+    edu: ['MBBS – Vydehi Institute of Medical Sciences', 'MEM – Masters in Emergency Medicine'],
+    skills: ['BLS – Basic Life Support', 'ACLS – Advanced Cardiac Life Support']
+  },
+  'karreh-ashwini': {
+    role: 'Assistant Professor, Accident and Emergency',
+    exp: '10 years',
+    edu: [
+      'MBBS – Kathmandu Medical University',
+      'DEM – Diploma in Emergency Medicine – Royal College',
+      'UKMEM – Masters in Emergency Medicine',
+      'MRCEM – Membership of Royal College of Emergency Medicine, Royal College, UK'
+    ],
+    skills: [
+      'BLS – Basic Life Support',
+      'ACLS – Advanced Cardiac Life Support',
+      'ATLS – Advanced Trauma Life Support',
+      'PALS – Pediatric Advanced Life Support',
+      'BDLS – Basic Disaster Life Support',
+      'ADLS – Activities of Daily Living',
+      'ALSO – Advanced Life Support in Obstetrics'
+    ]
+  },
+  'habib-pathan': {
+    role: 'HOD Pediatrics',
+    exp: '24 years',
+    edu: [
+      'MBBS – Indira Gandhi Medical Institute, Nagpur',
+      'MD (Pediatric) – IG, GMI, Nagpur',
+      'FIPN – Fellowship in Pediatric Neurologist'
+    ],
+    skills: ['Pediatric Epilepsy, Autism, ADHD, Headache']
+  },
+  'ahmedullah': {
+    role: 'Associate Professor, Consultant Pediatrician & Neonatologist',
+    exp: '12 years',
+    edu: ['MBBS, M.D. Pediatrics'],
+    skills: ['Experienced in Managing Pediatric & Neonatal sick children']
+  },
+  'm-pavan-reddy': {
+    role: 'Assistant Professor, Dept Of Pediatrics',
+    exp: '6 years',
+    edu: ['MBBS – Gandhi Medical College', 'DNB – Jaslok Hospital & Research Center'],
+    skills: ['Experience in Managing Pediatric ICU Children']
+  },
+  'syed-mohammed-nusrath-qurram': {
+    role: 'Assistant Professor',
+    exp: '1 – 2 years',
+    edu: ['MBBS – Kamineni Medical College', 'M.D. – Deccan College Of Medical Sciences'],
+    skills: ['Immunization, Pediatric & Neonatal', 'Pediatric Trauma & Emergencies'],
+    pubs: [
+      'Urinary ascites in a neonate with posterior urethral valve – IJCP journal',
+      'Salty Diabetes: Hypernatremia in Diabetic Ketoacidosis – IAP Indian Pediatrics Journal',
+      'Microbiological Profile Of Neonatal Sepsis in NICU of Tertiary Care Hospital',
+      'Generalized Myoclonic Seizures in a Neonate: A Rare Occurrence in Hypocalcemic Etiology Secondary to Maternal Vitamin D Deficiency – Scholars Journal',
+      'MISC IN children – case series (2021) – PEDICON/Hyderabad [gold medal-Poster Presented]',
+      'A rare cases of Congenital Rubella Syndrome – a case report @ OSMECON 2021',
+      'SANFILIPPO SYNDROME (MPS III) WITH MALIGNANT INFANTILE OSTEOPETROSIS – A RARE CASE REPORT (2021) – AEGIS/Hyderabad [Poster Presented]'
+    ]
+  },
+  'shreya-tanneru': {
+    role: 'Assistant Professor',
+    exp: '1 – 2 years',
+    edu: [
+      'MBBS – Manipal University',
+      'MD. Pediatrics – Dr. D.Y. Patil University, Pune',
+      'Fellowship in Neonatology – Paramitha Hospital, Hyderabad'
+    ],
+    skills: ['Management of Complex and critically ill Neonatal cases, Pediatric Emergencies and outpatient cases']
+  },
+  'nayeem-sadath-haneef': {
+    role: 'Professor & HOD, DVL',
+    exp: '21 years',
+    edu: ['MBBS', 'MD – DVL'],
+    skills: [
+      'Renowned nationally for biological drug (Rituximab) therapy / DCP/DAP pulse therapy of vesiculobullous diseases',
+      'Critical care in DVL',
+      'Cosmetic therapy & Dermatosurgery – chemical peels, acne scars, vitiligo surgery, nail surgery, mesotherapy, PRP',
+      'LASERS – Hair removal (diode), pigment removal (QS-Nd YAG), Excimer, acne scar (CO2/MNRF)',
+      'PUVA / NBUVB / Excimer Phototherapy'
+    ],
+    awards: [
+      'Contributed chapter on "Code of Medical Ethics" in textbook on "Medico-legal Aspects of Dermatology & Plastic Surgery" (Jaypee Brothers, 2019)',
+      'Contributed chapter on "Alopecia areata" in IADVL Textbook of Dermatology (5th Edition)',
+      'Invited guest speaker / moderator / panelist / chairperson in several international / national / zonal / state conferences of DVL',
+      'Indian Association of Dermatologists, Venereologists & Leprologists (IADVL)',
+      'Indian Association Leprologists (IAL)',
+      'Indian Medical Association (IMA)'
+    ],
+    pubs: [
+      'Leprosy masquerading as Melkersson-Rosenthal syndrome (Ind J Lepr 2005)',
+      'Nail changes and disorders among the elderly (Ind J Dermatol Venereol Leprol 2005)',
+      'A comparative evaluation of skin and nerve histopathology in single skin lesion leprosy',
+      'Salivary electrolytes in psoriasis: a preliminary study (Indian J Dermatol 2006)',
+      'An outbreak of Buffalopox in humans in a village in Rangareddy dist. AP (Indian J Public Health 2006)'
+    ]
+  },
+  'fatima-razvi': {
+    role: 'Professor, DVL',
+    exp: '29 years',
+    edu: ['MBBS', 'DDVL', 'DNB'],
+    skills: [
+      'DCP/DAP pulse therapy / biological (rituximab) therapy of vesiculobullous diseases',
+      'Cosmetic therapy and dermatosurgery: chemical peels, acne scars, PRP therapy',
+      'CO2 LASER',
+      'PUVA / NBUVB phototherapy'
+    ],
+    awards: ['Fellowship – MNAMS', 'Vaidya Ratna Award', 'Member: IADVL, IAL, IMA'],
+    pubs: [
+      'Retrospective study of duration of phase I of dexamethasone-cyclophosphamide pulse therapy in pemphigus patients (J Evolution Med Dent Sci 2017)',
+      'Report of three rare cases of Dowling Degos disease (J Med Allied Sci 2017)'
+    ]
+  },
+  'p-arun-raghav': {
+    role: 'Assistant Professor, DVL',
+    exp: '6 years',
+    edu: ['MBBS', 'MD (DVL)'],
+    skills: [
+      'Cosmetic therapy and dermatosurgery: chemical peels, acne scars',
+      'Hair removal LASER (diode)',
+      'PUVA / NBUVB phototherapy'
+    ],
+    awards: ['Member: IADVL, IAL'],
+    pubs: [
+      'Etiological prevalence and antifungal sensitivity patterns of dermatophytosis in India, a multicentric study (Indian J Dermatol Venereol Leprol 2021)'
+    ]
+  },
+  'ruhi-haqqani': {
+    role: 'Assistant Professor, DVL',
+    exp: '5 years',
+    edu: ['MBBS', 'MD (DVL)', 'DNB'],
+    skills: [
+      'Dermoscopy',
+      'Cosmetic therapy and dermatosurgery: chemical peels, acne scars, PRP therapy',
+      'PUVA / NBUVB phototherapy'
+    ],
+    awards: [
+      'Maria Duran Award – International Society of Dermatology, 2021',
+      'Fellowship – MRCP-SCE',
+      'Fellowship – MNAMS',
+      'Member: IADVL, ACSI, IMA, ISD'
+    ]
+  },
+  'fatima-ummul-hasnaat': {
+    role: 'Senior Resident, DVL',
+    exp: '10 years',
+    edu: ['MBBS', 'MD (DVL)'],
+    skills: [
+      'Cosmetic therapy and dermatosurgery: chemical peels, acne scars, PRP therapy',
+      'CO2 LASER',
+      'PUVA / NBUVB phototherapy'
+    ],
+    awards: ['Member: IADVL, ACSI, IMA, Deccan Alumni'],
+    pubs: [
+      'Non-randomised control trial of glycolic acid 12% cream versus azelaic acid 10% cream in melasma (J Evolution Med Dent Sci 2017)'
+    ]
+  },
+  'k-padma-rayalu': {
+    role: 'Professor & HOD, Dentistry',
+    exp: '24 years',
+    edu: [
+      'BDS – Bapuji Dental College and Hospital, Davangere',
+      'MDS – SDM Dental College and Hospital, Dharwad',
+      'AAID – American Academy of Implant Dentistry, USA',
+      'MDHM – Deccan School of Hospital Management'
+    ],
+    skills: [
+      'Oral and maxillofacial surgeon: orthognathic surgery and correction of facial deformities',
+      'Maxillofacial trauma management',
+      'Dental implantology / full mouth rehabilitation'
+    ],
+    awards: [
+      'Awardee of 1st prize for poster on implantology',
+      'Conducted training programmes for dental implantology'
+    ]
+  },
+  'juwaria-jabeen': {
+    role: 'Tutor, Dentistry',
+    exp: '1-2 years',
+    edu: [
+      'BDS – Al-Ameen Dental College and Hospital, Bijapur, Karnataka',
+      'MDHM – Deccan School of Hospital Management, Hyderabad'
+    ],
+    skills: [
+      'Effective pain management',
+      'Oral surgery: total, orthodontic, geriatric and paediatric extractions',
+      'Prosthodontics: fixed and partial dentures, full mouth rehabilitation',
+      'Restorative dentistry and root canal treatment',
+      'Periodontics and periodontal therapies'
+    ]
+  },
+  'lakshmi-radhika': {
+    role: 'Assistant Professor, Dentistry',
+    exp: '8 years',
+    edu: [
+      'BDS – Sibar Institute, Guntur (2005-2010)',
+      'MDS Periodontology – Panineeya Institute of Dental Association, Hyderabad (2011-2014)',
+      'Fellowship in Endodontics – Indian Dental Association (2014)'
+    ],
+    skills: [
+      'Flap surgery', 'Dental jewellery', 'Gingival depigmentation', 'Root canal',
+      'Laser periodontal therapy', 'Curettage', 'Gummy smile correction', 'Splinting'
+    ],
+    awards: [
+      'Recipient, Indian Dental Association (IDA)',
+      'Essay contest 2011',
+      'First prize winner, South Zone'
+    ],
+    pubs: [
+      'Periodontal disease and diabetes: how causal is the association? (Intl J of Clinical Cases and Investigation, 2011)'
+    ]
+  },
+  'atiya-begum': {
+    role: 'Professor & HOD, Pathology',
+    exp: '31 years',
+    edu: [
+      'M.D. (1980-1984) – JJM Medical College, Davangere, Mysore University',
+      'M.B.B.S. (1975-1980) – M.R. Medical College, Gulbarga, Dharwad University'
+    ],
+    skills: [
+      'Conducted Zonal CME at Deccan College of Medical Sciences',
+      'IAPM AP state chapter conference, Khammam (2015)',
+      'TSIAPM conferences: Osmania Medical College (2016), Mediciti (2017)'
+    ],
+    pubs: [
+      'Dowling Degos disease: a clinicopathological study (Indian J Pathology Research and Practice, 2017)',
+      'Abnormal uterine bleeding: role of sonography and histopathology (2018)'
+    ]
+  },
+  't-s-shamshuddin': {
+    role: 'Assistant Professor, Pathology & Blood Bank',
+    exp: '41 years',
+    edu: ['MBBS', 'MD (Pathology)'],
+    skills: ['Cyto Techniques'],
+    pubs: [
+      'A Hospital Based Critical Study of Prevalence and Morphological patterns of Anemia in Adult and Geriatric population',
+      'Study on Immuno Expression of Bio Catenine and ki67 in Oral Squamous cell carcinoma'
+    ]
+  },
+  'rajashekar-reddy-g': {
+    role: 'Professor & HOD, Cardiology',
+    exp: '25 years',
+    edu: [
+      'MBBS – JIPMER, Pondicherry (1992-1997)',
+      'MD Internal Medicine – PGIMER, Chandigarh (1998-2001)',
+      'DM Cardiology – NIMS, Hyderabad (2002-2005)'
+    ],
+    skills: [
+      'Interventional cardiology (ESC Heart Failure Association)',
+      'Percutaneous coronary interventions, including complex PCI and primary PCI',
+      'Pacemakers',
+      'Balloon valvuloplasty'
+    ],
+    awards: [
+      'JIPMER nationwide MBBS entrance 1992 – 6th rank',
+      'PGIMER nationwide MD/MS entrance 1998 – 4th rank',
+      'AIIMS Delhi nationwide MD/MS entrance 1998 – 7th rank',
+      'NIMS Hyderabad DM entrance (Cardiology) 2001 – 1st rank'
+    ]
+  },
+  'parvaiz-kadloor': {
+    role: 'Associate Professor, Cardiology',
+    exp: '17 years',
+    edu: [
+      'MBBS – M.R. Medical College, Gulbarga, Karnataka',
+      'MD Internal Medicine – M.R. Medical College, Gulbarga',
+      'DM Cardiology – Deccan College of Medical Sciences, Hyderabad'
+    ],
+    skills: ['Interventional cardiology (ESC Heart Failure Association)']
+  },
+  'mohammed-hidayathulla': {
+    role: 'Associate Professor, Cardiology',
+    exp: '20 years',
+    edu: [
+      'MBBS – Vijayanagar Institute of Medical Sciences, Bellary',
+      'MD Paediatrics – Karnataka Institute of Medical Sciences, Hubli',
+      'DM Cardiology – Sri Jayadeva Institute of Cardiovascular Sciences and Research, Bangalore'
+    ],
+    skills: ['Interventional cardiology (ESC Heart Failure Association)']
+  },
+  'nabil-abdul-samad-mulla': {
+    role: 'Assistant Professor, ENT',
+    exp: '8 years',
+    edu: [
+      'MBBS – Kamineni Institute of Medical Sciences',
+      'MS – Deccan College of Medical Sciences, Hyderabad'
+    ],
+    skills: [
+      'Endoscopic Nose Surgeries',
+      'Endoscopic & Microscopic Ear Surgeries',
+      'Micro Laryngeal Surgeries',
+      'Skull Base Head & Neck Surgeries'
+    ]
+  },
+  'waseem-ahmed': {
+    role: 'Assistant Professor, ENT',
+    exp: '2 years',
+    edu: [
+      'MBBS – KBN Institute of Medical Sciences',
+      'DLO – Shadan Institute of Medical Sciences, Hyderabad'
+    ],
+    skills: [
+      'Septoplasty',
+      'Functional Endoscopic sinus surgeries',
+      'Tympanoplasty',
+      'Mastoidectomy',
+      'Micro Laryngeal surgeries'
+    ]
+  },
+  'zahida-begum': {
+    role: 'Assistant Professor, ENT',
+    exp: '2 years',
+    edu: [
+      'MBBS – Mediciti Institute of Medical Sciences',
+      'DLO – Deccan College of Medical Sciences, Hyderabad'
+    ],
+    skills: ['Tonsillectomy', 'Septoplasty', 'Turbinoplasty']
+  },
+  'minhajzafar-nasirabadi': {
+    role: 'Professor, Psychiatry',
+    exp: '22 years',
+    edu: [
+      'MBBS – Grant Medical College, Mumbai',
+      'DPM – Mumbai',
+      'MD – Mumbai University'
+    ],
+    skills: [
+      'De-addiction psychiatry',
+      'Consultation liaison psychiatry',
+      'General psychiatry'
+    ],
+    awards: [
+      'Vice President and President-elect, Indian Psychiatric Society Telangana state branch',
+      'Recipient, National President Award, IMA 2017-18',
+      'IMA Telangana state president award 2020-21'
+    ]
+  },
+  'arifuddin-ahmed': {
+    role: 'Associate Professor, Psychiatry',
+    exp: '25 years',
+    edu: [
+      'MBBS – NTR University of Health Sciences, Andhra Pradesh',
+      'Internship – Princess Esra Hospital, Deccan College of Medical Sciences',
+      'MD – NTR University of Health Sciences, Andhra Pradesh'
+    ],
+    skills: [
+      'Managed stress, adjustment disorder, depression, anxiety, OCD, psychosomatic problems, drug problems, psychosis, schizophrenia, bipolar disorder and delirium',
+      'Child psychiatry disorders',
+      'Psychopharmacology and psychotherapy (counselling)',
+      'Consultation liaison psychiatry'
+    ]
+  },
+  'mazhar-ali': {
+    role: 'Associate Professor, Psychiatry',
+    exp: '24 years',
+    edu: [
+      'MBBS – Kakatiya Medical College',
+      'MD – Deccan College of Medical Sciences',
+      'Diploma in Diabetes'
+    ],
+    skills: [
+      'De-addiction psychiatry',
+      'Consultation liaison psychiatry',
+      'General psychiatry'
+    ]
+  },
+  'mohammed-aejaz-habeeb': {
+    role: 'Professor & HOD, Gastroenterology & Hepatology',
+    exp: '28 years',
+    edu: [
+      'MBBS – Osmania Medical College, Hyderabad',
+      'MD – AIIMS, New Delhi',
+      'DM – AIIMS, New Delhi',
+      'PhD in Biotechnology – JNTU, Hyderabad',
+      'F.R.C.P. (Glasg.)'
+    ],
+    skills: [
+      'Therapeutic endoscopy, ERCP and endoscopic ultrasound',
+      'Inflammatory bowel diseases, GERD, colon polyps, hepatitis, peptic ulcers, colitis',
+      'Endoscopic sclerotherapy, variceal banding, fundal variceal glue injection',
+      'Double balloon enteroscopy; percutaneous endoscopic liver biopsies'
+    ],
+    awards: [
+      'Best poster/paper award, INASL 2014',
+      'Best poster/paper awards, ISGCON 2013 and ISGCON 2014'
+    ],
+    pubs: ['More than 90 publications in national and international peer reviewed journals']
+  },
+  'suhail-bin-ahmed': {
+    role: 'Professor, General Medicine',
+    exp: '17 years',
+    edu: [
+      'MBBS – Deccan College of Medical Sciences, Hyderabad (2001)',
+      'MD (General Medicine) – Deccan College of Medical Sciences, Hyderabad (2009)'
+    ],
+    awards: [
+      'Chaired PGCON 2017, DCMS',
+      'Member of TB Core committee, DCMS',
+      'Life membership – Indian Society of Emergency Medicine',
+      'Member of General Medical Council UK',
+      'Member of Indian Medical Association',
+      'API – Life Member',
+      'Member of Research Society for the Study of Diabetes in India'
+    ]
+  },
+  'anjum-sultana-khatoon': {
+    role: 'Associate Professor, General Medicine',
+    exp: '35 years',
+    edu: [
+      'MBBS – Deccan College of Medical Sciences',
+      'MD – Deccan College of Medical Sciences',
+      'Diploma in Diabetes Mellitus'
+    ]
+  },
+  'pramod-kumar-kr': {
+    role: 'Associate Professor, General Medicine',
+    exp: '14 years',
+    edu: [
+      'MBBS – Navodaya Medical College',
+      'MD – Deccan College of Medical Sciences',
+      'Diploma in Diabetes'
+    ],
+    skills: [
+      'Bedside procedures / Teaching',
+      'Treating specially Autoimmune diseases'
+    ],
+    awards: [
+      'APJ Abdul Kalam Health and Medical Excellence Award (March 2021)',
+      'Appreciation award during Covid-19 Pandemic'
+    ]
+  },
+  'pabbaraju-padmaja': {
+    role: 'Professor & HOD, Gynaecology',
+    exp: '40 years',
+    edu: [
+      'MBBS – Sri Venkateswara Medical College, Tirupathi (1977)',
+      'MD (Ob & Gyn) – Sri Venkateswara Medical College, Tirupathi (1982)'
+    ],
+    skills: ['Member board of studies for final MBBS – KNRUHS']
+  },
+  'zareena-sultana': {
+    role: 'Assistant Professor, Gynaecology',
+    exp: '21 years',
+    edu: [
+      'MBBS – Siddhartha Medical College, Vijayawada (2001)',
+      'DGO – Kakatiya Medical College, Warangal (2006)',
+      'DNB – Muslim Maternity Hospital – NBE, New Delhi (2014)'
+    ]
+  },
+  'surayya-tahseen': {
+    role: 'Assistant Professor, OBG',
+    exp: '11 years',
+    edu: [
+      'MBBS – Deccan College of Medical Sciences, Hyderabad',
+      'MS (Ob & Gyn)'
+    ],
+    awards: ['Distinction in Physiology in MBBS']
+  },
+  'thajammul-samrin': {
+    role: 'Assistant Professor, Gynaecology',
+    exp: '3 years',
+    edu: [
+      'MBBS',
+      'MS – Obstetrics & Gynaecology',
+      'Fellowship in FICOG (Minimal Access surgery)'
+    ],
+    awards: ['Best poster presentation in International Congress on Reproductive Health and ART at ISSRF – 2018']
+  },
+  'k-archana': {
+    role: 'Senior Resident, Gynaecology',
+    exp: '9 years',
+    edu: [
+      'MBBS – Prathima Institute of Medical Sciences, Karimnagar',
+      'DNB – Sri Gokulam Hospital, Salem, Tamil Nadu'
+    ],
+    awards: ['Appreciation award from Govt. of Telangana']
+  },
+  'amtul-suroor': {
+    role: 'Senior Resident, Gynaecology',
+    exp: '9 years',
+    edu: [
+      'MBBS – Deccan College of Medical Sciences (2013)',
+      'MS – Deccan College of Medical Sciences'
+    ],
+    skills: [
+      'Special focus on teenage group',
+      'Pregnancy care & delivery, female health screening, menopause'
+    ]
+  },
+  'sadula-shravya': {
+    role: 'Senior Resident, Gynaecology',
+    exp: '8 years',
+    edu: [
+      'MBBS – Siddhartha Govt Medical College, Vijayawada',
+      'DNB – Rajiv Gandhi Govt. Women & Children Hospital, Puducherry'
+    ],
+    skills: [
+      'Clinical knowledge in pregnancy, delivery, Gynaecological problems',
+      'Surgical skills in delivery, obstetric and Gynaecological procedures',
+      'Infertility management'
+    ],
+    awards: ['Distinction in ENT (3rd Year)']
+  },
+  'n-sudershan-rao': {
+    role: 'Professor & HOD, Plastic Surgery',
+    exp: '44 years',
+    edu: [
+      'MBBS – Gandhi Medical College',
+      'MS – General Surgery – Gandhi Medical College',
+      'M.Ch – Plastic Surgery – Osmania Medical College'
+    ],
+    skills: [
+      'Facio Maxillary Surgery',
+      'Burns',
+      'Rhinoplasty',
+      'Cleft lip and Cleft palate'
+    ]
+  },
+  'm-prabhakar': {
+    role: 'Associate Professor, Plastic Surgery',
+    exp: '15 years',
+    edu: [
+      'MBBS – Siddhartha Medical College',
+      'MS – General Surgery – Osmania Medical College',
+      'M.Ch – Plastic Surgery – Deccan College of Medical Sciences'
+    ],
+    skills: [
+      'Burns management',
+      'Cleft lip and Cleft palate',
+      'Rhinoplasty',
+      'Vascular, Tendon / Neuro surgeries',
+      'Facio Maxillary Surgery',
+      'Body Contouring',
+      'Skin Malignancies',
+      'Flap Surgeries',
+      'Cosmetic Surgeries (Liposuction, Breast Reduction, Breast implants, Hair transplantation)'
+    ]
+  },
+  'nazma': {
+    role: 'Associate Professor, Nephrology',
+    exp: '11 years',
+    edu: [
+      'MBBS – Osmania Medical College, Hyderabad',
+      'MD – General Medicine – Osmania Medical College',
+      'DM (Nephrology) – Deccan College of Medical Sciences'
+    ],
+    skills: [
+      'Dialysis',
+      'Jugular cannulation',
+      'Tunnelled catheter placement',
+      'CAPD',
+      'Renal biopsy',
+      'Renal transplantation'
+    ]
+  },
+  'syed-mohd-azhar-hassan': {
+    role: 'Assistant Professor, Nephrology',
+    exp: '15 years',
+    edu: [
+      'MBBS – SMS Medical College',
+      'MD – General Medicine – Deccan College of Medical Sciences',
+      'DM (Nephrology) – Dr. DY Patil Medical College, Pune'
+    ],
+    skills: [
+      'Temporary & Permanent dialysis catheter insertion',
+      'Peritoneal dialysis catheter insertion',
+      'Managing transplants as physician',
+      'Renal biopsies',
+      'Continuous renal replacement therapy'
+    ]
+  },
+  'ashfaq-hassan': {
+    role: 'Professor, Pulmonology & Principal - DCMS',
+    exp: '30 years',
+    edu: ['MBBS', 'MD'],
+    skills: [
+      'Disorders of the airways (Asthma, COPD, Bronchiectasis)',
+      'Interstitial Fibrosis',
+      'Lung Infections',
+      'Sleep Disorders (OSA)',
+      'Critical Care (Invasive & Non-invasive Ventilation)',
+      'Bronchoscopy, Thoracoscopy',
+      'Advanced Pulmonary Function Diagnostics'
+    ],
+    awards: ['Recipient of teacher-of-the-year awards twice']
+  },
+  'fahad-abdullah': {
+    role: 'Assistant Professor, Pulmonology',
+    exp: '8 years',
+    edu: [
+      'MBBS – Deccan College of Medical Sciences',
+      'MD – Respiratory Medicine – Deccan College of Medical Sciences'
+    ],
+    skills: [
+      'Bronchoscopy & Thoracoscopy',
+      'Interventional Pulmonology'
+    ]
+  },
+  'mohammed-zoheb': {
+    role: 'Professor, Neurology & Additional Medical Superintendent',
+    exp: '12 years',
+    edu: [
+      'MBBS – MR Medical College, Gulbarga',
+      'MD – Internal Medicine – Al-Ameen Medical College, Bijapur',
+      'DM (Neurology) – Deccan College of Medical Sciences'
+    ],
+    skills: [
+      'Stroke',
+      'Parkinson’s disease',
+      'Headache',
+      'Multiple sclerosis',
+      'Dementia'
+    ],
+    awards: [
+      'University 2nd rank in MD Internal Medicine',
+      'Best outgoing student DM Neurology'
+    ]
+  },
+  'shaik-vazeeruddin': {
+    role: 'Senior Resident, Orthopaedics',
+    exp: 'Multiple years',
+    edu: [
+      'MBBS – JSS University (2014)',
+      'MS (Ortho) – KIMS, Warangal'
+    ],
+    skills: [
+      'Arthroplasty (hip & knee)',
+      'Arthroscopy (knee & hip)',
+      'Management of long bone fractures',
+      'Closed and open reduction of joint dislocations',
+      'Polytrauma management'
+    ]
+  },
+  't-venu-gopal': {
+    role: 'Assistant Professor, Orthopaedics',
+    exp: '3 years',
+    edu: [
+      'MBBS – MGM Medical College, Navi Mumbai',
+      'D.Ortho – NRI Medical College, Andhra Pradesh',
+      'MS Ortho – Kamineni Institute of Medical Sciences'
+    ],
+    skills: ['Arthroplasty & Trauma Surgeon']
+  },
+  'imaduddin-ahmed': {
+    role: 'Associate Professor, Physiotherapy',
+    exp: '11 years',
+    edu: [
+      'BPT – Deccan Medical College of Physiotherapy',
+      'MPT – Career College of Physiotherapy'
+    ],
+    skills: [
+      'Taping techniques',
+      'Manual Therapy',
+      'Cardio Pulmonary Rehabilitation',
+      'Endurance Improvement Technique'
+    ]
+  },
+  'harris-abid': {
+    role: 'Assistant Professor, Clinical Therapist, Physiotherapy',
+    exp: '5 years',
+    edu: [
+      'BPT – Deccan Medical College of Physiotherapy',
+      'MPT (Neuro Sciences) – IAMR College of Physiotherapy'
+    ],
+    skills: [
+      'Cranio-Sacral therapy',
+      'Visceral Manipulations',
+      'Osteopathy & Chiropractic',
+      'NDT',
+      'Proprioceptive Neuromuscular Facilitation techniques'
+    ]
+  },
+  'mohammed-abdul-majid-adil': {
+    role: 'Professor, Urology & VP - UCHMC',
+    exp: '20 years',
+    edu: [
+      'MBBS – Deccan College of Medical Sciences',
+      'MS – General Surgery – Kakatiya Medical College',
+      'M.Ch (Urology) – Kasturba Medical College, Manipal',
+      'DNB (Urology)'
+    ],
+    skills: [
+      'Endo urology',
+      'Flexible ureteroscopy',
+      'Laser treatment of renal calculi',
+      'Laparoscopic urology',
+      'Pediatric urology',
+      'Uro-oncology'
+    ]
+  },
+  'b-sourabh-chandra-reddy': {
+    role: 'Assistant Professor, Urology',
+    exp: '8 years',
+    edu: [
+      'MBBS – MVJ Medical College',
+      'MS (General Surgery) – Bharati Vidyapeeth Medical College, Pune',
+      'M.Ch (Urology) – Kasturba Medical College, Manipal'
+    ],
+    skills: [
+      'Endourology',
+      'Andrology',
+      'Uro-oncology'
+    ],
+    awards: ['International traveling fellowship (EUREP, 2021)']
+  },
+  'siddharth-karan': {
+    role: 'Professor & HOD, Ophthalmology',
+    exp: '20 years',
+    edu: [
+      'MBBS – M.R. Medical College, Gulbarga',
+      'MS (Ophthalmology) – M.R. Medical College, Gulbarga'
+    ],
+    skills: [
+      'Phacoemulsification surgery',
+      'Multifocal Intra ocular implants',
+      'Performed more than 30,000 Phaco surgeries'
+    ],
+    awards: [
+      'Only Indian surgeon to give Guest Lecture and live surgical demonstration for multifocal lens implants at UF Medical Institute, Russia (2014)',
+      'Sir Mehdi Nawaz Jung Memorial Award (2015)',
+      'Vaidyarathna Award (2018)',
+      'APJ Abdul Kalam Award (2021)'
+    ]
+  },
+  'arshia-mohd': {
+    role: 'Associate Professor, Ophthalmology',
+    exp: '8 years',
+    edu: [
+      'MBBS – Deccan College of Medical Sciences, Hyderabad',
+      'MS – Gandhi Medical College'
+    ],
+    skills: [
+      'SICS (Small Incision Cataract Surgery)',
+      'Pterygium Excision and Autograft surgery',
+      'Oculoplasty and orbital fracture repairs'
+    ]
+  },
+  'maimoona-mustafa': {
+    role: 'Professor & HOD, Microbiology',
+    exp: '30 years',
+    edu: [
+      'MBBS 1986 – Osmania Medical College',
+      'MD (Medical Microbiology) 1992 – Osmania Medical College'
+    ],
+    skills: [
+      'Conducted research on various infectious diseases, with a focus on the study of antibiotic resistance in bacterial pathogens',
+      'Developed and implemented new techniques (including molecular methods) for the diagnosis & treatment of infectious diseases in Owaisi group of hospitals',
+      'Carried out external & internal Quality assessment of laboratory tests (EQAS & NABL)',
+      'Helped in updating the bench manual for Standard Operating Procedures (SOPs)',
+      'Worked as a reviewer in Journal of Medical & Allied Sciences',
+      'Chaired many sessions in various National and State level conferences, regularly organised Zonal CMEs',
+      'Completed Basic Course in Biomedical Research (BCBR)',
+      'Supervised and trained undergraduate medical students since 1992',
+      'Guided undergraduate students on STS (Short Term Scientific research) by ICMR',
+      'Mentored and advised postgraduates since 2007 on their research projects and thesis work',
+      'Taught nursing staff about infection control and took regular classes for B.Sc students',
+      'Excellent communication skills and leadership qualities'
+    ],
+    awards: [
+      'Indian Association Of Microbiologists (IAM) – 1992',
+      'Indian Association Of Microbiologists & Pathologists (IAPM) – 2000',
+      'Infection Control Society – 2010'
+    ],
+    pubs: ['Published several papers in national & international journals']
+  },
+  'susheel-kumar': {
+    role: 'Associate Professor & Incharge, Accident and Emergency',
+    exp: '10 years',
+    edu: [
+      'MBBS – Taishan Medical University',
+      'DEM – National Board of Examinations',
+      'IDCCM – Indian Society of Critical Care',
+      'Diploma in Diabetology – Indian Medical Association'
+    ],
+    skills: ['BLS – Basic Life Support', 'ACLS – Advanced Cardiac Life Support']
+  },
+  'mohd-saleem': {
+    role: 'Associate Professor, Accident and Emergency',
+    exp: '24 years',
+    edu: [
+      'MBBS – Kurnool Medical College (NTR University of Health Sciences, Vijayawada)',
+      'DEM – Diploma in Emergency Medicine'
+    ],
+    skills: ['BLS – Basic Life Support', 'ACLS – Advanced Cardiac Life Support']
+  }
+};
 
   /* ---------- helpers ---------- */
   var EXT = ['jpg', 'jpeg', 'webp', 'png'];
@@ -786,10 +1457,70 @@
   }
 
   /* photo file base for a person (assets/doctors/<slug> or the "photo" override) */
-  function photoBase(name) {
-    var s = slug(name);
-    return 'assets/doctors/' + ((DOCTORS[s] && DOCTORS[s].photo) || s);
-  }
+  /* photo file base for a person */
+function photoBase(name) {
+  var map = {
+    'sushma': 'drsushma',
+    'karreh-ashwini': 'drkarrehashwini',
+    'habib-pathan': 'drhabibpathan',
+    'ahmedullah': 'drahmedullah',
+    'm-pavan-reddy': 'drmpavanreddy',
+    'syed-mohammed-nusrath-qurram': 'drsyedmohammednusrathqurram',
+    'shreya-tanneru': 'drshreyatanneru',
+    'nayeem-sadath-haneef': 'drnayeemsadathhaneef',
+    'fatima-razvi': 'drfatimarazvi',
+    'p-arun-raghav': 'drparunraghav',
+    'ruhi-haqqani': 'drruhihaqqani',
+    'fatima-ummul-hasnaat': 'drfatimaummulhasnaat',
+    'k-padma-rayalu': 'drkpadmarayalu',
+    'juwaria-jabeen': 'drjuwariajabeen',
+    'lakshmi-radhika': 'drlakshmiradhika',
+    'atiya-begum': 'dratiyabegum',
+    't-s-shamshuddin': 'drtsshamsuddin',
+    'rajashekar-reddy-g': 'drrajashekarreddyg',
+    'parvaiz-kadloor': 'drparvaizkadloor',
+    'mohammed-hidayathulla': 'drmohammedhidayathulla',
+    'nabil-abdul-samad-mulla': 'drnabilabdulsamadmulla',
+    'waseem-ahmed': 'drwaseemahmed',
+    'zahida-begum': 'drzahidabegum',
+    'minhajzafar-nasirabadi': 'drminhajzafarnasirabadi',
+    'arifuddin-ahmed': 'drarifuddinahmed',
+    'mazhar-ali': 'drmazharali',
+    'mohammed-aejaz-habeeb': 'drmohammedaejazhabeeb',
+    'suhail-bin-ahmed': 'drsuhailbinahmed',
+    'anjum-sultana-khatoon': 'dranjumsultanakhatoon',
+    'pramod-kumar-kr': 'drpramodkumarkr',
+    'pabbaraju-padmaja': 'drpabbarajupadmaja',
+    'zareena-sultana': 'drzareenasultana',
+    'surayya-tahseen': 'drsurayyatahseen',
+    'thajammul-samrin': 'drthajammulsamrin',
+    'k-archana': 'drkarchana',
+    'amtul-suroor': 'dramtulsuroor',
+    'sadula-shravya': 'drsadulashravya',
+    'n-sudershan-rao': 'drnsudershanrao',
+    'm-prabhakar': 'drmprabhakar',
+    'nazma': 'drnazma',
+    'syed-mohd-azhar-hassan': 'drsyedmohdazharhassan',
+    'ashfaq-hassan': 'drashfaqhasan',
+    'fahad-abdullah': 'drfahadabdullah',
+    'mohammed-zoheb': 'drmohammedzoheb',
+    'shaik-vazeeruddin': 'drshaikvazeeruddin',
+    't-venu-gopal': 'drtvenugopal',
+    'imaduddin-ahmed': 'drimaduddinahmed',
+    'harris-abid': 'drharrisabid',
+    'mohammed-abdul-majid-adil': 'drmohammedabdulmajidadil',
+    'b-sourabh-chandra-reddy': 'drbsourabhchandraredy',
+    'siddharth-karan': 'drsiddharthkaran',
+    'arshia-mohd': 'drarshiamohd',
+    'maimoona-mustafa': 'drmaimoonamustafa',
+    'susheel-kumar': 'drsusheel',
+    'mohd-saleem': 'drmohdsaleem'
+  };
+
+  var s = slug(name);
+  var file = map[s] || ('dr' + s.replace(/-/g, ''));
+  return 'assets/' + file;
+}
 
   function loadPhotos(root) {
     $$('.doc-img img', root).forEach(function (im) {
