@@ -864,3 +864,32 @@ header.scrolled .brand-logo { height: 52px; }
   .btn { padding: 13px 16px; }
   .contact-box, .formbox { padding: 24px; }
 }
+/* Mobile width fix */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .container,
+    .section,
+    main,
+    header,
+    footer {
+        max-width: 100%;
+    }
+
+    img,
+    video,
+    iframe {
+        max-width: 100%;
+    }
+}
