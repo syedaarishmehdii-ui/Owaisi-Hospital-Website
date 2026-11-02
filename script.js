@@ -1508,11 +1508,11 @@ function photoBase(name) {
     't-venu-gopal': 'drtvenugopal',
     'imaduddin-ahmed': 'drimaduddinahmed',
     'harris-abid': 'drharrisabid',
-    'mohammed-abdul-majid-adil': 'drmohammedabdulmajidadil',
-    'b-sourabh-chandra-reddy': 'drbsourabhchandraredy',
+    'm-a-majid-adil': 'drmohammedabdulmajidadil',
+    'b-sourabh-chandra-reddy': 'drbsourabhchandrareddy',
     'siddharth-karan': 'drsiddharthkaran',
     'arshia-mohd': 'drarshiamohd',
-    'maimoona-mustafa': 'drmaimoonamustafa',
+    'maimoona-mustafa': 'drmalmoonamustafa',
     'susheel-kumar': 'drsusheel',
     'mohd-saleem': 'drmohdsaleem'
   };
